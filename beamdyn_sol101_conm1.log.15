@@ -10,7 +10,7 @@ PMEM=0+
 MACH='Intel'
 OPER='Windows 10 Enterprise'
 OSV='6.2 9200'
-MODEL='Xeon/3939 (5CG4463P42)'
+MODEL='Xeon/5088 (5CG4463P42)'
 NPROC='12'
 CONFIG=6
 NPROC=12
@@ -20,8 +20,8 @@ symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast
 symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[1])
 symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/sssalter' $(program default)
 symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/tpl' $(program default)
-SDIR='c:/scratch/beamdyn_sol101_conm1.T23720_26'
-DBS='c:/scratch/beamdyn_sol101_conm1.T23720_26'
+SDIR='c:/scratch/beamdyn_sol101_conm1.T37608_43'
+DBS='c:/scratch/beamdyn_sol101_conm1.T37608_43'
 SCR='yes'
 SMEM=100
 BPOOL=6822.6MB
@@ -41,7 +41,7 @@ NEWS='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/news.txt'
 ----------------------------------------------------------------- 
 MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\actran\win64\Actran_2024.2\bin;C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\nast; 
 MSC_JIDPATH= 
-PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\Python312\Scripts\;C:\Program Files\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\PowerShell\7\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\mathismiroux\AppData\Local\Programs\Git\cmd 
+PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\Python312\Scripts\;C:\Program Files\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\PowerShell\7\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin 
 SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res\SCAServiceCatalog.xml 
 SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res 
 Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\win64i8\nastran.exe JID=C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code\beamdyn_sol101_conm1.dat 
@@ -54,18 +54,18 @@ FPE:         yes
 ----------------------------------------------------------------- 
 Current resource limits:
  Physical memory:                    16016 MB
- Physical memory available:           3655 MB
+ Physical memory available:           1206 MB
  Paging file size:                   31888 MB
- Paging file size available:          6171 MB
+ Paging file size available:          6798 MB
  Virtual memory:                 134217727 MB
  Virtual memory available:       134213496 MB
 ----------------------------------------------------------------- 
 System configuration:
- Hostname:         5CG4463P42
+ Hostname:         5CG4463P42.home
  Architecture:     win64i8
  Platform:         Intel Windows 10 Enterprise 6.2 9200 (Windows Compute Cluster)
- Model:            Xeon/3611
- Clock freq.:      3611 MHz
+ Model:            Xeon/1967
+ Clock freq.:      1967 MHz
  Number of CPUs:   12
  Number of CPUs:   0 ( limited by PBS )
  Executable:       standard
@@ -79,8 +79,8 @@ System configuration:
  Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
                    <ccs_cmd> (Windows CCS nodes)
 ----------------------------------------------------------------- 
-MSC Nastran started  Thu Sep 25 18:45:28 WEDT 2025 
- 18:45:36  Beginning Analysis
+MSC Nastran started  Tue Sep 23 18:15:44 WEDT 2025 
+ 18:15:52  Beginning Analysis
 SCA Kernel 30.0.943723 successfully initialized
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\libimalloc.dll" has been loaded.
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_core.2.dll" has been loaded.
@@ -88,9 +88,9 @@ BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win6
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_rt.2.dll" has been loaded.
 BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\MSCblas.dll" has been loaded.
 
- 18:45:38  MSC Authorization Information - System Attributes (1004, 0)
- 18:45:38  -----------------------------------------------------------
-  Date:          Thu Sep 25 18:45:38 2025
+ 18:15:53  MSC Authorization Information - System Attributes (1004, 0)
+ 18:15:53  -----------------------------------------------------------
+  Date:          Tue Sep 23 18:15:53 2025
   MSC Id:        c4474e16e1f4 (ethernet) (Intel)
   Hostname:      5CG4463P42 (user mathismiroux, display 5CG4463P42)
   License files: 27001@nastran-1.lic.tudelft.nl
@@ -110,27 +110,27 @@ BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win6
   * * * * * * * * * * * * * * * * * * * *
   * * * * * * * * * * * * * * * * * * * *
 
- 18:45:42  MSC Authorization Information - Checkout Successful (1016, 0)
- 18:45:42  -------------------------------------------------------------
- 18:45:42  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host nastran-1.lic.tudelft.nl
+ 18:15:54  MSC Authorization Information - Checkout Successful (1016, 0)
+ 18:15:54  -------------------------------------------------------------
+ 18:15:54  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host nastran-1.lic.tudelft.nl
 
 
 Beginning bulk data processing using the IFPStar component.
 For more information on IFPStar, please see KB article KB8019200
 on our support pages, at http://simcompanion.hexagon.com.
 
- 18:45:42  271 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
+ 18:15:54  270 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
 
 Processing of bulk data entries is complete.
 
- 18:45:43  Finite element model generation started.
- 18:45:43  Finite element model generated 156 degrees of freedom.
- 18:45:43  Finite element model generation successfully completed.
- 18:45:43  Application of Loads and Boundary Conditions to the finite element model started.
- 18:45:43  Application of Loads and Boundary Conditions to the finite element model successfully completed.
- 18:45:43  Solution of the system equations for linear statics started.
- 18:45:43  Solution of the system equations for linear statics successfully completed.
- 18:45:43  Linear static analysis completed.
+ 18:15:54  Finite element model generation started.
+ 18:15:54  Finite element model generated 156 degrees of freedom.
+ 18:15:54  Finite element model generation successfully completed.
+ 18:15:54  Application of Loads and Boundary Conditions to the finite element model started.
+ 18:15:54  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 18:15:54  Solution of the system equations for linear statics started.
+ 18:15:54  Solution of the system equations for linear statics successfully completed.
+ 18:15:54  Linear static analysis completed.
  ====================================================================================================================================
 
  ================================== M O D E L  S O L U T I O N  S U M M A R Y  O U T P U T ==========================================
@@ -229,7 +229,7 @@ Processing of bulk data entries is complete.
  +------------- MAXIMUM DISK USAGE -------------+
     HIWATER               SUB_DMAP        DMAP
        (MB)   DAY_TIME      NAME         MODULE
-      4.250   18:45:42    PREFACE     0  PREFACE 
+      4.250   18:15:54    PREFACE     0  PREFACE 
 
 
  *** DATABASE USAGE STATISTICS ***
@@ -242,7 +242,7 @@ Processing of bulk data entries is complete.
   DBALL      20000000      65536         12   0.00     DBALL      20000000    9765.62         12         0.006            0.002
   OBJSCR        25000       8192        493   1.97     OBJSCR        25000       1.53        493         0.030            0.000
   SCRATCH    40000100      65536         27   0.00    (MEMFILE         100       0.05        100         0.049            0.000)
-                                                       SCRATCH    20000000    9765.62          7         0.003            0.000
+                                                       SCRATCH    20000000    9765.62          6         0.003            0.000
                                                        SCR300     20000000    9765.62          8         0.004            0.000
                                                                                                                  ==============
                                                                                                           TOTAL:          0.006
@@ -252,20 +252,20 @@ Processing of bulk data entries is complete.
  +----------------- BUFFER POOL -----------------+      +-------------------------- SCRATCH 300 --------------------------+ 
    OPTION        BLOCKS      BLOCKS      BLOCKS           OPTION    HIWATER               SUB_DMAP        DMAP     OPN/CLS
   SELECTED     ALLOCATED     REUSED     RELEASED         SELECTED  (BLOCKS)   DAY_TIME      NAME         MODULE    COUNTER
-   BPOOL4         13644       30501           0              2           8    18:45:43    SEKRRS    168  DCMP          0
+   BPOOL4         13644       30474           0              2           8    18:15:54    SEKRRS    168  DCMP          0
 
  ====================================================================================================================================
     Solution Summary: Total Job Statistics Summary Information:
  
       Total job I/O transferred in GB    :        0.293
       Total job DB I/O transferred in GB :        0.006
-      Total job elapsed time             : 0hrs 0min 2sec
+      Total job elapsed time             : 0hrs 0min 1sec
  ====================================================================================================================================
 
- 18:45:44  12 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
- 18:45:44  NSEXIT: EXIT(0)
- 18:45:44  Analysis complete  0
-Real:        7.788 seconds ( 0:00:07.788)
+ 18:15:55  11 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
+ 18:15:55  NSEXIT: EXIT(0)
+ 18:15:55  Analysis complete  0
+Real:        2.661 seconds ( 0:00:02.661)
 User:        0.843 seconds ( 0:00:00.843)
-Sys:         0.375 seconds ( 0:00:00.375)
-MSC Nastran finished Thu Sep 25 18:45:45 WEDT 2025 
+Sys:         0.484 seconds ( 0:00:00.484)
+MSC Nastran finished Tue Sep 23 18:15:56 WEDT 2025 

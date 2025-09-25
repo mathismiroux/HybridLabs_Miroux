@@ -1,0 +1,2198 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2024 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *     Version 2024.2-af13cbfd     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          NOV 21, 2024           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *  MODEL Xeon/2133 (5CG4463P42)   * *
+                                              * * Windows 10 Enterprise 6.2 9200  * *
+                                              * *        Compiled for 8664        * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+1News file
+  
+               Welcome to MSC Nastran 2024.2
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. Key enhancements in
+   Version 2024.2 are summarized below. Addtional details can be found in
+   the MSC Nastran Version 2024.2 Release Guide.
+  
+     MSC Nastran 2024.2 Features and Enhancements
+  
+     High Performance Computing (HPC) for NVH
+     - Improved performance for ACMS, especially for large solid models
+     - Improved performance for FASTFR, particularly when structural
+       damping is present
+     - General performance improvement for high frequency acoustics
+     - Improved diagnostics for linear solution available in LOG file
+       Information includes solver selection and memory use
+  
+     Topology Optimization
+     - SOL 200 NEO Topology Optimization for generative design with support for
+       manufacturing constraints. Optimized CAD geometry and mesh output for
+       every design cycle.
+  
+     High Performance SOL 400 (NLPERF)
+     - Support Lagrange Multiplier for MPC and Rigid Elements
+     - Controls distributed surface load computation for shell elements with
+       offsets and the use of an additional enhancement for computing the
+       average nodal normal vector
+     - GPFORCE and ESE can be requested in ANALYSIS=NLSTAT
+     - OUTCTRL={STD,SOLUTION,INTERM} keyword in NLOPRM case control statement is
+       available
+  
+     Linear
+     - Global-Local analysis in SOL 101 and 103. Creates a local model based on
+       a user-provided definition (CARVE) and replaces the rest of the model
+       with an external superelement. Allows for detailed local studies without
+       having to solve the entire model every time.
+     - Multiple Output requests of the same result item in linear solutions
+       (SOL 101, 103, 108, 109, 111, 112) through the use of repeated output
+       request subcase, REPCASE.
+  
+     NVH (Vibroacoustics)
+     Automated skinning of solid elements free surfaces
+     - Identify residual structure solid elements' exposed surfaces, and create
+       required triangular or quadilateral shell elements on top of it
+     - Stress and strain data recovery available for skinned shell elements
+     - Supported in Linear solution sequences
+     Acoustic Fluid Grid Participation Factors from fluid skin grids in touch
+       with either structure wetted surface or trim components
+1    Mass matrix support in Cohesive elements
+     - supports mass matrix in cohesive elements for glue line modeling.
+     Improved solution time and reduced disk space for Nastran-PEM models
+  
+     Aeroelasticity
+     - Flutter Perturbation Step available in SOL 400 Nonlinear
+  
+     HDF5 hybrid precision output file
+     - Allows writing of 32-bit real and 64-bit integer data to H5 file
+     - Combines small size of 32-bit and high value domain ID of 64-bit
+  
+      Inertia Relief with External Superelements
+     - For external superelements, inertia relief is now supported for the
+       following three options: EXTSEOUT MATDB(MATRIXDB), EXTSEOUT DMIGDB, and
+       EXTSEOUT DMIGOP2 for INREL = -1 and INREL = -2.
+     - For the above three external superelement options, checks are now
+       performed internally to insure that the inertia relief specifications
+       between external superelement and the assembly run are consistent.
+     - When verifying results, the user is reminded that with inertia relief,
+       the displacements are relative displacements and may not in any way match
+       the results of say a model containing all the external superelements
+       processed as standard part superelements. However, element results
+       such as force or stress should match closely between the two types of runs
+       if consistently modeled.
+  
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     The documentation set includes the following:
+  
+         1.  MSC Nastran 2024.2 Installation and Operations Guide
+         2.  MSC Nastran 2024.2 Quick Reference Guide
+         3.  MSC Nastran 2024.2 Release Guide
+         4.  MSC Nastran 2024.2 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2024.2 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2024.2 Superelements User's Guide
+         7.  MSC Nastran 2024.2 Rotordynamics User's Guide
+         8.  MSC Nastran 2024.2 Demonstration Problems Manual
+         9.  MSC Nastran 2024.2 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2024.2 Design Sensitivity and Optimization
+        11.  MSC Nastran 2024.2 Nonlinear User's Guide SOL 400
+1       12.  MSC Nastran 2024.2 DMAP Programmer's Guide
+        13.  MSC Nastran 2024.2 High Performance Computing User's Guide
+        14.  MSC Nastran 2024.2 New Verification Manual
+        15.  MSC Nastran 2024.2 DEMATD Guide
+        16.  MSC Nastran 2024.2 Explicit Nonlinear (SOL 700) User's Guide
+        17.  MSC Nastran 2024.2 ACMS User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://hexagon.com/support-success/manufacturing-intelligence/
+      design-engineering-support/training-materials
+  
+1                                                                         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     $ SYSFIELD=SCR*(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.SO
+     $ SYSFIELD=DBALL(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.S
+     NASTRAN BUFFSIZE=65537 $(C:/PROGRAM FILES/MSC.SOFTWARE/MSC_NASTRAN/2024.2/CONF/N
+1                                                                         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 103                                                                                 
+     CEND                                                                                    
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      TITLE = BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1                    
+                  2      SUBCASE 1                                                                               
+                  3          SPC = 1                                                                             
+                  4          DISPLACEMENT(PLOT,PRINT) = ALL                                                      
+                  5          METHOD = 1                                                                          
+                  6                                                                                              
+                  7      BEGIN BULK                                                                              
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                              I N P U T   B U L K   D A T A   E C H O                                               
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+ *** USER INFORMATION MESSAGE 9991 (SDLWIF)
+     Messages are being generated at include level 0.
+     File: c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol103_conm1.dat
+ *** USER WARNING MESSAGE 9994 (BULFUN)
+     MAT1 with MID=1 near line 10
+     User information:  Material has unreasonable or inconsistent values of E, G or NU.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                    1-        CBEAM   1       1       1       2       0.      1.      0.
+                    2-        CBEAM   2       2       2       3       0.      1.      0.
+                    3-        CBEAM   3       3       3       4       0.      1.      0.
+                    4-        CBEAM   4       4       4       5       0.      1.      0.
+                    5-        CBEAM   5       5       5       6       0.      1.      0.
+                    6-        CBEAM   6       6       6       7       0.      1.      0.
+                    7-        CBEAM   7       7       7       8       0.      1.      0.
+                    8-        CBEAM   8       8       8       9       0.      1.      0.
+                    9-        CBEAM   9       9       9       10      0.      1.      0.
+                   10-        CBEAM   10      10      10      11      0.      1.      0.
+                   11-        CBEAM   11      11      11      12      0.      1.      0.
+                   12-        CBEAM   12      12      12      13      0.      1.      0.
+                   13-        CBEAM   13      13      13      14      0.      1.      0.
+                   14-        CBEAM   14      14      14      15      0.      1.      0.
+                   15-        CBEAM   15      15      15      16      0.      1.      0.
+                   16-        CBEAM   16      16      16      17      0.      1.      0.
+                   17-        CBEAM   17      17      17      18      0.      1.      0.
+                   18-        CBEAM   18      18      18      19      0.      1.      0.
+                   19-        CBEAM   19      19      19      20      0.      1.      0.
+                   20-        CBEAM   20      20      20      21      0.      1.      0.
+                   21-        CBEAM   21      21      21      22      0.      1.      0.
+                   22-        CBEAM   22      22      22      23      0.      1.      0.
+                   23-        CBEAM   23      23      23      24      0.      1.      0.
+                   24-        CBEAM   24      24      24      25      0.      1.      0.
+                   25-        CBEAM   25      25      25      26      0.      1.      0.
+                   26-        CBEAM   26      26      26      27      0.      1.      0.
+                   27-        CBEAM   27      27      27      28      0.      1.      0.
+                   28-        CBEAM   28      28      28      29      0.      1.      0.
+                   29-        CBEAM   29      29      29      30      0.      1.      0.
+                   30-        CBEAM   30      30      30      31      0.      1.      0.
+                   31-        CBEAM   31      31      31      32      0.      1.      0.
+                   32-        CBEAM   32      32      32      33      0.      1.      0.
+                   33-        CBEAM   33      33      33      34      0.      1.      0.
+                   34-        CBEAM   34      34      34      35      0.      1.      0.
+                   35-        CBEAM   35      35      35      36      0.      1.      0.
+                   36-        CBEAM   36      36      36      37      0.      1.      0.
+                   37-        CBEAM   37      37      37      38      0.      1.      0.
+                   38-        CBEAM   38      38      38      39      0.      1.      0.
+                   39-        CBEAM   39      39      39      40      0.      1.      0.
+                   40-        CBEAM   40      40      40      41      0.      1.      0.
+                   41-        CBEAM   41      41      41      42      0.      1.      0.
+                   42-        CBEAM   42      42      42      43      0.      1.      0.
+                   43-        CBEAM   43      43      43      44      0.      1.      0.
+                   44-        CBEAM   44      44      44      45      0.      1.      0.
+                   45-        CBEAM   45      45      45      46      0.      1.      0.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     6
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                   46-        CBEAM   46      46      46      47      0.      1.      0.
+                   47-        CBEAM   47      47      47      48      0.      1.      0.
+                   48-        CBEAM   48      48      48      49      0.      1.      0.
+                   49-        CBEAM   49      49      49      50      0.      1.      0.
+                   50-        CBEAM   50      50      50      51      0.      1.      0.
+                   51-        CBEAM   51      51      51      52      0.      1.      0.
+                   52-        CBEAM   52      52      52      53      0.      1.      0.
+                   53-        CBEAM   53      53      53      54      0.      1.      0.
+                   54-        CBEAM   54      54      54      55      0.      1.      0.
+                   55-        CBEAM   55      55      55      56      0.      1.      0.
+                   56-        CBEAM   56      56      56      57      0.      1.      0.
+                   57-        CBEAM   57      57      57      58      0.      1.      0.
+                   58-        CBEAM   58      58      58      59      0.      1.      0.
+                   59-        CBEAM   59      59      59      60      0.      1.      0.
+                   60-        CBEAM   60      60      60      61      0.      1.      0.
+                   61-        CBEAM   61      61      61      62      0.      1.      0.
+                   62-        CBEAM   62      62      62      63      0.      1.      0.
+                   63-        CBEAM   63      63      63      64      0.      1.      0.
+                   64-        CBEAM   64      64      64      65      0.      1.      0.
+                   65-        CBEAM   65      65      65      66      0.      1.      0.
+                   66-        CBEAM   66      66      66      67      0.      1.      0.
+                   67-        CBEAM   67      67      67      68      0.      1.      0.
+                   68-        CBEAM   68      68      68      69      0.      1.      0.
+                   69-        CBEAM   69      69      69      70      0.      1.      0.
+                   70-        CBEAM   70      70      70      71      0.      1.      0.
+                   71-        CBEAM   71      71      71      72      0.      1.      0.
+                   72-        CBEAM   72      72      72      73      0.      1.      0.
+                   73-        CBEAM   73      73      73      74      0.      1.      0.
+                   74-        CBEAM   74      74      74      75      0.      1.      0.
+                   75-        CBEAM   75      75      75      76      0.      1.      0.
+                   76-        CBEAM   76      76      76      77      0.      1.      0.
+                   77-        CBEAM   77      77      77      78      0.      1.      0.
+                   78-        CBEAM   78      78      78      79      0.      1.      0.
+                   79-        CBEAM   79      79      79      80      0.      1.      0.
+                   80-        CBEAM   80      80      80      81      0.      1.      0.
+                   81-        CBEAM   81      81      81      82      0.      1.      0.
+                   82-        CBEAM   82      82      82      83      0.      1.      0.
+                   83-        CBEAM   83      83      83      84      0.      1.      0.
+                   84-        CBEAM   84      84      84      85      0.      1.      0.
+                   85-        CBEAM   85      85      85      86      0.      1.      0.
+                   86-        CBEAM   86      86      86      87      0.      1.      0.
+                   87-        CBEAM   87      87      87      88      0.      1.      0.
+                   88-        CBEAM   88      88      88      89      0.      1.      0.
+                   89-        CBEAM   89      89      89      90      0.      1.      0.
+                   90-        CBEAM   90      90      90      91      0.      1.      0.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     7
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                   91-        CBEAM   91      91      91      92      0.      1.      0.
+                   92-        CBEAM   92      92      92      93      0.      1.      0.
+                   93-        CBEAM   93      93      93      94      0.      1.      0.
+                   94-        CBEAM   94      94      94      95      0.      1.      0.
+                   95-        CBEAM   95      95      95      96      0.      1.      0.
+                   96-        CBEAM   96      96      96      97      0.      1.      0.
+                   97-        CBEAM   97      97      97      98      0.      1.      0.
+                   98-        CBEAM   98      98      98      99      0.      1.      0.
+                   99-        CBEAM   99      99      99      100     0.      1.      0.
+                  100-        CBEAM   100     100     100     101     0.      1.      0.
+                  101-        CONM1  *1000            1               0               1.              *
+                  102-        *       3046.067        0.              3046.067        0.              *
+                  103-        *       0.              3046.067        0.              0.              *
+                  104-        *       -17.12131       9919.397                                        *
+                  105-        *       0.              0.              .2009624        .07745876       *
+                  106-        *       9921.896        17.12131
+                  107-        CONM1  *1001            2               0               1.              *
+                  108-        *       2884.93         0.              2884.93         0.              *
+                  109-        *       0.              2884.93         0.              0.              *
+                  110-        *       90.22042        9427.271                                        *
+                  111-        *       0.              0.              -1.118035       -3.52838        *
+                  112-        *       9433.743
+                  113-        CONM1  *1002            3               0               1.              *
+                  114-        *       2698.132        0.              2698.132        0.              *
+                  115-        *       0.              2698.132        0.              0.              *
+                  116-        *       163.6293        8775.197                                        *
+                  117-        *       0.              0.              -5.628019       -18.15969       *
+                  118-        *       8551.767
+                  119-        CONM1  *1003            4               0               1.              *
+                  120-        *       2490.126        0.              2490.126        0.              *
+                  121-        *       0.              2490.126        0.              0.              *
+                  122-        *       206.0898        7986.335                                        *
+                  123-        *       0.              0.              -10.79007       -40.65708       *
+                  124-        *       7346.132
+                  125-        CONM1  *1004            5               0               1.              *
+                  126-        *       2296.319        0.              2296.319        0.              *
+                  127-        *       0.              2296.319        0.              0.              *
+                  128-        *       246.1712        7276.51                                         *
+                  129-        *       0.              0.              -14.25298       -60.24054       *
+                  130-        *       6297.719
+                  131-        CONM1  *1005            6               0               1.              *
+                  132-        *       1998.542        0.              1998.542        0.              *
+                  133-        *       0.              1998.542        0.              0.              *
+                  134-        *       308.1544        6244.622                                        *
+                  135-        *       0.              0.              -18.54839       -86.3124        *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     8
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  136-        *       4865.664
+                  137-        CONM1  *1006            7               0               1.              *
+                  138-        *       1744.035        0.              1744.035        0.              *
+                  139-        *       0.              1744.035        0.              0.              *
+                  140-        *       437.535         5212.917                                        *
+                  141-        *       0.              0.              -27.47606       -131.3522       *
+                  142-        *       3350.276
+                  143-        CONM1  *1007            8               0               1.              *
+                  144-        *       1372.506        0.              1372.506        0.              *
+                  145-        *       0.              1372.506        0.              0.              *
+                  146-        *       567.8011        4102.249                                        *
+                  147-        *       0.              0.              -29.05997       -134.4174       *
+                  148-        *       1871.132
+                  149-        CONM1  *1008            9               0               1.              *
+                  150-        *       859.6715        0.              859.6715        0.              *
+                  151-        *       0.              859.6715        0.              0.              *
+                  152-        *       564.7477        2787.223                                        *
+                  153-        *       0.              0.              -22.3818        -91.83447       *
+                  154-        *       716.3363
+                  155-        CONM1  *1009            10              0               1.              *
+                  156-        *       599.9501        0.              599.9501        0.              *
+                  157-        *       0.              599.9501        0.              0.              *
+                  158-        *       494.2557        2051.069                                        *
+                  159-        *       0.              0.              -19.34101       -62.62853       *
+                  160-        *       372.4616
+                  161-        CONM1  *1010            11              0               1.              *
+                  162-        *       507.5232        0.              507.5232        0.              *
+                  163-        *       0.              507.5232        0.              0.              *
+                  164-        *       449.3673        1706.657                                        *
+                  165-        *       0.              0.              -16.82812       -42.53566       *
+                  166-        *       236.3136
+                  167-        CONM1  *1011            12              0               1.              *
+                  168-        *       471.0345        0.              471.0345        0.              *
+                  169-        *       0.              471.0345        0.              0.              *
+                  170-        *       408.7726        1425.727                                        *
+                  171-        *       0.              0.              -13.89546       -28.72863       *
+                  172-        *       179.4075
+                  173-        CONM1  *1012            13              0               1.              *
+                  174-        *       445.9777        0.              445.9777        0.              *
+                  175-        *       0.              445.9777        0.              0.              *
+                  176-        *       366.9436        1181.43                                         *
+                  177-        *       0.              0.              -10.96332       -21.06897       *
+                  178-        *       137.4551
+                  179-        CONM1  *1013            14              0               1.              *
+                  180-        *       419.3947        0.              419.3947        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     9
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  181-        *       0.              419.3947        0.              0.              *
+                  182-        *       328.4805        985.9473                                        *
+                  183-        *       0.              0.              -8.430432       -17.17757       *
+                  184-        *       105.3358
+                  185-        CONM1  *1014            15              0               1.              *
+                  186-        *       391.3245        0.              391.3245        0.              *
+                  187-        *       0.              391.3245        0.              0.              *
+                  188-        *       291.961         815.5797                                        *
+                  189-        *       0.              0.              -7.645663       -14.62392       *
+                  190-        *       78.51218
+                  191-        CONM1  *1015            16              0               1.              *
+                  192-        *       364.1078        0.              364.1078        0.              *
+                  193-        *       0.              364.1078        0.              0.              *
+                  194-        *       255.4148        664.2579                                        *
+                  195-        *       0.              0.              -7.999269       -12.65323       *
+                  196-        *       57.45189
+                  197-        CONM1  *1016            17              0               1.              *
+                  198-        *       328.9161        0.              328.9161        0.              *
+                  199-        *       0.              328.9161        0.              0.              *
+                  200-        *       201.3543        491.1087                                        *
+                  201-        *       0.              0.              -8.067331       -9.749609       *
+                  202-        *       41.80504
+                  203-        CONM1  *1017            18              0               1.              *
+                  204-        *       283.8066        0.              283.8066        0.              *
+                  205-        *       0.              283.8066        0.              0.              *
+                  206-        *       129.0819        302.2895                                        *
+                  207-        *       0.              0.              -7.622174       -6.00655        *
+                  208-        *       30.21886
+                  209-        CONM1  *1018            19              0               1.              *
+                  210-        *       242.1039        0.              242.1039        0.              *
+                  211-        *       0.              242.1039        0.              0.              *
+                  212-        *       75.68486        173.562                                         *
+                  213-        *       0.              0.              -7.257849       -3.409118       *
+                  214-        *       21.48044
+                  215-        CONM1  *1019            20              0               1.              *
+                  216-        *       201.7633        0.              201.7633        0.              *
+                  217-        *       0.              201.7633        0.              0.              *
+                  218-        *       47.99372        108.1521                                        *
+                  219-        *       0.              0.              -6.897698       -2.220858       *
+                  220-        *       14.50826
+                  221-        CONM1  *1020            21              0               1.              *
+                  222-        *       154.446         0.              154.446         0.              *
+                  223-        *       0.              154.446         0.              0.              *
+                  224-        *       30.63921        68.05221                                        *
+                  225-        *       0.              0.              -5.64576        -1.42007        *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    10
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  226-        *       8.977888
+                  227-        CONM1  *1021            22              0               1.              *
+                  228-        *       106.8819        0.              106.8819        0.              *
+                  229-        *       0.              106.8819        0.              0.              *
+                  230-        *       19.81074        41.48117                                        *
+                  231-        *       0.              0.              -3.77011        -.8318678       *
+                  232-        *       5.150459
+                  233-        CONM1  *1022            23              0               1.              *
+                  234-        *       69.58023        0.              69.58023        0.              *
+                  235-        *       0.              69.58023        0.              0.              *
+                  236-        *       13.71432        25.4137                                         *
+                  237-        *       0.              0.              -2.231441       -.4958477       *
+                  238-        *       2.699837
+                  239-        CONM1  *1023            24              0               1.              *
+                  240-        *       44.57733        0.              44.57733        0.              *
+                  241-        *       0.              44.57733        0.              0.              *
+                  242-        *       9.576339        15.79134                                        *
+                  243-        *       0.              0.              -1.279165       -.3090246       *
+                  244-        *       1.27036
+                  245-        CONM1  *1024            25              0               1.              *
+                  246-        *       19.92245        0.              19.92245        0.              *
+                  247-        *       0.              19.92245        0.              0.              *
+                  248-        *       4.139189        6.178278                                        *
+                  249-        *       0.              0.              -.4767331       -.1259192       *
+                  250-        *       .3822822
+                  251-        CONM1  *1025            26              0               1.              *
+                  252-        *       5.394971        0.              5.394971        0.              *
+                  253-        *       0.              5.394971        0.              0.              *
+                  254-        *       .1588859        .09373428                                       *
+                  255-        *       0.              0.              -.03696109      -.002276833     *
+                  256-        *       .00718081
+                  257-        CONM1  *1026            27              0               1.              *
+                  258-        *       5.394971        0.              5.394971        0.              *
+                  259-        *       0.              5.394971        0.              0.              *
+                  260-        *       .1588859        .09373428                                       *
+                  261-        *       0.              0.              -.03696109      -.002276833     *
+                  262-        *       .00718081
+                  263-        CONM1  *1027            28              0               1.              *
+                  264-        *       5.394971        0.              5.394971        0.              *
+                  265-        *       0.              5.394971        0.              0.              *
+                  266-        *       .1588859        .09373428                                       *
+                  267-        *       0.              0.              -.03696109      -.002276833     *
+                  268-        *       .00718081
+                  269-        CONM1  *1028            29              0               1.              *
+                  270-        *       5.394971        0.              5.394971        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    11
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  271-        *       0.              5.394971        0.              0.              *
+                  272-        *       .1588859        .09373428                                       *
+                  273-        *       0.              0.              -.03696109      -.002276833     *
+                  274-        *       .00718081
+                  275-        CONM1  *1029            30              0               1.              *
+                  276-        *       5.394971        0.              5.394971        0.              *
+                  277-        *       0.              5.394971        0.              0.              *
+                  278-        *       .1588859        .09373428                                       *
+                  279-        *       0.              0.              -.03696109      -.002276833     *
+                  280-        *       .00718081
+                  281-        CONM1  *1030            31              0               1.              *
+                  282-        *       5.394971        0.              5.394971        0.              *
+                  283-        *       0.              5.394971        0.              0.              *
+                  284-        *       .1588859        .09373428                                       *
+                  285-        *       0.              0.              -.03696109      -.002276833     *
+                  286-        *       .00718081
+                  287-        CONM1  *1031            32              0               1.              *
+                  288-        *       5.394971        0.              5.394971        0.              *
+                  289-        *       0.              5.394971        0.              0.              *
+                  290-        *       .1588859        .09373428                                       *
+                  291-        *       0.              0.              -.03696109      -.002276833     *
+                  292-        *       .00718081
+                  293-        CONM1  *1032            33              0               1.              *
+                  294-        *       5.394971        0.              5.394971        0.              *
+                  295-        *       0.              5.394971        0.              0.              *
+                  296-        *       .1588859        .09373428                                       *
+                  297-        *       0.              0.              -.03696109      -.002276833     *
+                  298-        *       .00718081
+                  299-        CONM1  *1033            34              0               1.              *
+                  300-        *       5.394971        0.              5.394971        0.              *
+                  301-        *       0.              5.394971        0.              0.              *
+                  302-        *       .1588859        .09373428                                       *
+                  303-        *       0.              0.              -.03696109      -.002276833     *
+                  304-        *       .00718081
+                  305-        CONM1  *1034            35              0               1.              *
+                  306-        *       5.394971        0.              5.394971        0.              *
+                  307-        *       0.              5.394971        0.              0.              *
+                  308-        *       .1588859        .09373428                                       *
+                  309-        *       0.              0.              -.03696109      -.002276833     *
+                  310-        *       .00718081
+                  311-        CONM1  *1035            36              0               1.              *
+                  312-        *       5.394971        0.              5.394971        0.              *
+                  313-        *       0.              5.394971        0.              0.              *
+                  314-        *       .1588859        .09373428                                       *
+                  315-        *       0.              0.              -.03696109      -.002276833     *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    12
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  316-        *       .00718081
+                  317-        CONM1  *1036            37              0               1.              *
+                  318-        *       5.394971        0.              5.394971        0.              *
+                  319-        *       0.              5.394971        0.              0.              *
+                  320-        *       .1588859        .09373428                                       *
+                  321-        *       0.              0.              -.03696109      -.002276833     *
+                  322-        *       .00718081
+                  323-        CONM1  *1037            38              0               1.              *
+                  324-        *       5.394971        0.              5.394971        0.              *
+                  325-        *       0.              5.394971        0.              0.              *
+                  326-        *       .1588859        .09373428                                       *
+                  327-        *       0.              0.              -.03696109      -.002276833     *
+                  328-        *       .00718081
+                  329-        CONM1  *1038            39              0               1.              *
+                  330-        *       5.394971        0.              5.394971        0.              *
+                  331-        *       0.              5.394971        0.              0.              *
+                  332-        *       .1588859        .09373428                                       *
+                  333-        *       0.              0.              -.03696109      -.002276833     *
+                  334-        *       .00718081
+                  335-        CONM1  *1039            40              0               1.              *
+                  336-        *       5.394971        0.              5.394971        0.              *
+                  337-        *       0.              5.394971        0.              0.              *
+                  338-        *       .1588859        .09373428                                       *
+                  339-        *       0.              0.              -.03696109      -.002276833     *
+                  340-        *       .00718081
+                  341-        CONM1  *1040            41              0               1.              *
+                  342-        *       5.394971        0.              5.394971        0.              *
+                  343-        *       0.              5.394971        0.              0.              *
+                  344-        *       .1588859        .09373428                                       *
+                  345-        *       0.              0.              -.03696109      -.002276833     *
+                  346-        *       .00718081
+                  347-        CONM1  *1041            42              0               1.              *
+                  348-        *       5.394971        0.              5.394971        0.              *
+                  349-        *       0.              5.394971        0.              0.              *
+                  350-        *       .1588859        .09373428                                       *
+                  351-        *       0.              0.              -.03696109      -.002276833     *
+                  352-        *       .00718081
+                  353-        CONM1  *1042            43              0               1.              *
+                  354-        *       5.394971        0.              5.394971        0.              *
+                  355-        *       0.              5.394971        0.              0.              *
+                  356-        *       .1588859        .09373428                                       *
+                  357-        *       0.              0.              -.03696109      -.002276833     *
+                  358-        *       .00718081
+                  359-        CONM1  *1043            44              0               1.              *
+                  360-        *       5.394971        0.              5.394971        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    13
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  361-        *       0.              5.394971        0.              0.              *
+                  362-        *       .1588859        .09373428                                       *
+                  363-        *       0.              0.              -.03696109      -.002276833     *
+                  364-        *       .00718081
+                  365-        CONM1  *1044            45              0               1.              *
+                  366-        *       5.394971        0.              5.394971        0.              *
+                  367-        *       0.              5.394971        0.              0.              *
+                  368-        *       .1588859        .09373428                                       *
+                  369-        *       0.              0.              -.03696109      -.002276833     *
+                  370-        *       .00718081
+                  371-        CONM1  *1045            46              0               1.              *
+                  372-        *       5.394971        0.              5.394971        0.              *
+                  373-        *       0.              5.394971        0.              0.              *
+                  374-        *       .1588859        .09373428                                       *
+                  375-        *       0.              0.              -.03696109      -.002276833     *
+                  376-        *       .00718081
+                  377-        CONM1  *1046            47              0               1.              *
+                  378-        *       5.394971        0.              5.394971        0.              *
+                  379-        *       0.              5.394971        0.              0.              *
+                  380-        *       .1588859        .09373428                                       *
+                  381-        *       0.              0.              -.03696109      -.002276833     *
+                  382-        *       .00718081
+                  383-        CONM1  *1047            48              0               1.              *
+                  384-        *       5.394971        0.              5.394971        0.              *
+                  385-        *       0.              5.394971        0.              0.              *
+                  386-        *       .1588859        .09373428                                       *
+                  387-        *       0.              0.              -.03696109      -.002276833     *
+                  388-        *       .00718081
+                  389-        CONM1  *1048            49              0               1.              *
+                  390-        *       5.394971        0.              5.394971        0.              *
+                  391-        *       0.              5.394971        0.              0.              *
+                  392-        *       .1588859        .09373428                                       *
+                  393-        *       0.              0.              -.03696109      -.002276833     *
+                  394-        *       .00718081
+                  395-        CONM1  *1049            50              0               1.              *
+                  396-        *       5.394971        0.              5.394971        0.              *
+                  397-        *       0.              5.394971        0.              0.              *
+                  398-        *       .1588859        .09373428                                       *
+                  399-        *       0.              0.              -.03696109      -.002276833     *
+                  400-        *       .00718081
+                  401-        CONM1  *1050            51              0               1.              *
+                  402-        *       5.394971        0.              5.394971        0.              *
+                  403-        *       0.              5.394971        0.              0.              *
+                  404-        *       .1588859        .09373428                                       *
+                  405-        *       0.              0.              -.03696109      -.002276833     *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    14
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  406-        *       .00718081
+                  407-        CONM1  *1051            52              0               1.              *
+                  408-        *       5.394971        0.              5.394971        0.              *
+                  409-        *       0.              5.394971        0.              0.              *
+                  410-        *       .1588859        .09373428                                       *
+                  411-        *       0.              0.              -.03696109      -.002276833     *
+                  412-        *       .00718081
+                  413-        CONM1  *1052            53              0               1.              *
+                  414-        *       5.394971        0.              5.394971        0.              *
+                  415-        *       0.              5.394971        0.              0.              *
+                  416-        *       .1588859        .09373428                                       *
+                  417-        *       0.              0.              -.03696109      -.002276833     *
+                  418-        *       .00718081
+                  419-        CONM1  *1053            54              0               1.              *
+                  420-        *       5.394971        0.              5.394971        0.              *
+                  421-        *       0.              5.394971        0.              0.              *
+                  422-        *       .1588859        .09373428                                       *
+                  423-        *       0.              0.              -.03696109      -.002276833     *
+                  424-        *       .00718081
+                  425-        CONM1  *1054            55              0               1.              *
+                  426-        *       5.394971        0.              5.394971        0.              *
+                  427-        *       0.              5.394971        0.              0.              *
+                  428-        *       .1588859        .09373428                                       *
+                  429-        *       0.              0.              -.03696109      -.002276833     *
+                  430-        *       .00718081
+                  431-        CONM1  *1055            56              0               1.              *
+                  432-        *       5.394971        0.              5.394971        0.              *
+                  433-        *       0.              5.394971        0.              0.              *
+                  434-        *       .1588859        .09373428                                       *
+                  435-        *       0.              0.              -.03696109      -.002276833     *
+                  436-        *       .00718081
+                  437-        CONM1  *1056            57              0               1.              *
+                  438-        *       5.394971        0.              5.394971        0.              *
+                  439-        *       0.              5.394971        0.              0.              *
+                  440-        *       .1588859        .09373428                                       *
+                  441-        *       0.              0.              -.03696109      -.002276833     *
+                  442-        *       .00718081
+                  443-        CONM1  *1057            58              0               1.              *
+                  444-        *       5.394971        0.              5.394971        0.              *
+                  445-        *       0.              5.394971        0.              0.              *
+                  446-        *       .1588859        .09373428                                       *
+                  447-        *       0.              0.              -.03696109      -.002276833     *
+                  448-        *       .00718081
+                  449-        CONM1  *1058            59              0               1.              *
+                  450-        *       5.394971        0.              5.394971        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    15
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  451-        *       0.              5.394971        0.              0.              *
+                  452-        *       .1588859        .09373428                                       *
+                  453-        *       0.              0.              -.03696109      -.002276833     *
+                  454-        *       .00718081
+                  455-        CONM1  *1059            60              0               1.              *
+                  456-        *       5.394971        0.              5.394971        0.              *
+                  457-        *       0.              5.394971        0.              0.              *
+                  458-        *       .1588859        .09373428                                       *
+                  459-        *       0.              0.              -.03696109      -.002276833     *
+                  460-        *       .00718081
+                  461-        CONM1  *1060            61              0               1.              *
+                  462-        *       5.394971        0.              5.394971        0.              *
+                  463-        *       0.              5.394971        0.              0.              *
+                  464-        *       .1588859        .09373428                                       *
+                  465-        *       0.              0.              -.03696109      -.002276833     *
+                  466-        *       .00718081
+                  467-        CONM1  *1061            62              0               1.              *
+                  468-        *       5.394971        0.              5.394971        0.              *
+                  469-        *       0.              5.394971        0.              0.              *
+                  470-        *       .1588859        .09373428                                       *
+                  471-        *       0.              0.              -.03696109      -.002276833     *
+                  472-        *       .00718081
+                  473-        CONM1  *1062            63              0               1.              *
+                  474-        *       5.394971        0.              5.394971        0.              *
+                  475-        *       0.              5.394971        0.              0.              *
+                  476-        *       .1588859        .09373428                                       *
+                  477-        *       0.              0.              -.03696109      -.002276833     *
+                  478-        *       .00718081
+                  479-        CONM1  *1063            64              0               1.              *
+                  480-        *       5.394971        0.              5.394971        0.              *
+                  481-        *       0.              5.394971        0.              0.              *
+                  482-        *       .1588859        .09373428                                       *
+                  483-        *       0.              0.              -.03696109      -.002276833     *
+                  484-        *       .00718081
+                  485-        CONM1  *1064            65              0               1.              *
+                  486-        *       5.394971        0.              5.394971        0.              *
+                  487-        *       0.              5.394971        0.              0.              *
+                  488-        *       .1588859        .09373428                                       *
+                  489-        *       0.              0.              -.03696109      -.002276833     *
+                  490-        *       .00718081
+                  491-        CONM1  *1065            66              0               1.              *
+                  492-        *       5.394971        0.              5.394971        0.              *
+                  493-        *       0.              5.394971        0.              0.              *
+                  494-        *       .1588859        .09373428                                       *
+                  495-        *       0.              0.              -.03696109      -.002276833     *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    16
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  496-        *       .00718081
+                  497-        CONM1  *1066            67              0               1.              *
+                  498-        *       5.394971        0.              5.394971        0.              *
+                  499-        *       0.              5.394971        0.              0.              *
+                  500-        *       .1588859        .09373428                                       *
+                  501-        *       0.              0.              -.03696109      -.002276833     *
+                  502-        *       .00718081
+                  503-        CONM1  *1067            68              0               1.              *
+                  504-        *       5.394971        0.              5.394971        0.              *
+                  505-        *       0.              5.394971        0.              0.              *
+                  506-        *       .1588859        .09373428                                       *
+                  507-        *       0.              0.              -.03696109      -.002276833     *
+                  508-        *       .00718081
+                  509-        CONM1  *1068            69              0               1.              *
+                  510-        *       5.394971        0.              5.394971        0.              *
+                  511-        *       0.              5.394971        0.              0.              *
+                  512-        *       .1588859        .09373428                                       *
+                  513-        *       0.              0.              -.03696109      -.002276833     *
+                  514-        *       .00718081
+                  515-        CONM1  *1069            70              0               1.              *
+                  516-        *       5.394971        0.              5.394971        0.              *
+                  517-        *       0.              5.394971        0.              0.              *
+                  518-        *       .1588859        .09373428                                       *
+                  519-        *       0.              0.              -.03696109      -.002276833     *
+                  520-        *       .00718081
+                  521-        CONM1  *1070            71              0               1.              *
+                  522-        *       5.394971        0.              5.394971        0.              *
+                  523-        *       0.              5.394971        0.              0.              *
+                  524-        *       .1588859        .09373428                                       *
+                  525-        *       0.              0.              -.03696109      -.002276833     *
+                  526-        *       .00718081
+                  527-        CONM1  *1071            72              0               1.              *
+                  528-        *       5.394971        0.              5.394971        0.              *
+                  529-        *       0.              5.394971        0.              0.              *
+                  530-        *       .1588859        .09373428                                       *
+                  531-        *       0.              0.              -.03696109      -.002276833     *
+                  532-        *       .00718081
+                  533-        CONM1  *1072            73              0               1.              *
+                  534-        *       5.394971        0.              5.394971        0.              *
+                  535-        *       0.              5.394971        0.              0.              *
+                  536-        *       .1588859        .09373428                                       *
+                  537-        *       0.              0.              -.03696109      -.002276833     *
+                  538-        *       .00718081
+                  539-        CONM1  *1073            74              0               1.              *
+                  540-        *       5.394971        0.              5.394971        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    17
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  541-        *       0.              5.394971        0.              0.              *
+                  542-        *       .1588859        .09373428                                       *
+                  543-        *       0.              0.              -.03696109      -.002276833     *
+                  544-        *       .00718081
+                  545-        CONM1  *1074            75              0               1.              *
+                  546-        *       5.394971        0.              5.394971        0.              *
+                  547-        *       0.              5.394971        0.              0.              *
+                  548-        *       .1588859        .09373428                                       *
+                  549-        *       0.              0.              -.03696109      -.002276833     *
+                  550-        *       .00718081
+                  551-        CONM1  *1075            76              0               1.              *
+                  552-        *       5.394971        0.              5.394971        0.              *
+                  553-        *       0.              5.394971        0.              0.              *
+                  554-        *       .1588859        .09373428                                       *
+                  555-        *       0.              0.              -.03696109      -.002276833     *
+                  556-        *       .00718081
+                  557-        CONM1  *1076            77              0               1.              *
+                  558-        *       5.394971        0.              5.394971        0.              *
+                  559-        *       0.              5.394971        0.              0.              *
+                  560-        *       .1588859        .09373428                                       *
+                  561-        *       0.              0.              -.03696109      -.002276833     *
+                  562-        *       .00718081
+                  563-        CONM1  *1077            78              0               1.              *
+                  564-        *       5.394971        0.              5.394971        0.              *
+                  565-        *       0.              5.394971        0.              0.              *
+                  566-        *       .1588859        .09373428                                       *
+                  567-        *       0.              0.              -.03696109      -.002276833     *
+                  568-        *       .00718081
+                  569-        CONM1  *1078            79              0               1.              *
+                  570-        *       5.394971        0.              5.394971        0.              *
+                  571-        *       0.              5.394971        0.              0.              *
+                  572-        *       .1588859        .09373428                                       *
+                  573-        *       0.              0.              -.03696109      -.002276833     *
+                  574-        *       .00718081
+                  575-        CONM1  *1079            80              0               1.              *
+                  576-        *       5.394971        0.              5.394971        0.              *
+                  577-        *       0.              5.394971        0.              0.              *
+                  578-        *       .1588859        .09373428                                       *
+                  579-        *       0.              0.              -.03696109      -.002276833     *
+                  580-        *       .00718081
+                  581-        CONM1  *1080            81              0               1.              *
+                  582-        *       5.394971        0.              5.394971        0.              *
+                  583-        *       0.              5.394971        0.              0.              *
+                  584-        *       .1588859        .09373428                                       *
+                  585-        *       0.              0.              -.03696109      -.002276833     *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    18
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  586-        *       .00718081
+                  587-        CONM1  *1081            82              0               1.              *
+                  588-        *       5.394971        0.              5.394971        0.              *
+                  589-        *       0.              5.394971        0.              0.              *
+                  590-        *       .1588859        .09373428                                       *
+                  591-        *       0.              0.              -.03696109      -.002276833     *
+                  592-        *       .00718081
+                  593-        CONM1  *1082            83              0               1.              *
+                  594-        *       5.394971        0.              5.394971        0.              *
+                  595-        *       0.              5.394971        0.              0.              *
+                  596-        *       .1588859        .09373428                                       *
+                  597-        *       0.              0.              -.03696109      -.002276833     *
+                  598-        *       .00718081
+                  599-        CONM1  *1083            84              0               1.              *
+                  600-        *       5.394971        0.              5.394971        0.              *
+                  601-        *       0.              5.394971        0.              0.              *
+                  602-        *       .1588859        .09373428                                       *
+                  603-        *       0.              0.              -.03696109      -.002276833     *
+                  604-        *       .00718081
+                  605-        CONM1  *1084            85              0               1.              *
+                  606-        *       5.394971        0.              5.394971        0.              *
+                  607-        *       0.              5.394971        0.              0.              *
+                  608-        *       .1588859        .09373428                                       *
+                  609-        *       0.              0.              -.03696109      -.002276833     *
+                  610-        *       .00718081
+                  611-        CONM1  *1085            86              0               1.              *
+                  612-        *       5.394971        0.              5.394971        0.              *
+                  613-        *       0.              5.394971        0.              0.              *
+                  614-        *       .1588859        .09373428                                       *
+                  615-        *       0.              0.              -.03696109      -.002276833     *
+                  616-        *       .00718081
+                  617-        CONM1  *1086            87              0               1.              *
+                  618-        *       5.394971        0.              5.394971        0.              *
+                  619-        *       0.              5.394971        0.              0.              *
+                  620-        *       .1588859        .09373428                                       *
+                  621-        *       0.              0.              -.03696109      -.002276833     *
+                  622-        *       .00718081
+                  623-        CONM1  *1087            88              0               1.              *
+                  624-        *       5.394971        0.              5.394971        0.              *
+                  625-        *       0.              5.394971        0.              0.              *
+                  626-        *       .1588859        .09373428                                       *
+                  627-        *       0.              0.              -.03696109      -.002276833     *
+                  628-        *       .00718081
+                  629-        CONM1  *1088            89              0               1.              *
+                  630-        *       5.394971        0.              5.394971        0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    19
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  631-        *       0.              5.394971        0.              0.              *
+                  632-        *       .1588859        .09373428                                       *
+                  633-        *       0.              0.              -.03696109      -.002276833     *
+                  634-        *       .00718081
+                  635-        CONM1  *1089            90              0               1.              *
+                  636-        *       5.394971        0.              5.394971        0.              *
+                  637-        *       0.              5.394971        0.              0.              *
+                  638-        *       .1588859        .09373428                                       *
+                  639-        *       0.              0.              -.03696109      -.002276833     *
+                  640-        *       .00718081
+                  641-        CONM1  *1090            91              0               1.              *
+                  642-        *       5.394971        0.              5.394971        0.              *
+                  643-        *       0.              5.394971        0.              0.              *
+                  644-        *       .1588859        .09373428                                       *
+                  645-        *       0.              0.              -.03696109      -.002276833     *
+                  646-        *       .00718081
+                  647-        CONM1  *1091            92              0               1.              *
+                  648-        *       5.394971        0.              5.394971        0.              *
+                  649-        *       0.              5.394971        0.              0.              *
+                  650-        *       .1588859        .09373428                                       *
+                  651-        *       0.              0.              -.03696109      -.002276833     *
+                  652-        *       .00718081
+                  653-        CONM1  *1092            93              0               1.              *
+                  654-        *       5.394971        0.              5.394971        0.              *
+                  655-        *       0.              5.394971        0.              0.              *
+                  656-        *       .1588859        .09373428                                       *
+                  657-        *       0.              0.              -.03696109      -.002276833     *
+                  658-        *       .00718081
+                  659-        CONM1  *1093            94              0               1.              *
+                  660-        *       5.394971        0.              5.394971        0.              *
+                  661-        *       0.              5.394971        0.              0.              *
+                  662-        *       .1588859        .09373428                                       *
+                  663-        *       0.              0.              -.03696109      -.002276833     *
+                  664-        *       .00718081
+                  665-        CONM1  *1094            95              0               1.              *
+                  666-        *       5.394971        0.              5.394971        0.              *
+                  667-        *       0.              5.394971        0.              0.              *
+                  668-        *       .1588859        .09373428                                       *
+                  669-        *       0.              0.              -.03696109      -.002276833     *
+                  670-        *       .00718081
+                  671-        CONM1  *1095            96              0               1.              *
+                  672-        *       5.394971        0.              5.394971        0.              *
+                  673-        *       0.              5.394971        0.              0.              *
+                  674-        *       .1588859        .09373428                                       *
+                  675-        *       0.              0.              -.03696109      -.002276833     *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    20
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  676-        *       .00718081
+                  677-        CONM1  *1096            97              0               1.              *
+                  678-        *       5.394971        0.              5.394971        0.              *
+                  679-        *       0.              5.394971        0.              0.              *
+                  680-        *       .1588859        .09373428                                       *
+                  681-        *       0.              0.              -.03696109      -.002276833     *
+                  682-        *       .00718081
+                  683-        CONM1  *1097            98              0               1.              *
+                  684-        *       5.394971        0.              5.394971        0.              *
+                  685-        *       0.              5.394971        0.              0.              *
+                  686-        *       .1588859        .09373428                                       *
+                  687-        *       0.              0.              -.03696109      -.002276833     *
+                  688-        *       .00718081
+                  689-        CONM1  *1098            99              0               1.              *
+                  690-        *       5.394971        0.              5.394971        0.              *
+                  691-        *       0.              5.394971        0.              0.              *
+                  692-        *       .1588859        .09373428                                       *
+                  693-        *       0.              0.              -.03696109      -.002276833     *
+                  694-        *       .00718081
+                  695-        CONM1  *1099            100             0               1.              *
+                  696-        *       5.394971        0.              5.394971        0.              *
+                  697-        *       0.              5.394971        0.              0.              *
+                  698-        *       .1588859        .09373428                                       *
+                  699-        *       0.              0.              -.03696109      -.002276833     *
+                  700-        *       .00718081
+                  701-        EIGRL   1       0.      200.
+                  702-        GRID   *1                               0.              0.              *
+                  703-        *       0.
+                  704-        GRID   *2                               1.17            0.              *
+                  705-        *       0.
+                  706-        GRID   *3                               2.34            0.              *
+                  707-        *       0.
+                  708-        GRID   *4                               3.51            0.              *
+                  709-        *       0.
+                  710-        GRID   *5                               4.68            0.              *
+                  711-        *       0.
+                  712-        GRID   *6                               5.85            0.              *
+                  713-        *       0.
+                  714-        GRID   *7                               8.775           0.              *
+                  715-        *       0.
+                  716-        GRID   *8                               11.7            0.              *
+                  717-        *       0.
+                  718-        GRID   *9                               17.55           0.              *
+                  719-        *       0.
+                  720-        GRID   *10                              23.4            0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    21
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  721-        *       0.
+                  722-        GRID   *11                              29.25           0.              *
+                  723-        *       0.
+                  724-        GRID   *12                              35.1            0.              *
+                  725-        *       0.
+                  726-        GRID   *13                              40.95           0.              *
+                  727-        *       0.
+                  728-        GRID   *14                              46.8            0.              *
+                  729-        *       0.
+                  730-        GRID   *15                              52.65           0.              *
+                  731-        *       0.
+                  732-        GRID   *16                              58.5            0.              *
+                  733-        *       0.
+                  734-        GRID   *17                              64.35           0.              *
+                  735-        *       0.
+                  736-        GRID   *18                              70.2            0.              *
+                  737-        *       0.
+                  738-        GRID   *19                              76.05           0.              *
+                  739-        *       0.
+                  740-        GRID   *20                              81.9            0.              *
+                  741-        *       0.
+                  742-        GRID   *21                              87.75           0.              *
+                  743-        *       0.
+                  744-        GRID   *22                              93.6            0.              *
+                  745-        *       0.
+                  746-        GRID   *23                              99.45           0.              *
+                  747-        *       0.
+                  748-        GRID   *24                              105.3           0.              *
+                  749-        *       0.
+                  750-        GRID   *25                              111.15          0.              *
+                  751-        *       0.
+                  752-        GRID   *26                              117.            0.              *
+                  753-        *       0.
+                  754-        GRID   *27                              117.            0.              *
+                  755-        *       0.
+                  756-        GRID   *28                              117.            0.              *
+                  757-        *       0.
+                  758-        GRID   *29                              117.            0.              *
+                  759-        *       0.
+                  760-        GRID   *30                              117.            0.              *
+                  761-        *       0.
+                  762-        GRID   *31                              117.            0.              *
+                  763-        *       0.
+                  764-        GRID   *32                              117.            0.              *
+                  765-        *       0.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    22
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  766-        GRID   *33                              117.            0.              *
+                  767-        *       0.
+                  768-        GRID   *34                              117.            0.              *
+                  769-        *       0.
+                  770-        GRID   *35                              117.            0.              *
+                  771-        *       0.
+                  772-        GRID   *36                              117.            0.              *
+                  773-        *       0.
+                  774-        GRID   *37                              117.            0.              *
+                  775-        *       0.
+                  776-        GRID   *38                              117.            0.              *
+                  777-        *       0.
+                  778-        GRID   *39                              117.            0.              *
+                  779-        *       0.
+                  780-        GRID   *40                              117.            0.              *
+                  781-        *       0.
+                  782-        GRID   *41                              117.            0.              *
+                  783-        *       0.
+                  784-        GRID   *42                              117.            0.              *
+                  785-        *       0.
+                  786-        GRID   *43                              117.            0.              *
+                  787-        *       0.
+                  788-        GRID   *44                              117.            0.              *
+                  789-        *       0.
+                  790-        GRID   *45                              117.            0.              *
+                  791-        *       0.
+                  792-        GRID   *46                              117.            0.              *
+                  793-        *       0.
+                  794-        GRID   *47                              117.            0.              *
+                  795-        *       0.
+                  796-        GRID   *48                              117.            0.              *
+                  797-        *       0.
+                  798-        GRID   *49                              117.            0.              *
+                  799-        *       0.
+                  800-        GRID   *50                              117.            0.              *
+                  801-        *       0.
+                  802-        GRID   *51                              117.            0.              *
+                  803-        *       0.
+                  804-        GRID   *52                              117.            0.              *
+                  805-        *       0.
+                  806-        GRID   *53                              117.            0.              *
+                  807-        *       0.
+                  808-        GRID   *54                              117.            0.              *
+                  809-        *       0.
+                  810-        GRID   *55                              117.            0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    23
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  811-        *       0.
+                  812-        GRID   *56                              117.            0.              *
+                  813-        *       0.
+                  814-        GRID   *57                              117.            0.              *
+                  815-        *       0.
+                  816-        GRID   *58                              117.            0.              *
+                  817-        *       0.
+                  818-        GRID   *59                              117.            0.              *
+                  819-        *       0.
+                  820-        GRID   *60                              117.            0.              *
+                  821-        *       0.
+                  822-        GRID   *61                              117.            0.              *
+                  823-        *       0.
+                  824-        GRID   *62                              117.            0.              *
+                  825-        *       0.
+                  826-        GRID   *63                              117.            0.              *
+                  827-        *       0.
+                  828-        GRID   *64                              117.            0.              *
+                  829-        *       0.
+                  830-        GRID   *65                              117.            0.              *
+                  831-        *       0.
+                  832-        GRID   *66                              117.            0.              *
+                  833-        *       0.
+                  834-        GRID   *67                              117.            0.              *
+                  835-        *       0.
+                  836-        GRID   *68                              117.            0.              *
+                  837-        *       0.
+                  838-        GRID   *69                              117.            0.              *
+                  839-        *       0.
+                  840-        GRID   *70                              117.            0.              *
+                  841-        *       0.
+                  842-        GRID   *71                              117.            0.              *
+                  843-        *       0.
+                  844-        GRID   *72                              117.            0.              *
+                  845-        *       0.
+                  846-        GRID   *73                              117.            0.              *
+                  847-        *       0.
+                  848-        GRID   *74                              117.            0.              *
+                  849-        *       0.
+                  850-        GRID   *75                              117.            0.              *
+                  851-        *       0.
+                  852-        GRID   *76                              117.            0.              *
+                  853-        *       0.
+                  854-        GRID   *77                              117.            0.              *
+                  855-        *       0.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    24
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  856-        GRID   *78                              117.            0.              *
+                  857-        *       0.
+                  858-        GRID   *79                              117.            0.              *
+                  859-        *       0.
+                  860-        GRID   *80                              117.            0.              *
+                  861-        *       0.
+                  862-        GRID   *81                              117.            0.              *
+                  863-        *       0.
+                  864-        GRID   *82                              117.            0.              *
+                  865-        *       0.
+                  866-        GRID   *83                              117.            0.              *
+                  867-        *       0.
+                  868-        GRID   *84                              117.            0.              *
+                  869-        *       0.
+                  870-        GRID   *85                              117.            0.              *
+                  871-        *       0.
+                  872-        GRID   *86                              117.            0.              *
+                  873-        *       0.
+                  874-        GRID   *87                              117.            0.              *
+                  875-        *       0.
+                  876-        GRID   *88                              117.            0.              *
+                  877-        *       0.
+                  878-        GRID   *89                              117.            0.              *
+                  879-        *       0.
+                  880-        GRID   *90                              117.            0.              *
+                  881-        *       0.
+                  882-        GRID   *91                              117.            0.              *
+                  883-        *       0.
+                  884-        GRID   *92                              117.            0.              *
+                  885-        *       0.
+                  886-        GRID   *93                              117.            0.              *
+                  887-        *       0.
+                  888-        GRID   *94                              117.            0.              *
+                  889-        *       0.
+                  890-        GRID   *95                              117.            0.              *
+                  891-        *       0.
+                  892-        GRID   *96                              117.            0.              *
+                  893-        *       0.
+                  894-        GRID   *97                              117.            0.              *
+                  895-        *       0.
+                  896-        GRID   *98                              117.            0.              *
+                  897-        *       0.
+                  898-        GRID   *99                              117.            0.              *
+                  899-        *       0.
+                  900-        GRID   *100                             117.            0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    25
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  901-        *       0.
+                  902-        GRID   *101                             117.            0.              *
+                  903-        *       0.
+                  904-        MAT1    1       1.      1.      .3
+                  905-        PBEAM*  1               1               4.49012128E+10  1.45978938E+11  +
+                  906-        *       1.46433461E+11  0.00000000E+00  8.53873853E+10  0.00000000E+00
+                  907-        PBEAM*  2               1               4.26605033E+10  1.38770851E+11  +
+                  908-        *       1.40073184E+11  0.00000000E+00  8.11958736E+10  0.00000000E+00
+                  909-        PBEAM*  3               1               4.01198226E+10  1.29248592E+11  +
+                  910-        *       1.28261408E+11  0.00000000E+00  7.45397413E+10  0.00000000E+00
+                  911-        PBEAM*  4               1               3.73544864E+10  1.17753872E+11  +
+                  912-        *       1.11939823E+11  0.00000000E+00  6.57532368E+10  0.00000000E+00
+                  913-        PBEAM*  5               1               3.48927158E+10  1.07454991E+11  +
+                  914-        *       9.81717024E+10  0.00000000E+00  5.78344953E+10  0.00000000E+00
+                  915-        PBEAM*  6               1               3.14792562E+10  9.25714051E+10  +
+                  916-        *       8.03320781E+10  0.00000000E+00  4.62772262E+10  0.00000000E+00
+                  917-        PBEAM*  7               1               2.82756362E+10  7.76187976E+10  +
+                  918-        *       6.04747578E+10  0.00000000E+00  3.19234795E+10  0.00000000E+00
+                  919-        PBEAM*  8               1               2.50024828E+10  6.34532683E+10  +
+                  920-        *       4.01258738E+10  0.00000000E+00  1.67524937E+10  0.00000000E+00
+                  921-        PBEAM*  9               1               2.15579998E+10  4.66610418E+10  +
+                  922-        *       2.49044185E+10  0.00000000E+00  5.42235344E+09  0.00000000E+00
+                  923-        PBEAM*  10              1               2.04620476E+10  3.72481722E+10  +
+                  924-        *       1.87178701E+10  0.00000000E+00  1.89709740E+09  0.00000000E+00
+                  925-        PBEAM*  11              1               2.09201156E+10  3.31752971E+10  +
+                  926-        *       1.44890356E+10  0.00000000E+00  8.26590779E+08  0.00000000E+00
+                  927-        PBEAM*  12              1               2.15758868E+10  2.85697248E+10  +
+                  928-        *       1.20131479E+10  0.00000000E+00  5.44132336E+08  0.00000000E+00
+                  929-        PBEAM*  13              1               2.17032216E+10  2.41528547E+10  +
+                  930-        *       9.60064390E+09  0.00000000E+00  4.13003088E+08  0.00000000E+00
+                  931-        PBEAM*  14              1               2.12002513E+10  2.04673670E+10  +
+                  932-        *       7.54367055E+09  0.00000000E+00  3.25227477E+08  0.00000000E+00
+                  933-        PBEAM*  15              1               2.03514905E+10  1.71520582E+10  +
+                  934-        *       5.72144036E+09  0.00000000E+00  2.53102349E+08  0.00000000E+00
+                  935-        PBEAM*  16              1               1.94243211E+10  1.41633358E+10  +
+                  936-        *       4.24868178E+09  0.00000000E+00  1.94290742E+08  0.00000000E+00
+                  937-        PBEAM*  17              1               1.82323892E+10  1.05598367E+10  +
+                  938-        *       3.12961752E+09  0.00000000E+00  1.48131995E+08  0.00000000E+00
+                  939-        PBEAM*  18              1               1.66964269E+10  6.50841567E+09  +
+                  940-        *       2.28659392E+09  0.00000000E+00  1.11802385E+08  0.00000000E+00
+                  941-        PBEAM*  19              1               1.49572139E+10  3.76305259E+09  +
+                  942-        *       1.63496072E+09  0.00000000E+00  8.34171501E+07  0.00000000E+00
+                  943-        PBEAM*  20              1               1.25321270E+10  2.38317799E+09  +
+                  944-        *       1.09502886E+09  0.00000000E+00  6.19878354E+07  0.00000000E+00
+                  945-        PBEAM*  21              1               9.15664241E+09  1.48848717E+09  +
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    26
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  946-        *       6.52170013E+08  0.00000000E+00  4.53128918E+07  0.00000000E+00
+                  947-        PBEAM*  22              1               5.91577520E+09  8.91636802E+08  +
+                  948-        *       3.54649993E+08  0.00000000E+00  3.07183207E+07  0.00000000E+00
+                  949-        PBEAM*  23              1               3.59845263E+09  5.51934343E+08  +
+                  950-        *       1.78160011E+08  0.00000000E+00  1.83740167E+07  0.00000000E+00
+                  951-        PBEAM*  24              1               1.93932781E+09  3.25904680E+08  +
+                  952-        *       7.48245640E+07  0.00000000E+00  1.01114963E+07  0.00000000E+00
+                  953-        PBEAM*  25              1               6.60661720E+08  1.16448567E+08  +
+                  954-        *       1.82909500E+07  0.00000000E+00  3.43828521E+06  0.00000000E+00
+                  955-        PBEAM*  26              1               1.18283404E+08  1.38483977E+06  +
+                  956-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  957-        PBEAM*  27              1               1.18283404E+08  1.38483977E+06  +
+                  958-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  959-        PBEAM*  28              1               1.18283404E+08  1.38483977E+06  +
+                  960-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  961-        PBEAM*  29              1               1.18283404E+08  1.38483977E+06  +
+                  962-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  963-        PBEAM*  30              1               1.18283404E+08  1.38483977E+06  +
+                  964-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  965-        PBEAM*  31              1               1.18283404E+08  1.38483977E+06  +
+                  966-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  967-        PBEAM*  32              1               1.18283404E+08  1.38483977E+06  +
+                  968-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  969-        PBEAM*  33              1               1.18283404E+08  1.38483977E+06  +
+                  970-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  971-        PBEAM*  34              1               1.18283404E+08  1.38483977E+06  +
+                  972-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  973-        PBEAM*  35              1               1.18283404E+08  1.38483977E+06  +
+                  974-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  975-        PBEAM*  36              1               1.18283404E+08  1.38483977E+06  +
+                  976-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  977-        PBEAM*  37              1               1.18283404E+08  1.38483977E+06  +
+                  978-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  979-        PBEAM*  38              1               1.18283404E+08  1.38483977E+06  +
+                  980-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  981-        PBEAM*  39              1               1.18283404E+08  1.38483977E+06  +
+                  982-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  983-        PBEAM*  40              1               1.18283404E+08  1.38483977E+06  +
+                  984-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  985-        PBEAM*  41              1               1.18283404E+08  1.38483977E+06  +
+                  986-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  987-        PBEAM*  42              1               1.18283404E+08  1.38483977E+06  +
+                  988-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  989-        PBEAM*  43              1               1.18283404E+08  1.38483977E+06  +
+                  990-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    27
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  991-        PBEAM*  44              1               1.18283404E+08  1.38483977E+06  +
+                  992-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  993-        PBEAM*  45              1               1.18283404E+08  1.38483977E+06  +
+                  994-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  995-        PBEAM*  46              1               1.18283404E+08  1.38483977E+06  +
+                  996-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  997-        PBEAM*  47              1               1.18283404E+08  1.38483977E+06  +
+                  998-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                  999-        PBEAM*  48              1               1.18283404E+08  1.38483977E+06  +
+                 1000-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1001-        PBEAM*  49              1               1.18283404E+08  1.38483977E+06  +
+                 1002-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1003-        PBEAM*  50              1               1.18283404E+08  1.38483977E+06  +
+                 1004-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1005-        PBEAM*  51              1               1.18283404E+08  1.38483977E+06  +
+                 1006-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1007-        PBEAM*  52              1               1.18283404E+08  1.38483977E+06  +
+                 1008-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1009-        PBEAM*  53              1               1.18283404E+08  1.38483977E+06  +
+                 1010-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1011-        PBEAM*  54              1               1.18283404E+08  1.38483977E+06  +
+                 1012-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1013-        PBEAM*  55              1               1.18283404E+08  1.38483977E+06  +
+                 1014-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1015-        PBEAM*  56              1               1.18283404E+08  1.38483977E+06  +
+                 1016-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1017-        PBEAM*  57              1               1.18283404E+08  1.38483977E+06  +
+                 1018-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1019-        PBEAM*  58              1               1.18283404E+08  1.38483977E+06  +
+                 1020-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1021-        PBEAM*  59              1               1.18283404E+08  1.38483977E+06  +
+                 1022-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1023-        PBEAM*  60              1               1.18283404E+08  1.38483977E+06  +
+                 1024-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1025-        PBEAM*  61              1               1.18283404E+08  1.38483977E+06  +
+                 1026-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1027-        PBEAM*  62              1               1.18283404E+08  1.38483977E+06  +
+                 1028-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1029-        PBEAM*  63              1               1.18283404E+08  1.38483977E+06  +
+                 1030-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1031-        PBEAM*  64              1               1.18283404E+08  1.38483977E+06  +
+                 1032-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1033-        PBEAM*  65              1               1.18283404E+08  1.38483977E+06  +
+                 1034-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1035-        PBEAM*  66              1               1.18283404E+08  1.38483977E+06  +
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    28
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                 1036-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1037-        PBEAM*  67              1               1.18283404E+08  1.38483977E+06  +
+                 1038-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1039-        PBEAM*  68              1               1.18283404E+08  1.38483977E+06  +
+                 1040-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1041-        PBEAM*  69              1               1.18283404E+08  1.38483977E+06  +
+                 1042-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1043-        PBEAM*  70              1               1.18283404E+08  1.38483977E+06  +
+                 1044-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1045-        PBEAM*  71              1               1.18283404E+08  1.38483977E+06  +
+                 1046-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1047-        PBEAM*  72              1               1.18283404E+08  1.38483977E+06  +
+                 1048-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1049-        PBEAM*  73              1               1.18283404E+08  1.38483977E+06  +
+                 1050-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1051-        PBEAM*  74              1               1.18283404E+08  1.38483977E+06  +
+                 1052-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1053-        PBEAM*  75              1               1.18283404E+08  1.38483977E+06  +
+                 1054-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1055-        PBEAM*  76              1               1.18283404E+08  1.38483977E+06  +
+                 1056-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1057-        PBEAM*  77              1               1.18283404E+08  1.38483977E+06  +
+                 1058-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1059-        PBEAM*  78              1               1.18283404E+08  1.38483977E+06  +
+                 1060-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1061-        PBEAM*  79              1               1.18283404E+08  1.38483977E+06  +
+                 1062-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1063-        PBEAM*  80              1               1.18283404E+08  1.38483977E+06  +
+                 1064-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1065-        PBEAM*  81              1               1.18283404E+08  1.38483977E+06  +
+                 1066-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1067-        PBEAM*  82              1               1.18283404E+08  1.38483977E+06  +
+                 1068-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1069-        PBEAM*  83              1               1.18283404E+08  1.38483977E+06  +
+                 1070-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1071-        PBEAM*  84              1               1.18283404E+08  1.38483977E+06  +
+                 1072-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1073-        PBEAM*  85              1               1.18283404E+08  1.38483977E+06  +
+                 1074-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1075-        PBEAM*  86              1               1.18283404E+08  1.38483977E+06  +
+                 1076-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1077-        PBEAM*  87              1               1.18283404E+08  1.38483977E+06  +
+                 1078-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1079-        PBEAM*  88              1               1.18283404E+08  1.38483977E+06  +
+                 1080-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    29
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                 1081-        PBEAM*  89              1               1.18283404E+08  1.38483977E+06  +
+                 1082-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1083-        PBEAM*  90              1               1.18283404E+08  1.38483977E+06  +
+                 1084-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1085-        PBEAM*  91              1               1.18283404E+08  1.38483977E+06  +
+                 1086-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1087-        PBEAM*  92              1               1.18283404E+08  1.38483977E+06  +
+                 1088-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1089-        PBEAM*  93              1               1.18283404E+08  1.38483977E+06  +
+                 1090-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1091-        PBEAM*  94              1               1.18283404E+08  1.38483977E+06  +
+                 1092-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1093-        PBEAM*  95              1               1.18283404E+08  1.38483977E+06  +
+                 1094-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1095-        PBEAM*  96              1               1.18283404E+08  1.38483977E+06  +
+                 1096-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1097-        PBEAM*  97              1               1.18283404E+08  1.38483977E+06  +
+                 1098-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1099-        PBEAM*  98              1               1.18283404E+08  1.38483977E+06  +
+                 1100-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1101-        PBEAM*  99              1               1.18283404E+08  1.38483977E+06  +
+                 1102-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1103-        PBEAM*  100             1               1.18283404E+08  1.38483977E+06  +
+                 1104-        *       1.86239913E+05  0.00000000E+00  7.14523363E+04  0.00000000E+00
+                 1105-        SPC1    1       123456  1
+                              ENDDATA
+                        TOTAL COUNT= 1106
+                              INPUT BULK DATA ENTRY COUNT = 1111
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    30
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                        CBEAM                      100
+                                        CONM1                      100
+                                        EIGRL                        1
+                                         GRID                      101
+                                         MAT1                        1
+                                        PBEAM                      100
+                                         SPC1                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        26 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        27 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        28 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        29 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        30 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        31 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        32 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        33 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    31
+                                                                                                                                    
+0                                                                                                                                   
+0
+0
+0
+ 
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        34 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        35 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        36 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        37 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        38 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        39 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        40 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        41 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        42 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        43 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        44 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        45 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    32
+                                                                                                                                    
+0                                                                                                                                   
+0
+0
+0
+ 
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        46 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        47 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        48 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        49 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        50 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        51 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        52 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        53 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        54 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        55 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        56 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        57 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    33
+                                                                                                                                    
+0                                                                                                                                   
+0
+0
+0
+ 
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        58 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        59 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        60 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        61 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        62 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        63 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        64 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        65 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        66 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        67 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        68 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        69 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    34
+                                                                                                                                    
+0                                                                                                                                   
+0
+0
+0
+ 
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        70 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        71 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        72 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        73 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        74 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER FATAL MESSAGE 2026 (EMG)
+     ELEMENT        75 GEOMETRY YIELDS UNREASONABLE MATRIX.
+     User Information:
+     Referenced element geometry and/or properties yield a numerical
+     result which causes an element stiffness or mass matrix to be undefined.
+     Possible causes include, but are not limited to,
+     (1) the length of a rod or bar is zero because the end points have
+         the same coordinates,
+     (2) the sides of a triangle or quadrilateral are collinear which leads
+         to a zero cross product in defining an element coordinate system,
+     (3) the bar/bend orientation vector is parallel to the bar/bend axis, or
+     (4) a shear panel has zero thickness or modulus.  Check GRID Bulk
+         Data entries defining element end points for bad data.
+ *** USER WARNING MESSAGE 9031 (SUBDMAP ERRPH1)
+     NOGO ENCOUNTERED IN SUBDMAP SEMG
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    35
+                                                                                                                                    
+0                                                                                                                                   
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

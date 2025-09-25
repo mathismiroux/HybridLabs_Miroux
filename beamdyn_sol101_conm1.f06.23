@@ -26,7 +26,7 @@
                                               * *          NOV 21, 2024           * *
                                               * *                                 * *
                                               * *              Intel              * *
-                                              * *  MODEL Xeon/3939 (5CG4463P42)   * *
+                                              * *  MODEL Xeon/3611 (5CG4463P42)   * *
                                               * * Windows 10 Enterprise 6.2 9200  * *
                                               * *        Compiled for 8664        * *
                                               * *                                 * *
@@ -209,7 +209,27 @@
  *** USER WARNING MESSAGE 9994 (BULFUN)
      MAT1 with MID=1 near line 13
      User information:  Material has unreasonable or inconsistent values of E, G or NU.
+ *** USER FATAL MESSAGE 9994 (BULKPM)
+     FORCE with SID=100 G=26 SKEY=0 near line 269
+     User information:  N1:0 is an integer in a real field.
+     User action:  Enter a real value or set system 444 to 9 to have the program convert the integer to a real value
+ *** USER FATAL MESSAGE 9994 (BULKPM)
+     FORCE with SID=100 G=26 SKEY=0 near line 269
+     User information:  N2:0 is an integer in a real field.
+     User action:  Enter a real value or set system 444 to 9 to have the program convert the integer to a real value
+ *** USER FATAL MESSAGE 9994 (BULKPM)
+     FORCE with SID=100 G=26 SKEY=0 near line 269
+     User information:  N3:1 is an integer in a real field.
+     User action:  Enter a real value or set system 444 to 9 to have the program convert the integer to a real value
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER FATAL MESSAGE 208 (SCA.MDSolver.Io.AccessAccess:AccessAccess::StreamToBinary)
+     Fatal messages were encountered while converting the stream input file c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat.
+ *** USER FATAL MESSAGE 102 (SCA.MDSolver.Obj.InputFile:InputFile::read)
+Severe fatal Errors occured while reading the input file c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat.
+Check the MDSolver.System.PrintListener output.
+1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     6
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
@@ -260,7 +280,7 @@
                    43-        *       8551.767
                    44-        CONM1  *1003            4               0               1.              *
                    45-        *       2490.126        0.              2490.126        0.              *
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     6
+1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     7
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
@@ -311,7 +331,7 @@
                    88-        *       0.              507.5232        0.              0.              *
                    89-        *       449.3673        1706.657                                        *
                    90-        *       0.              0.              -16.82812       -42.53566       *
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     7
+1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     8
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
@@ -362,7 +382,7 @@
                   133-        *       30.21886
                   134-        CONM1  *1018            19              0               1.              *
                   135-        *       242.1039        0.              242.1039        0.              *
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     8
+1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     9
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
@@ -408,134 +428,132 @@
                   173-        *       4.139189        6.178278                                        *
                   174-        *       0.              0.              -.4767331       -.1259192       *
                   175-        *       .3822822
-                  176-        FORCE  *100             26              0               100000.         *
-                  177-        *       0.              0.              1.
-                  178-        GRID   *1                               0.              0.              *
+                  176-        GRID   *1                               0.              0.              *
+                  177-        *       0.
+                  178-        GRID   *2                               1.17            0.              *
                   179-        *       0.
-                  180-        GRID   *2                               1.17            0.              *
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE     9
-                                                                                                                                    
-0                                                                                                                                   
-                                                  S O R T E D   B U L K   D A T A   E C H O                                         
-                 ENTRY                                                                                                              
-                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
-                  181-        *       0.
-                  182-        GRID   *3                               2.34            0.              *
-                  183-        *       0.
-                  184-        GRID   *4                               3.51            0.              *
-                  185-        *       0.
-                  186-        GRID   *5                               4.68            0.              *
-                  187-        *       0.
-                  188-        GRID   *6                               5.85            0.              *
-                  189-        *       0.
-                  190-        GRID   *7                               8.775           0.              *
-                  191-        *       0.
-                  192-        GRID   *8                               11.7            0.              *
-                  193-        *       0.
-                  194-        GRID   *9                               17.55           0.              *
-                  195-        *       0.
-                  196-        GRID   *10                              23.4            0.              *
-                  197-        *       0.
-                  198-        GRID   *11                              29.25           0.              *
-                  199-        *       0.
-                  200-        GRID   *12                              35.1            0.              *
-                  201-        *       0.
-                  202-        GRID   *13                              40.95           0.              *
-                  203-        *       0.
-                  204-        GRID   *14                              46.8            0.              *
-                  205-        *       0.
-                  206-        GRID   *15                              52.65           0.              *
-                  207-        *       0.
-                  208-        GRID   *16                              58.5            0.              *
-                  209-        *       0.
-                  210-        GRID   *17                              64.35           0.              *
-                  211-        *       0.
-                  212-        GRID   *18                              70.2            0.              *
-                  213-        *       0.
-                  214-        GRID   *19                              76.05           0.              *
-                  215-        *       0.
-                  216-        GRID   *20                              81.9            0.              *
-                  217-        *       0.
-                  218-        GRID   *21                              87.75           0.              *
-                  219-        *       0.
-                  220-        GRID   *22                              93.6            0.              *
-                  221-        *       0.
-                  222-        GRID   *23                              99.45           0.              *
-                  223-        *       0.
-                  224-        GRID   *24                              105.3           0.              *
-                  225-        *       0.
+                  180-        GRID   *3                               2.34            0.              *
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    10
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
                  ENTRY                                                                                                              
                  COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
-                  226-        GRID   *25                              111.15          0.              *
-                  227-        *       0.
-                  228-        GRID   *26                              117.            0.              *
-                  229-        *       0.
-                  230-        MAT1    1       1.      1.      .3
-                  231-        PBEAM*  1               1               4.49012128E+10  1.45978938E+11  +
-                  232-        *       1.46433461E+11  0.00000000E+00  8.53873853E+10  0.00000000E+00
-                  233-        PBEAM*  2               1               4.26605033E+10  1.38770851E+11  +
-                  234-        *       1.40073184E+11  0.00000000E+00  8.11958736E+10  0.00000000E+00
-                  235-        PBEAM*  3               1               4.01198226E+10  1.29248592E+11  +
-                  236-        *       1.28261408E+11  0.00000000E+00  7.45397413E+10  0.00000000E+00
-                  237-        PBEAM*  4               1               3.73544864E+10  1.17753872E+11  +
-                  238-        *       1.11939823E+11  0.00000000E+00  6.57532368E+10  0.00000000E+00
-                  239-        PBEAM*  5               1               3.48927158E+10  1.07454991E+11  +
-                  240-        *       9.81717024E+10  0.00000000E+00  5.78344953E+10  0.00000000E+00
-                  241-        PBEAM*  6               1               3.14792562E+10  9.25714051E+10  +
-                  242-        *       8.03320781E+10  0.00000000E+00  4.62772262E+10  0.00000000E+00
-                  243-        PBEAM*  7               1               2.82756362E+10  7.76187976E+10  +
-                  244-        *       6.04747578E+10  0.00000000E+00  3.19234795E+10  0.00000000E+00
-                  245-        PBEAM*  8               1               2.50024828E+10  6.34532683E+10  +
-                  246-        *       4.01258738E+10  0.00000000E+00  1.67524937E+10  0.00000000E+00
-                  247-        PBEAM*  9               1               2.15579998E+10  4.66610418E+10  +
-                  248-        *       2.49044185E+10  0.00000000E+00  5.42235344E+09  0.00000000E+00
-                  249-        PBEAM*  10              1               2.04620476E+10  3.72481722E+10  +
-                  250-        *       1.87178701E+10  0.00000000E+00  1.89709740E+09  0.00000000E+00
-                  251-        PBEAM*  11              1               2.09201156E+10  3.31752971E+10  +
-                  252-        *       1.44890356E+10  0.00000000E+00  8.26590779E+08  0.00000000E+00
-                  253-        PBEAM*  12              1               2.15758868E+10  2.85697248E+10  +
-                  254-        *       1.20131479E+10  0.00000000E+00  5.44132336E+08  0.00000000E+00
-                  255-        PBEAM*  13              1               2.17032216E+10  2.41528547E+10  +
-                  256-        *       9.60064390E+09  0.00000000E+00  4.13003088E+08  0.00000000E+00
-                  257-        PBEAM*  14              1               2.12002513E+10  2.04673670E+10  +
-                  258-        *       7.54367055E+09  0.00000000E+00  3.25227477E+08  0.00000000E+00
-                  259-        PBEAM*  15              1               2.03514905E+10  1.71520582E+10  +
-                  260-        *       5.72144036E+09  0.00000000E+00  2.53102349E+08  0.00000000E+00
-                  261-        PBEAM*  16              1               1.94243211E+10  1.41633358E+10  +
-                  262-        *       4.24868178E+09  0.00000000E+00  1.94290742E+08  0.00000000E+00
-                  263-        PBEAM*  17              1               1.82323892E+10  1.05598367E+10  +
-                  264-        *       3.12961752E+09  0.00000000E+00  1.48131995E+08  0.00000000E+00
-                  265-        PBEAM*  18              1               1.66964269E+10  6.50841567E+09  +
-                  266-        *       2.28659392E+09  0.00000000E+00  1.11802385E+08  0.00000000E+00
-                  267-        PBEAM*  19              1               1.49572139E+10  3.76305259E+09  +
-                  268-        *       1.63496072E+09  0.00000000E+00  8.34171501E+07  0.00000000E+00
-                  269-        PBEAM*  20              1               1.25321270E+10  2.38317799E+09  +
-                  270-        *       1.09502886E+09  0.00000000E+00  6.19878354E+07  0.00000000E+00
+                  181-        *       0.
+                  182-        GRID   *4                               3.51            0.              *
+                  183-        *       0.
+                  184-        GRID   *5                               4.68            0.              *
+                  185-        *       0.
+                  186-        GRID   *6                               5.85            0.              *
+                  187-        *       0.
+                  188-        GRID   *7                               8.775           0.              *
+                  189-        *       0.
+                  190-        GRID   *8                               11.7            0.              *
+                  191-        *       0.
+                  192-        GRID   *9                               17.55           0.              *
+                  193-        *       0.
+                  194-        GRID   *10                              23.4            0.              *
+                  195-        *       0.
+                  196-        GRID   *11                              29.25           0.              *
+                  197-        *       0.
+                  198-        GRID   *12                              35.1            0.              *
+                  199-        *       0.
+                  200-        GRID   *13                              40.95           0.              *
+                  201-        *       0.
+                  202-        GRID   *14                              46.8            0.              *
+                  203-        *       0.
+                  204-        GRID   *15                              52.65           0.              *
+                  205-        *       0.
+                  206-        GRID   *16                              58.5            0.              *
+                  207-        *       0.
+                  208-        GRID   *17                              64.35           0.              *
+                  209-        *       0.
+                  210-        GRID   *18                              70.2            0.              *
+                  211-        *       0.
+                  212-        GRID   *19                              76.05           0.              *
+                  213-        *       0.
+                  214-        GRID   *20                              81.9            0.              *
+                  215-        *       0.
+                  216-        GRID   *21                              87.75           0.              *
+                  217-        *       0.
+                  218-        GRID   *22                              93.6            0.              *
+                  219-        *       0.
+                  220-        GRID   *23                              99.45           0.              *
+                  221-        *       0.
+                  222-        GRID   *24                              105.3           0.              *
+                  223-        *       0.
+                  224-        GRID   *25                              111.15          0.              *
+                  225-        *       0.
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    11
                                                                                                                                     
 0                                                                                                                                   
                                                   S O R T E D   B U L K   D A T A   E C H O                                         
                  ENTRY                                                                                                              
                  COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
-                  271-        PBEAM*  21              1               9.15664241E+09  1.48848717E+09  +
-                  272-        *       6.52170013E+08  0.00000000E+00  4.53128918E+07  0.00000000E+00
-                  273-        PBEAM*  22              1               5.91577520E+09  8.91636802E+08  +
-                  274-        *       3.54649993E+08  0.00000000E+00  3.07183207E+07  0.00000000E+00
-                  275-        PBEAM*  23              1               3.59845263E+09  5.51934343E+08  +
-                  276-        *       1.78160011E+08  0.00000000E+00  1.83740167E+07  0.00000000E+00
-                  277-        PBEAM*  24              1               1.93932781E+09  3.25904680E+08  +
-                  278-        *       7.48245640E+07  0.00000000E+00  1.01114963E+07  0.00000000E+00
-                  279-        PBEAM*  25              1               6.60661720E+08  1.16448567E+08  +
-                  280-        *       1.82909500E+07  0.00000000E+00  3.43828521E+06  0.00000000E+00
-                  281-        SPC1    1       123456  1
-                              ENDDATA
-                        TOTAL COUNT= 282
-                              INPUT BULK DATA ENTRY COUNT = 287
+                  226-        GRID   *26                              117.            0.              *
+                  227-        *       0.
+                  228-        MAT1    1       1.      1.      .3
+                  229-        PBEAM*  1               1               4.49012128E+10  1.45978938E+11  +
+                  230-        *       1.46433461E+11  0.00000000E+00  8.53873853E+10  0.00000000E+00
+                  231-        PBEAM*  2               1               4.26605033E+10  1.38770851E+11  +
+                  232-        *       1.40073184E+11  0.00000000E+00  8.11958736E+10  0.00000000E+00
+                  233-        PBEAM*  3               1               4.01198226E+10  1.29248592E+11  +
+                  234-        *       1.28261408E+11  0.00000000E+00  7.45397413E+10  0.00000000E+00
+                  235-        PBEAM*  4               1               3.73544864E+10  1.17753872E+11  +
+                  236-        *       1.11939823E+11  0.00000000E+00  6.57532368E+10  0.00000000E+00
+                  237-        PBEAM*  5               1               3.48927158E+10  1.07454991E+11  +
+                  238-        *       9.81717024E+10  0.00000000E+00  5.78344953E+10  0.00000000E+00
+                  239-        PBEAM*  6               1               3.14792562E+10  9.25714051E+10  +
+                  240-        *       8.03320781E+10  0.00000000E+00  4.62772262E+10  0.00000000E+00
+                  241-        PBEAM*  7               1               2.82756362E+10  7.76187976E+10  +
+                  242-        *       6.04747578E+10  0.00000000E+00  3.19234795E+10  0.00000000E+00
+                  243-        PBEAM*  8               1               2.50024828E+10  6.34532683E+10  +
+                  244-        *       4.01258738E+10  0.00000000E+00  1.67524937E+10  0.00000000E+00
+                  245-        PBEAM*  9               1               2.15579998E+10  4.66610418E+10  +
+                  246-        *       2.49044185E+10  0.00000000E+00  5.42235344E+09  0.00000000E+00
+                  247-        PBEAM*  10              1               2.04620476E+10  3.72481722E+10  +
+                  248-        *       1.87178701E+10  0.00000000E+00  1.89709740E+09  0.00000000E+00
+                  249-        PBEAM*  11              1               2.09201156E+10  3.31752971E+10  +
+                  250-        *       1.44890356E+10  0.00000000E+00  8.26590779E+08  0.00000000E+00
+                  251-        PBEAM*  12              1               2.15758868E+10  2.85697248E+10  +
+                  252-        *       1.20131479E+10  0.00000000E+00  5.44132336E+08  0.00000000E+00
+                  253-        PBEAM*  13              1               2.17032216E+10  2.41528547E+10  +
+                  254-        *       9.60064390E+09  0.00000000E+00  4.13003088E+08  0.00000000E+00
+                  255-        PBEAM*  14              1               2.12002513E+10  2.04673670E+10  +
+                  256-        *       7.54367055E+09  0.00000000E+00  3.25227477E+08  0.00000000E+00
+                  257-        PBEAM*  15              1               2.03514905E+10  1.71520582E+10  +
+                  258-        *       5.72144036E+09  0.00000000E+00  2.53102349E+08  0.00000000E+00
+                  259-        PBEAM*  16              1               1.94243211E+10  1.41633358E+10  +
+                  260-        *       4.24868178E+09  0.00000000E+00  1.94290742E+08  0.00000000E+00
+                  261-        PBEAM*  17              1               1.82323892E+10  1.05598367E+10  +
+                  262-        *       3.12961752E+09  0.00000000E+00  1.48131995E+08  0.00000000E+00
+                  263-        PBEAM*  18              1               1.66964269E+10  6.50841567E+09  +
+                  264-        *       2.28659392E+09  0.00000000E+00  1.11802385E+08  0.00000000E+00
+                  265-        PBEAM*  19              1               1.49572139E+10  3.76305259E+09  +
+                  266-        *       1.63496072E+09  0.00000000E+00  8.34171501E+07  0.00000000E+00
+                  267-        PBEAM*  20              1               1.25321270E+10  2.38317799E+09  +
+                  268-        *       1.09502886E+09  0.00000000E+00  6.19878354E+07  0.00000000E+00
+                  269-        PBEAM*  21              1               9.15664241E+09  1.48848717E+09  +
+                  270-        *       6.52170013E+08  0.00000000E+00  4.53128918E+07  0.00000000E+00
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    12
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  271-        PBEAM*  22              1               5.91577520E+09  8.91636802E+08  +
+                  272-        *       3.54649993E+08  0.00000000E+00  3.07183207E+07  0.00000000E+00
+                  273-        PBEAM*  23              1               3.59845263E+09  5.51934343E+08  +
+                  274-        *       1.78160011E+08  0.00000000E+00  1.83740167E+07  0.00000000E+00
+                  275-        PBEAM*  24              1               1.93932781E+09  3.25904680E+08  +
+                  276-        *       7.48245640E+07  0.00000000E+00  1.01114963E+07  0.00000000E+00
+                  277-        PBEAM*  25              1               6.60661720E+08  1.16448567E+08  +
+                  278-        *       1.82909500E+07  0.00000000E+00  3.43828521E+06  0.00000000E+00
+                  279-        SPC1    1       123456  1
+                              ENDDATA
+                        TOTAL COUNT= 280
+                              INPUT BULK DATA ENTRY COUNT = 285
+1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    13
                                                                                                                                     
 0                                                                                                                                   
                                         M O D E L   S U M M A R Y          BULK = 0
@@ -543,94 +561,31 @@
                                    ----------        -----------------
                                         CBEAM                       25
                                         CONM1                       25
-                                        FORCE                        1
                                          GRID                       26
                                          MAT1                        1
                                         PBEAM                       25
                                          SPC1                        1
 
+ *** USER WARNING MESSAGE 285 (DML)
+     FATAL ERRORS WERE FOUND WHILE READING THIS BEGIN SECTION
+      MODEL SUMMARY DOES NOT INCLUDE COUNT OF FATAL ENTITIES
  ^^^     
  ^^^ >>> IFP OPERATIONS COMPLETE <<< 
  ^^^     
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    13
-                                                                                                                                    
-0                                                                                                                                   
- *** USER INFORMATION MESSAGE 7310 (VECPRN)
-     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
-     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
-     BASIC SYSTEM COORDINATES.
-0                                                  OLOAD    RESULTANT       
-  SUBCASE/    LOAD
-  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
-0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
-               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
-               FZ       ----          ----       1.000000E+05  0.000000E+00 -1.170000E+07     ----                                  
-               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
-               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
-               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
-             TOTALS  0.000000E+00  0.000000E+00  1.000000E+05  0.000000E+00 -1.170000E+07  0.000000E+00
+ ^^^     
+ *** USER FATAL MESSAGE 9002 (SUBDMAP IFPS)
+     ERROR(S) ENCOUNTERED IN THE MAIN BULK DATA SECTION
+     SEE MESSAGES ABOVE. ERROR ENCOUNTERED IN MODULE IFP,
+ ^^^     
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    14
                                                                                                                                     
-0                                                                                                            SUBCASE 1              
-  
- *** SYSTEM INFORMATION MESSAGE 4159 (DFMSA)
-     THE DECOMPOSITION OF KLL      YIELDS A MAXIMUM MATRIX-TO-FACTOR-DIAGONAL RATIO OF    6.687384E+01
- ^^^     
- *** USER INFORMATION MESSAGE 15201 (SUBDMAP SEKRRS)
-      Condition number of stiffness matrix = 8.318033E+07
- ^^^     
- *** USER INFORMATION MESSAGE 5293 (SSG3B)
-    FOR DATA BLOCK KLL     
-    LOAD SEQ. NO.             EPSILON              EXTERNAL WORK      EPSILONS LARGER THAN 0.001 ARE FLAGGED WITH ASTERISKS
-                1         -3.6165660E-15          3.9626362E+05
+0                                                                                                                                   
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 4425 (PRTPRN)
+     ONE OR MORE FATAL ERRORS HAVE OCCURRED.  THERE MAY BE MORE ERROR MESSAGES IN THE PRECEDING OUTPUT
 1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    15
-                                                                                                                                    
-0                                                                                                                                   
-0                                                  MAXIMUM  DISPLACEMENTS   
-  SUBCASE/
-  DAREA ID        T1             T2             T3             R1             R2             R3
-0        1   0.0000000E+00  0.0000000E+00  7.9252725E+00  0.0000000E+00  3.5780990E-01  0.0000000E+00
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    16
-                                                                                                                                    
-0                                                                                                                                   
-0                                                  MAXIMUM  APPLIED LOADS   
-  SUBCASE/
-  DAREA ID        T1             T2             T3             R1             R2             R3
-0        1   0.0000000E+00  0.0000000E+00  1.0000000E+05  0.0000000E+00  0.0000000E+00  0.0000000E+00
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    17
-                                                                                                                                    
-0                                                                                                            SUBCASE 1              
- 
-                                             D I S P L A C E M E N T   V E C T O R
- 
-      POINT ID.   TYPE          T1             T2             T3             R1             R2             R3
-             1      G      0.0            0.0            0.0            0.0            0.0            0.0
-             2      G      0.0            0.0            5.711083E-05   0.0           -9.301532E-05   0.0
-             3      G      0.0            0.0            2.250896E-04   0.0           -1.892769E-04   0.0
-             4      G      0.0            0.0            5.104385E-04   0.0           -2.933361E-04   0.0
-             5      G      0.0            0.0            9.259283E-04   0.0           -4.113449E-04   0.0
-             6      G      0.0            0.0            1.488592E-03   0.0           -5.445095E-04   0.0
-             7      G      0.0            0.0            3.677274E-03   0.0           -9.438965E-04   0.0
-             8      G      0.0            0.0            7.207172E-03   0.0           -1.460278E-03   0.0
-             9      G      0.0            0.0            2.018044E-02   0.0           -2.952815E-03   0.0
-            10      G      0.0            0.0            4.418055E-02   0.0           -5.220169E-03   0.0
-            11      G      0.0            0.0            8.312546E-02   0.0           -8.054085E-03   0.0
-            12      G      0.0            0.0            1.404026E-01   0.0           -1.147892E-02   0.0
-            13      G      0.0            0.0            2.189693E-01   0.0           -1.532474E-02   0.0
-            14      G      0.0            0.0            3.218529E-01   0.0           -1.978050E-02   0.0
-            15      G      0.0            0.0            4.530775E-01   0.0           -2.499757E-02   0.0
-            16      G      0.0            0.0            6.180042E-01   0.0           -3.127809E-02   0.0
-            17      G      0.0            0.0            8.237862E-01   0.0           -3.893020E-02   0.0
-            18      G      0.0            0.0            1.079280E+00   0.0           -4.822499E-02   0.0
-            19      G      0.0            0.0            1.394994E+00   0.0           -5.944992E-02   0.0
-            20      G      0.0            0.0            1.783632E+00   0.0           -7.305553E-02   0.0
-            21      G      0.0            0.0            2.262855E+00   0.0           -9.024446E-02   0.0
-            22      G      0.0            0.0            2.862477E+00   0.0           -1.138581E-01   0.0
-            23      G      0.0            0.0            3.632138E+00   0.0           -1.476319E-01   0.0
-            24      G      0.0            0.0            4.645777E+00   0.0           -1.956541E-01   0.0
-            25      G      0.0            0.0            6.013622E+00   0.0           -2.642595E-01   0.0
-            26      G      0.0            0.0            7.925272E+00   0.0           -3.578099E-01   0.0
-1    BEAMDYN -> NASTRAN SOL 101 STATIC DISPLACEMENT EXAMPLE WITH CONM     SEPTEMBER  25, 2025  MSC Nastran 11/21/24   PAGE    18
                                                                                                                                     
 0                                                                                                                                   
  * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
@@ -640,7 +595,6 @@
 0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
 0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
  -------------------------------------------------------------------------------------------------------------------
-     0     0    1    1 '        '    T    T    T    T    T     F      F      T     F     -1            0           F
 0SEID = SUPERELEMENT ID.
  PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
  PROJ = PROJECT ID NUMBER.
