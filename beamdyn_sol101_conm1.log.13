@@ -1,0 +1,268 @@
+MSC Nastran V2024.2 (Intel Windows 10 Enterprise 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[3])
+Nastran BUFFSIZE=65537 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[6])
+JID='c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat'
+OUT='./beamdyn_sol101_conm1'
+MEM=8008MB      $ 
+PMEM=0+
+MACH='Intel'
+OPER='Windows 10 Enterprise'
+OSV='6.2 9200'
+MODEL='Xeon/3939 (5CG4463P42)'
+NPROC='12'
+CONFIG=6
+NPROC=12
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/tpl' $(program default)
+SDIR='c:/scratch/beamdyn_sol101_conm1.T5336_34'
+DBS='c:/scratch/beamdyn_sol101_conm1.T5336_34'
+SCR='yes'
+SMEM=100
+BPOOL=6822.6MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/sss'
+DEL='MSCDEF'
+SPOTWELD=''
+EMENGPU=''
+UDR=''
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27001@nastran-1.lic.tudelft.nl;27001@nastran-2.lic.tudelft.nl;27001@nastran-3.lic.tudelft.nl'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\actran\win64\Actran_2024.2\bin;C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\Python312\Scripts\;C:\Program Files\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\PowerShell\7\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res 
+Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\win64i8\nastran.exe JID=C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code\beamdyn_sol101_conm1.dat 
+Current Dir: C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code 
+Time Cmd:    c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    16016 MB
+ Physical memory available:           2814 MB
+ Paging file size:                   31888 MB
+ Paging file size available:          9368 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213496 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         5CG4463P42.home
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Enterprise 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/3078
+ Clock freq.:      5088 MHz
+ Number of CPUs:   12
+ Number of CPUs:   0 ( limited by PBS )
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  16016 MB
+ Virtual memory:   31888 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Tue Sep 23 18:08:35 WEDT 2025 
+ 18:08:44  Beginning Analysis
+SCA Kernel 30.0.943723 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_core.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_intel_thread.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_rt.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\MSCblas.dll" has been loaded.
+
+ 18:08:44  MSC Authorization Information - System Attributes (1004, 0)
+ 18:08:44  -----------------------------------------------------------
+  Date:          Tue Sep 23 18:08:44 2025
+  MSC Id:        c4474e16e1f4 (ethernet) (Intel)
+  Hostname:      5CG4463P42 (user mathismiroux, display 5CG4463P42)
+  License files: 27001@nastran-1.lic.tudelft.nl
+                 27001@nastran-2.lic.tudelft.nl
+                 27001@nastran-3.lic.tudelft.nl
+  CEID:          3D141A7E-C39ADD63
+  User:          mathismiroux
+  Display:       5CG4463P42
+  LAPI Version:  LAPI 22.4.0 (CL df5c63aa) (FLEXlm 11.16.3.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        3D141A7E-C39ADD63        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 18:08:45  MSC Authorization Information - Checkout Successful (1016, 0)
+ 18:08:45  -------------------------------------------------------------
+ 18:08:45  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host nastran-1.lic.tudelft.nl
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.hexagon.com.
+
+ 18:08:45  270 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
+
+Processing of bulk data entries is complete.
+
+ 18:08:45  Finite element model generation started.
+ 18:08:45  Finite element model generated 156 degrees of freedom.
+ 18:08:45  Finite element model generation successfully completed.
+ 18:08:45  Application of Loads and Boundary Conditions to the finite element model started.
+ 18:08:46  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 18:08:46  Solution of the system equations for linear statics started.
+ 18:08:46  Solution of the system equations for linear statics successfully completed.
+ 18:08:46  Linear static analysis completed.
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+       USER WARNING MESSAGE     3204.0          1 
+       USER WARNING MESSAGE     9058.1          1 
+ ================================================== 
+ ====================================================================================================================================
+
+ ================================== M O D E L  S O L U T I O N  S U M M A R Y  O U T P U T ==========================================
+
+ ====================================================================================================================================
+    Solution Summary: Input BDF Entry Summary Information:
+
+     INPUT BDF MODEL SUMMARY  (Totals for ALL BEGIN BULK sections)
+      ENTRY NAME        NUMBER OF ENTRIES
+      ----------        -----------------
+      CBEAM                            25
+      CONM1                            25
+      FORCE                             1
+      GRID                             26
+      MAT1                              1
+      PBEAM                            25
+      SPC1                              1
+
+ ====================================================================================================================================
+    Solution Summary: Solution Model Element Summary Information:
+
+       FEM summary: the solution model contains the following element types
+        25 BEAM     (EST typeID:  2) elements
+        25 CONM1    (EST typeID: 29) elements
+        50 TOTAL    number of elements.
+
+ ====================================================================================================================================
+    Solution Summary: Displacement DOF Sets Summary Information:
+
+                                        **** U S E T   D E F I N I T I O N   T A B L E ****
+ DOF SET              SB       SG        L        A        F        N        G        R        O        S        M         
+ DOF SET TOTALS        6        0      150      150      150      156      156        0        0        6        0
+
+ ====================================================================================================================================
+    Solution Summary: Model Summary Information:
+     Number of Structure GRIDs              :          26
+     Number of Nonzero K-matrix terms       :         759
+     Number of Solution Equations           :         150
+
+ ====================================================================================================================================
+    Solution Summary: HPC Solver Statistics Summary Information:
+      Solver:MSCLDL   (called by DCMP     DMAP module in SEKRRS   subDMAP for data block name KLL     )
+        Type of matrix terms          : Real, Single Precision   
+        Matrix form                   : Symmetric   
+        Number of equations           :          150
+        Memory available              :         1123 MB
+        Memory estimate for solution  :            1 MB
+        Memory used                   :            2 MB
+        Memory estimate to avoid spill:            2 MB
+      Solver:MSCFBS   (called by DCMP     DMAP module in SEKRRS   subDMAP for data block name SCRATCH )
+        Type of matrix terms          : Real, Single Precision   
+        Matrix form                   : Symmetric   
+        Number of equations           :          150
+        Memory available              :         1123 MB
+        FBS Method used               :           S2
+        FBS Number of RHS columns     :            1
+        FBS Number of passes needed   :            1
+      Solver:MSCFBS   (called by DCMP     DMAP module in SEKRRS   subDMAP for data block name SCRATCH )
+        Type of matrix terms          : Real, Single Precision   
+        Matrix form                   : Symmetric   
+        Number of equations           :          150
+        Memory available              :         1123 MB
+        FBS Method used               :           S2
+        FBS Number of RHS columns     :            1
+        FBS Number of passes needed   :            1
+      Solver:MSCFBS   (called by DCMP     DMAP module in SEKRRS   subDMAP for data block name SCRATCH )
+        Type of matrix terms          : Real, Single Precision   
+        Matrix form                   : Symmetric   
+        Number of equations           :          150
+        Memory available              :         1123 MB
+        FBS Method used               :           S2
+        FBS Number of RHS columns     :            1
+        FBS Number of passes needed   :            1
+      Solver:MSCFBS   (called by DCMP     DMAP module in SEKRRS   subDMAP for data block name SCRATCH )
+        Type of matrix terms          : Real, Single Precision   
+        Matrix form                   : Symmetric   
+        Number of equations           :          150
+        Memory available              :         1123 MB
+        FBS Method used               :           S2
+        FBS Number of RHS columns     :            1
+        FBS Number of passes needed   :            1
+
+ ====================================================================================================================================
+    Solution Summary: Disk Utilization Information:
+
+ *** TOTAL DISK USAGE STATISTICS ***
+
+ +------------- MAXIMUM DISK USAGE -------------+
+    HIWATER               SUB_DMAP        DMAP
+       (MB)   DAY_TIME      NAME         MODULE
+      4.250   18:08:45    PREFACE     0  PREFACE 
+
+
+ *** DATABASE USAGE STATISTICS ***
+ 
+ +---------------- LOGICAL DBSETS ----------------+   +------------------------------ DBSET FILES -----------------------------+
+  DBSET     ALLOCATED  BLOCKSIZE       USED   USED     FILE      ALLOCATED  ALLOCATED    HIWATER       HIWATER  I/O TRANSFERRED
+             (BLOCKS)    (WORDS)   (BLOCKS)      %                (BLOCKS)       (GB)   (BLOCKS)          (GB)             (GB)
+ 
+  MASTER        25000      65536         68   0.27     MASTER        25000      12.21         72         0.035            0.002
+  DBALL      20000000      65536         12   0.00     DBALL      20000000    9765.62         12         0.006            0.002
+  OBJSCR        25000       8192        493   1.97     OBJSCR        25000       1.53        493         0.030            0.000
+  SCRATCH    40000100      65536         27   0.00    (MEMFILE         100       0.05        100         0.049            0.000)
+                                                       SCRATCH    20000000    9765.62          6         0.003            0.000
+                                                       SCR300     20000000    9765.62          8         0.004            0.000
+                                                                                                                 ==============
+                                                                                                          TOTAL:          0.006
+ 
+ *** BUFFER POOL AND SCRATCH 300 USAGE STATISTICS ***
+ 
+ +----------------- BUFFER POOL -----------------+      +-------------------------- SCRATCH 300 --------------------------+ 
+   OPTION        BLOCKS      BLOCKS      BLOCKS           OPTION    HIWATER               SUB_DMAP        DMAP     OPN/CLS
+  SELECTED     ALLOCATED     REUSED     RELEASED         SELECTED  (BLOCKS)   DAY_TIME      NAME         MODULE    COUNTER
+   BPOOL4         13644       30474           0              2           8    18:08:46    SEKRRS    168  DCMP          0
+
+ ====================================================================================================================================
+    Solution Summary: Total Job Statistics Summary Information:
+ 
+      Total job I/O transferred in GB    :        0.293
+      Total job DB I/O transferred in GB :        0.006
+      Total job elapsed time             : 0hrs 0min 1sec
+ ====================================================================================================================================
+
+ 18:08:46  11 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol101_conm1.dat"
+ 18:08:46  NSEXIT: EXIT(0)
+ 18:08:46  Analysis complete  0
+Real:        2.671 seconds ( 0:00:02.671)
+User:        0.890 seconds ( 0:00:00.890)
+Sys:         0.406 seconds ( 0:00:00.406)
+MSC Nastran finished Tue Sep 23 18:08:47 WEDT 2025 
