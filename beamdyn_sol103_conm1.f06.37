@@ -1,0 +1,612 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2024 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *     Version 2024.2-af13cbfd     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          NOV 21, 2024           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *  MODEL Xeon/3450 (5CG4463P42)   * *
+                                              * * Windows 10 Enterprise 6.2 9200  * *
+                                              * *        Compiled for 8664        * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+1News file
+  
+               Welcome to MSC Nastran 2024.2
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. Key enhancements in
+   Version 2024.2 are summarized below. Addtional details can be found in
+   the MSC Nastran Version 2024.2 Release Guide.
+  
+     MSC Nastran 2024.2 Features and Enhancements
+  
+     High Performance Computing (HPC) for NVH
+     - Improved performance for ACMS, especially for large solid models
+     - Improved performance for FASTFR, particularly when structural
+       damping is present
+     - General performance improvement for high frequency acoustics
+     - Improved diagnostics for linear solution available in LOG file
+       Information includes solver selection and memory use
+  
+     Topology Optimization
+     - SOL 200 NEO Topology Optimization for generative design with support for
+       manufacturing constraints. Optimized CAD geometry and mesh output for
+       every design cycle.
+  
+     High Performance SOL 400 (NLPERF)
+     - Support Lagrange Multiplier for MPC and Rigid Elements
+     - Controls distributed surface load computation for shell elements with
+       offsets and the use of an additional enhancement for computing the
+       average nodal normal vector
+     - GPFORCE and ESE can be requested in ANALYSIS=NLSTAT
+     - OUTCTRL={STD,SOLUTION,INTERM} keyword in NLOPRM case control statement is
+       available
+  
+     Linear
+     - Global-Local analysis in SOL 101 and 103. Creates a local model based on
+       a user-provided definition (CARVE) and replaces the rest of the model
+       with an external superelement. Allows for detailed local studies without
+       having to solve the entire model every time.
+     - Multiple Output requests of the same result item in linear solutions
+       (SOL 101, 103, 108, 109, 111, 112) through the use of repeated output
+       request subcase, REPCASE.
+  
+     NVH (Vibroacoustics)
+     Automated skinning of solid elements free surfaces
+     - Identify residual structure solid elements' exposed surfaces, and create
+       required triangular or quadilateral shell elements on top of it
+     - Stress and strain data recovery available for skinned shell elements
+     - Supported in Linear solution sequences
+     Acoustic Fluid Grid Participation Factors from fluid skin grids in touch
+       with either structure wetted surface or trim components
+1    Mass matrix support in Cohesive elements
+     - supports mass matrix in cohesive elements for glue line modeling.
+     Improved solution time and reduced disk space for Nastran-PEM models
+  
+     Aeroelasticity
+     - Flutter Perturbation Step available in SOL 400 Nonlinear
+  
+     HDF5 hybrid precision output file
+     - Allows writing of 32-bit real and 64-bit integer data to H5 file
+     - Combines small size of 32-bit and high value domain ID of 64-bit
+  
+      Inertia Relief with External Superelements
+     - For external superelements, inertia relief is now supported for the
+       following three options: EXTSEOUT MATDB(MATRIXDB), EXTSEOUT DMIGDB, and
+       EXTSEOUT DMIGOP2 for INREL = -1 and INREL = -2.
+     - For the above three external superelement options, checks are now
+       performed internally to insure that the inertia relief specifications
+       between external superelement and the assembly run are consistent.
+     - When verifying results, the user is reminded that with inertia relief,
+       the displacements are relative displacements and may not in any way match
+       the results of say a model containing all the external superelements
+       processed as standard part superelements. However, element results
+       such as force or stress should match closely between the two types of runs
+       if consistently modeled.
+  
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     The documentation set includes the following:
+  
+         1.  MSC Nastran 2024.2 Installation and Operations Guide
+         2.  MSC Nastran 2024.2 Quick Reference Guide
+         3.  MSC Nastran 2024.2 Release Guide
+         4.  MSC Nastran 2024.2 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2024.2 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2024.2 Superelements User's Guide
+         7.  MSC Nastran 2024.2 Rotordynamics User's Guide
+         8.  MSC Nastran 2024.2 Demonstration Problems Manual
+         9.  MSC Nastran 2024.2 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2024.2 Design Sensitivity and Optimization
+        11.  MSC Nastran 2024.2 Nonlinear User's Guide SOL 400
+1       12.  MSC Nastran 2024.2 DMAP Programmer's Guide
+        13.  MSC Nastran 2024.2 High Performance Computing User's Guide
+        14.  MSC Nastran 2024.2 New Verification Manual
+        15.  MSC Nastran 2024.2 DEMATD Guide
+        16.  MSC Nastran 2024.2 Explicit Nonlinear (SOL 700) User's Guide
+        17.  MSC Nastran 2024.2 ACMS User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://hexagon.com/support-success/manufacturing-intelligence/
+      design-engineering-support/training-materials
+  
+1                                                                         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     $ SYSFIELD=SCR*(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.SO
+     $ SYSFIELD=DBALL(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.S
+     NASTRAN BUFFSIZE=65537 $(C:/PROGRAM FILES/MSC.SOFTWARE/MSC_NASTRAN/2024.2/CONF/N
+1                                                                         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 103                                                                                 
+     CEND                                                                                    
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      TITLE = BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1                    
+                  2      SUBCASE 1                                                                               
+                  3          SPC = 1                                                                             
+                  4          DISPLACEMENT(PLOT,PRINT) = ALL                                                      
+                  5          METHOD = 1                                                                          
+                  6          ELSUM = ALL                                                                         
+                  7                                                                                              
+                  8      BEGIN BULK                                                                              
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                              I N P U T   B U L K   D A T A   E C H O                                               
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+ *** USER INFORMATION MESSAGE 9991 (SDLWIF)
+     Messages are being generated at include level 0.
+     File: c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol103_conm1.dat
+ *** USER WARNING MESSAGE 9994 (BULFUN)
+     MAT1 with MID=1 near line 14
+     User information:  Material has unreasonable or inconsistent values of E, G or NU.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                    1-        CBEAM   1       1       1       2       0.      1.      0.
+                    2-        CBEAM   2       2       2       3       0.      1.      0.
+                    3-        CBEAM   3       3       3       4       0.      1.      0.
+                    4-        CBEAM   4       4       4       5       0.      1.      0.
+                    5-        CBEAM   5       5       5       6       0.      1.      0.
+                    6-        CBEAM   6       6       6       7       0.      1.      0.
+                    7-        CBEAM   7       7       7       8       0.      1.      0.
+                    8-        CBEAM   8       8       8       9       0.      1.      0.
+                    9-        CBEAM   9       9       9       10      0.      1.      0.
+                   10-        CBEAM   10      10      10      11      0.      1.      0.
+                   11-        CBEAM   11      11      11      12      0.      1.      0.
+                   12-        CBEAM   12      12      12      13      0.      1.      0.
+                   13-        CBEAM   13      13      13      14      0.      1.      0.
+                   14-        CBEAM   14      14      14      15      0.      1.      0.
+                   15-        CBEAM   15      15      15      16      0.      1.      0.
+                   16-        CBEAM   16      16      16      17      0.      1.      0.
+                   17-        CBEAM   17      17      17      18      0.      1.      0.
+                   18-        CBEAM   18      18      18      19      0.      1.      0.
+                   19-        CBEAM   19      19      19      20      0.      1.      0.
+                   20-        CBEAM   20      20      20      21      0.      1.      0.
+                   21-        CBEAM   21      21      21      22      0.      1.      0.
+                   22-        CBEAM   22      22      22      23      0.      1.      0.
+                   23-        CBEAM   23      23      23      24      0.      1.      0.
+                   24-        CBEAM   24      24      24      25      0.      1.      0.
+                   25-        CBEAM   25      25      25      26      0.      1.      0.
+                   26-        CONM1  *1000            1               0               3564.           *
+                   27-        *       0.              3564.           0.              0.              *
+                   28-        *       3564.           0.              0.              -20.03          *
+                   29-        *       11610.          0.              0.              .2351           *
+                   30-        *       .09063          11610.          20.03           -.2351          *
+                   31-        *       0.              0.              0.              23210.
+                   32-        CONM1  *1001            2               0               3375.           *
+                   33-        *       0.              3375.           0.              0.              *
+                   34-        *       3375.           0.              0.              105.6           *
+                   35-        *       11030.          0.              0.              -1.308          *
+                   36-        *       -4.128          11040.          -105.6          1.308           *
+                   37-        *       0.              0.              0.              22070.
+                   38-        CONM1  *1002            3               0               3157.           *
+                   39-        *       0.              3157.           0.              0.              *
+                   40-        *       3157.           0.              0.              191.4           *
+                   41-        *       10270.          0.              0.              -6.585          *
+                   42-        *       -21.25          10010.          -191.4          6.585           *
+                   43-        *       0.              0.              0.              20270.
+                   44-        CONM1  *1003            4               0               2913.           *
+                   45-        *       0.              2913.           0.              0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     6
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                   46-        *       2913.           0.              0.              241.1           *
+                   47-        *       9344.           0.              0.              -12.62          *
+                   48-        *       -47.57          8595.           -241.1          12.62           *
+                   49-        *       0.              0.              0.              17940.
+                   50-        CONM1  *1004            5               0               2687.           *
+                   51-        *       0.              2687.           0.              0.              *
+                   52-        *       2687.           0.              0.              288.            *
+                   53-        *       8514.           0.              0.              -16.68          *
+                   54-        *       -70.48          7368.           -288.           16.68           *
+                   55-        *       0.              0.              0.              15880.
+                   56-        CONM1  *1005            6               0               5846.           *
+                   57-        *       0.              5846.           0.              0.              *
+                   58-        *       5846.           0.              0.              901.4           *
+                   59-        *       18270.          0.              0.              -54.25          *
+                   60-        *       -252.5          14230.          -901.4          54.25           *
+                   61-        *       0.              0.              0.              32500.
+                   62-        CONM1  *1006            7               0               5101.           *
+                   63-        *       0.              5101.           0.              0.              *
+                   64-        *       5101.           0.              0.              1280.           *
+                   65-        *       15250.          0.              0.              -80.37          *
+                   66-        *       -384.2          9800.           -1280.          80.37           *
+                   67-        *       0.              0.              0.              25050.
+                   68-        CONM1  *1007            8               0               8029.           *
+                   69-        *       0.              8029.           0.              0.              *
+                   70-        *       8029.           0.              0.              3322.           *
+                   71-        *       24000.          0.              0.              -170.           *
+                   72-        *       -786.3          10950.          -3322.          170.            *
+                   73-        *       0.              0.              0.              34940.
+                   74-        CONM1  *1008            9               0               5029.           *
+                   75-        *       0.              5029.           0.              0.              *
+                   76-        *       5029.           0.              0.              3304.           *
+                   77-        *       16310.          0.              0.              -130.9          *
+                   78-        *       -537.2          4191.           -3304.          130.9           *
+                   79-        *       0.              0.              0.              20500.
+                   80-        CONM1  *1009            10              0               3510.           *
+                   81-        *       0.              3510.           0.              0.              *
+                   82-        *       3510.           0.              0.              2891.           *
+                   83-        *       12000.          0.              0.              -113.1          *
+                   84-        *       -366.4          2179.           -2891.          113.1           *
+                   85-        *       0.              0.              0.              14180.
+                   86-        CONM1  *1010            11              0               2969.           *
+                   87-        *       0.              2969.           0.              0.              *
+                   88-        *       2969.           0.              0.              2629.           *
+                   89-        *       9984.           0.              0.              -98.44          *
+                   90-        *       -248.8          1382.           -2629.          98.44           *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     7
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                   91-        *       0.              0.              0.              11370.
+                   92-        CONM1  *1011            12              0               2756.           *
+                   93-        *       0.              2756.           0.              0.              *
+                   94-        *       2756.           0.              0.              2391.           *
+                   95-        *       8341.           0.              0.              -81.29          *
+                   96-        *       -168.1          1050.           -2391.          81.29           *
+                   97-        *       0.              0.              0.              9390.
+                   98-        CONM1  *1012            13              0               2609.           *
+                   99-        *       0.              2609.           0.              0.              *
+                  100-        *       2609.           0.              0.              2147.           *
+                  101-        *       6911.           0.              0.              -64.14          *
+                  102-        *       -123.3          804.1           -2147.          64.14           *
+                  103-        *       0.              0.              0.              7715.
+                  104-        CONM1  *1013            14              0               2453.           *
+                  105-        *       0.              2453.           0.              0.              *
+                  106-        *       2453.           0.              0.              1922.           *
+                  107-        *       5768.           0.              0.              -49.32          *
+                  108-        *       -100.5          616.2           -1922.          49.32           *
+                  109-        *       0.              0.              0.              6384.
+                  110-        CONM1  *1014            15              0               2289.           *
+                  111-        *       0.              2289.           0.              0.              *
+                  112-        *       2289.           0.              0.              1708.           *
+                  113-        *       4771.           0.              0.              -44.73          *
+                  114-        *       -85.55          459.3           -1708.          44.73           *
+                  115-        *       0.              0.              0.              5230.
+                  116-        CONM1  *1015            16              0               2130.           *
+                  117-        *       0.              2130.           0.              0.              *
+                  118-        *       2130.           0.              0.              1494.           *
+                  119-        *       3886.           0.              0.              -46.8           *
+                  120-        *       -74.02          336.1           -1494.          46.8            *
+                  121-        *       0.              0.              0.              4222.
+                  122-        CONM1  *1016            17              0               1924.           *
+                  123-        *       0.              1924.           0.              0.              *
+                  124-        *       1924.           0.              0.              1178.           *
+                  125-        *       2873.           0.              0.              -47.19          *
+                  126-        *       -57.04          244.6           -1178.          47.19           *
+                  127-        *       0.              0.              0.              3118.
+                  128-        CONM1  *1017            18              0               1660.           *
+                  129-        *       0.              1660.           0.              0.              *
+                  130-        *       1660.           0.              0.              755.1           *
+                  131-        *       1768.           0.              0.              -44.59          *
+                  132-        *       -35.14          176.8           -755.1          44.59           *
+                  133-        *       0.              0.              0.              1945.
+                  134-        CONM1  *1018            19              0               1416.           *
+                  135-        *       0.              1416.           0.              0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     8
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  136-        *       1416.           0.              0.              442.8           *
+                  137-        *       1015.           0.              0.              -42.46          *
+                  138-        *       -19.94          125.7           -442.8          42.46           *
+                  139-        *       0.              0.              0.              1141.
+                  140-        CONM1  *1019            20              0               1180.           *
+                  141-        *       0.              1180.           0.              0.              *
+                  142-        *       1180.           0.              0.              280.8           *
+                  143-        *       632.7           0.              0.              -40.35          *
+                  144-        *       -12.99          84.87           -280.8          40.35           *
+                  145-        *       0.              0.              0.              717.6
+                  146-        CONM1  *1020            21              0               903.5           *
+                  147-        *       0.              903.5           0.              0.              *
+                  148-        *       903.5           0.              0.              179.2           *
+                  149-        *       398.1           0.              0.              -33.03          *
+                  150-        *       -8.307          52.52           -179.2          33.03           *
+                  151-        *       0.              0.              0.              450.6
+                  152-        CONM1  *1021            22              0               625.3           *
+                  153-        *       0.              625.3           0.              0.              *
+                  154-        *       625.3           0.              0.              115.9           *
+                  155-        *       242.7           0.              0.              -22.06          *
+                  156-        *       -4.866          30.13           -115.9          22.06           *
+                  157-        *       0.              0.              0.              272.8
+                  158-        CONM1  *1022            23              0               407.            *
+                  159-        *       0.              407.            0.              0.              *
+                  160-        *       407.            0.              0.              80.23           *
+                  161-        *       148.7           0.              0.              -13.05          *
+                  162-        *       -2.901          15.79           -80.23          13.05           *
+                  163-        *       0.              0.              0.              164.5
+                  164-        CONM1  *1023            24              0               260.8           *
+                  165-        *       0.              260.8           0.              0.              *
+                  166-        *       260.8           0.              0.              56.02           *
+                  167-        *       92.38           0.              0.              -7.483          *
+                  168-        *       -1.808          7.432           -56.02          7.483           *
+                  169-        *       0.              0.              0.              99.81
+                  170-        CONM1  *1024            25              0               116.5           *
+                  171-        *       0.              116.5           0.              0.              *
+                  172-        *       116.5           0.              0.              24.21           *
+                  173-        *       36.14           0.              0.              -2.789          *
+                  174-        *       -.7366          2.236           -24.21          2.789           *
+                  175-        *       0.              0.              0.              38.38
+                  176-        EIGRL   1       0.      200.
+                  177-        GRID   *1                               0.              0.              *
+                  178-        *       0.
+                  179-        GRID   *2                               1.17            0.              *
+                  180-        *       0.
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE     9
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  181-        GRID   *3                               2.34            0.              *
+                  182-        *       0.
+                  183-        GRID   *4                               3.51            0.              *
+                  184-        *       0.
+                  185-        GRID   *5                               4.68            0.              *
+                  186-        *       0.
+                  187-        GRID   *6                               5.85            0.              *
+                  188-        *       0.
+                  189-        GRID   *7                               8.775           0.              *
+                  190-        *       0.
+                  191-        GRID   *8                               11.7            0.              *
+                  192-        *       0.
+                  193-        GRID   *9                               17.55           0.              *
+                  194-        *       0.
+                  195-        GRID   *10                              23.4            0.              *
+                  196-        *       0.
+                  197-        GRID   *11                              29.25           0.              *
+                  198-        *       0.
+                  199-        GRID   *12                              35.1            0.              *
+                  200-        *       0.
+                  201-        GRID   *13                              40.95           0.              *
+                  202-        *       0.
+                  203-        GRID   *14                              46.8            0.              *
+                  204-        *       0.
+                  205-        GRID   *15                              52.65           0.              *
+                  206-        *       0.
+                  207-        GRID   *16                              58.5            0.              *
+                  208-        *       0.
+                  209-        GRID   *17                              64.35           0.              *
+                  210-        *       0.
+                  211-        GRID   *18                              70.2            0.              *
+                  212-        *       0.
+                  213-        GRID   *19                              76.05           0.              *
+                  214-        *       0.
+                  215-        GRID   *20                              81.9            0.              *
+                  216-        *       0.
+                  217-        GRID   *21                              87.75           0.              *
+                  218-        *       0.
+                  219-        GRID   *22                              93.6            0.              *
+                  220-        *       0.
+                  221-        GRID   *23                              99.45           0.              *
+                  222-        *       0.
+                  223-        GRID   *24                              105.3           0.              *
+                  224-        *       0.
+                  225-        GRID   *25                              111.15          0.              *
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE    10
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  226-        *       0.
+                  227-        GRID   *26                              117.            0.              *
+                  228-        *       0.
+                  229-        MAT1    1       1.      .3
+                  230-        MDLPRM  HDF5    1
+                  231-        PARAM   POST    -2
+                  232-        PARAM   PRTMAX  YES
+                  233-        PBEAM*  1               1               4.490121E+10    1.459789E+11    +
+                  234-        *       1.464335E+11    -2.549E+08      8.53874E+10     0.0E+00
+                  235-        PBEAM*  2               1               4.266050E+10    1.387709E+11    +
+                  236-        *       1.400732E+11    1.327E+09       8.11959E+10     0.0E+00
+                  237-        PBEAM*  3               1               4.011982E+10    1.292486E+11    +
+                  238-        *       1.282614E+11    2.406E+09       7.45397E+10     0.0E+00
+                  239-        PBEAM*  4               1               3.735449E+10    1.177539E+11    +
+                  240-        *       1.119398E+11    3.025E+09       6.57532E+10     0.0E+00
+                  241-        PBEAM*  5               1               3.489272E+10    1.074550E+11    +
+                  242-        *       9.817170E+10    3.616E+09       5.78345E+10     0.0E+00
+                  243-        PBEAM*  6               1               3.147926E+10    9.257141E+10    +
+                  244-        *       8.033208E+10    4.573E+09       4.62772E+10     0.0E+00
+                  245-        PBEAM*  7               1               2.827564E+10    7.761880E+10    +
+                  246-        *       6.047476E+10    6.872E+09       3.19235E+10     0.0E+00
+                  247-        PBEAM*  8               1               2.500248E+10    6.345327E+10    +
+                  248-        *       4.012587E+10    9.610E+09       1.67525E+10     0.0E+00
+                  249-        PBEAM*  9               1               2.155800E+10    4.666104E+10    +
+                  250-        *       2.490442E+10    9.938E+09       5.42235E+09     0.0E+00
+                  251-        PBEAM*  10              1               2.046205E+10    3.724817E+10    +
+                  252-        *       1.871787E+10    9.091E+09       1.89710E+09     0.0E+00
+                  253-        PBEAM*  11              1               2.092012E+10    3.317530E+10    +
+                  254-        *       1.448904E+10    8.655E+09       8.26591E+08     0.0E+00
+                  255-        PBEAM*  12              1               2.157589E+10    2.856972E+10    +
+                  256-        *       1.201315E+10    8.096E+09       5.44132E+08     0.0E+00
+                  257-        PBEAM*  13              1               2.170322E+10    2.415285E+10    +
+                  258-        *       9.600644E+09    7.399E+09       4.13003E+08     0.0E+00
+                  259-        PBEAM*  14              1               2.120025E+10    2.046737E+10    +
+                  260-        *       7.543671E+09    6.646E+09       3.25227E+08     0.0E+00
+                  261-        PBEAM*  15              1               2.035149E+10    1.715206E+10    +
+                  262-        *       5.721440E+09    5.946E+09       2.53102E+08     0.0E+00
+                  263-        PBEAM*  16              1               1.942432E+10    1.416334E+10    +
+                  264-        *       4.248682E+09    5.225E+09       1.94291E+08     0.0E+00
+                  265-        PBEAM*  17              1               1.823239E+10    1.055984E+10    +
+                  266-        *       3.129618E+09    4.140E+09       1.48132E+08     0.0E+00
+                  267-        PBEAM*  18              1               1.669643E+10    6.508416E+09    +
+                  268-        *       2.286594E+09    2.556E+09       1.11802E+08     0.0E+00
+                  269-        PBEAM*  19              1               1.495721E+10    3.763053E+09    +
+                  270-        *       1.634961E+09    1.393E+09       8.34172E+07     0.0E+00
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE    11
+                                                                                                                                    
+0                                                                                                                                   
+                                                  S O R T E D   B U L K   D A T A   E C H O                                         
+                 ENTRY                                                                                                              
+                 COUNT        .   1  ..   2  ..   3  ..   4  ..   5  ..   6  ..   7  ..   8  ..   9  ..  10  .                      
+                  271-        PBEAM*  20              1               1.253213E+10    2.383178E+09    +
+                  272-        *       1.095029E+09    8.193E+08       6.19878E+07     0.0E+00
+                  273-        PBEAM*  21              1               9.156642E+09    1.488487E+09    +
+                  274-        *       6.521700E+08    4.897E+08       4.53129E+07     0.0E+00
+                  275-        PBEAM*  22              1               5.915775E+09    8.916368E+08    +
+                  276-        *       3.546500E+08    3.101E+08       3.07183E+07     0.0E+00
+                  277-        PBEAM*  23              1               3.598453E+09    5.519343E+08    +
+                  278-        *       1.781600E+08    2.254E+08       1.83740E+07     0.0E+00
+                  279-        PBEAM*  24              1               1.939328E+09    3.259047E+08    +
+                  280-        *       7.482456E+07    1.611E+08       1.01115E+07     0.0E+00
+                  281-        PBEAM*  25              1               6.606617E+08    1.164486E+08    +
+                  282-        *       1.829095E+07    6.926E+07       3.43829E+06     0.0E+00
+                  283-        SPC1    1       123456  1
+                              ENDDATA
+                        TOTAL COUNT= 284
+                              INPUT BULK DATA ENTRY COUNT = 289
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE    12
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                        CBEAM                       25
+                                        CONM1                       25
+                                        EIGRL                        1
+                                         GRID                       26
+                                         MAT1                        1
+                                       MDLPRM                        1
+                                        PARAM                        2
+                                        PBEAM                       25
+                                         SPC1                        1
+
+ *** USER FATAL MESSAGE 316 (IFPDRV)
+     ILLEGAL DATA ON BULK DATA ENTRY PBEAM
+ PBEAM  *24              1               1.939328E+09    3.259047E+08     +00001B
+ *+00001B7.482456E+07    1.611E+08       1.01115E+07     0.0E+00          +00001C
+ *** USER FATAL MESSAGE 316 (IFPDRV)
+     ILLEGAL DATA ON BULK DATA ENTRY PBEAM
+ PBEAM  *25              1               6.606617E+08    1.164486E+08     +00001D
+ *+00001D1.829095E+07    6.926E+07       3.43829E+06     0.0E+00          +00001E
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+ ^^^     
+ *** USER FATAL MESSAGE 9002 (SUBDMAP IFPS)
+     ERROR(S) ENCOUNTERED IN THE MAIN BULK DATA SECTION
+     SEE MESSAGES ABOVE. ERROR ENCOUNTERED IN MODULE IFP,
+ ^^^     
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE    13
+                                                                                                                                    
+0                                                                                                                                   
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+ *** USER INFORMATION MESSAGE 4425 (PRTPRN)
+     ONE OR MORE FATAL ERRORS HAVE OCCURRED.  THERE MAY BE MORE ERROR MESSAGES IN THE PRECEDING OUTPUT
+1    BEAMDYN -> NASTRAN SOL 103 MODAL ANALYSIS EXAMPLE WITH CONM1         SEPTEMBER  29, 2025  MSC Nastran 11/21/24   PAGE    14
+                                                                                                                                    
+0                                                                                                                                   
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

@@ -1,0 +1,262 @@
+$# Session file patran.ses.01 started recording at 29-Sep-25 09:39:37
+$# Build: 30.2.000613-77f54e2e Wed Dec 04 20:14:22 CUT 2024
+$# Recorded by: Patran 2024.2
+uil_file_open.go( "C:\Users\mathismiroux\OneDrive - Delft University of Te" // @
+"chnology\Documents\PhD_code\Structural_code\test.db" )
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# Appending to existing journal file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of Technology\Documents\PhD_code\Structural_code\test.db.jou at 
+$# 29-Sep-25 09:39:38
+$# FLEXlm initialization complete.  Acquiring license(s)...
+$# License File: 
+$# 27001@patran-1.lic.tudelft.nl;27001@patran-2.lic.tudelft.nl;27001@patran-3.
+$# lic.tudelft.nl
+$# Patran 2024.2 has obtained 13 concurrent license(s) from FLEXlm per a 
+$# request to execute on Windows node 5CG4463P42(00249b7f7fe2) (Windows 6.2 (
+$# Build 9200: Service Pack 0)) at 29-Sep-25 09:39:39.
+$# Begin Reading RMB Menu definitions
+$# Done Reading RMB Menu definitions
+$# Loading dynamic library C:\Program 
+$# Files\MSC.Software\Patran_x64\20242\loads_browser.dll
+$# MSC.SMDL shared library 'Loads Browser', Version 2024, Revision 3, Patch 0,
+$#  has been loaded for: MSC.Patran.
+$# Translating OP2 file "C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\beamdyn_sol103_conm1.op2" to 
+$# H5 file "C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code/beamdyn_sol103_conm1.op2.h5"!
+op2_to_hdf5_translate( "C:\Users\mathismiroux\OneDrive - Delft University " // @
+"of Technology\Documents\PhD_code\Structural_code\beamdyn_sol103_conm1.op2",  @
+FALSE, "C:\Users\mathismiroux\OneDrive - Delft University of Technology\Do" // @
+"cuments\PhD_code\Structural_code/beamdyn_sol103_conm1.op2.h5", TRUE )
+$# Loading dynamic library C:\Program 
+$# Files\MSC.Software\Patran_x64\20242\bin\exe\op2hdf5.dll
+$# Unloading dynamic library C:\Program 
+$# Files\MSC.Software\Patran_x64\20242\bin\exe\op2hdf5.dll
+$# Warning reported from application Results
+$#     Translation of the OP2 file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of 
+$# Technology\Documents\PhD_code\Structural_code\beamdyn_sol103_conm1.op2 to 
+$# an H5 file failed. Please produce and use the H5 results file for better 
+$# post-processing.
+msc_dra_init_stream(  )
+msc_dra_add_param( "DATABASE", "C:\Users\mathismiroux\OneDrive - Delft Uni" // @
+"versity of Technology\Documents\PhD_code\Structural_code\test.db" )
+msc_dra_add_param( "JOBNAME", "test" )
+msc_dra_add_param( "RESULTS FILE", "C:\Users\mathismiroux\OneDrive - Delft" // @
+" University of Technology\Documents\PhD_code\Structural_code\beamdyn_sol1" // @
+"03_conm1.h5" )
+msc_dra_add_param( "OBJECT", "Result Entities" )
+msc_dra_add_param( "ANALYSIS TYPE", "Structural" )
+msc_dra_add_param( "DIVISION TOLERANCE", "1.0E-8" )
+msc_dra_add_param( "NUMERICAL TOLERANCE", "1.0E-4" )
+msc_dra_add_param( "MODEL TOLERANCE", "0.0049999999" )
+msc_dra_add_param( "OBJECTIVE FUNCTION", "ON" )
+msc_dra_add_param( "DESIGN CONSTRAINTS", "ON" )
+msc_dra_add_param( "DESIGN VARIABLES", "ON" )
+msc_dra_add_param( "COMBINE RESULTCASES", "ON" )
+msc_dra_add_param( "COMBINE MODULES", "OFF" )
+msc_dra_add_param( "SPLINE IMPORT DATA", "OFF" )
+msc_dra_add_param( "SPLINE POST DATA", "ZERO" )
+msc_dra_add_param( "ROTATIONAL NODAL RESULTS", "ON" )
+msc_dra_add_param( "STRESS/STRAIN INVARIANTS", "OFF" )
+msc_dra_add_param( "PRINCIPAL DIRECTIONS", "OFF" )
+msc_dra_add_param( "CREATE P-ORDER FIELD", "" )
+msc_dra_add_param( "ELEMENT RESULTS POSITIONS", "Both        " )
+msc_dra_add_param( "NASTRAN VERSION", "" )
+msc_dra_add_param( "TITLE DESCRIPTION", "ON" )
+msc_dra_finish_stream(  )
+analysis_import( "MSC.Nastran", "test", "Attach HDF5 Results File",  @
+"C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents" // @
+"\PhD_code\Structural_code\beamdyn_sol103_conm1.h5", TRUE )
+$# Attaching Direct Results Access file: "C:\Users\mathismiroux\OneDrive - 
+$# Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\beamdyn_sol103_conm1.h5"
+$# *** Begin: Attach Result File ***
+$# Processing result load case: SC1:
+$# Processing result sub-case: Mode 1: Freq.=0.562673
+$# Processing result sub-case: Mode 2: Freq.=0.810828
+$# Processing result sub-case: Mode 3: Freq.=1.67267
+$# Processing result sub-case: Mode 4: Freq.=2.57756
+$# Processing result sub-case: Mode 5: Freq.=2.61101
+$# Processing result sub-case: Mode 6: Freq.=3.47417
+$# Processing result sub-case: Mode 7: Freq.=5.00318
+$# Processing result sub-case: Mode 8: Freq.=5.34816
+$# Processing result sub-case: Mode 9: Freq.=5.55544
+$# Processing result sub-case: Mode 10: Freq.=7.55009
+$# Processing result sub-case: Mode 11: Freq.=7.91795
+$# Processing result sub-case: Mode 12: Freq.=9.39201
+$# Processing result sub-case: Mode 13: Freq.=9.84722
+$# Processing result sub-case: Mode 14: Freq.=10.6654
+$# Processing result sub-case: Mode 15: Freq.=11.9727
+$# Processing result sub-case: Mode 16: Freq.=13.3391
+$# Processing result sub-case: Mode 17: Freq.=14.1922
+$# Processing result sub-case: Mode 18: Freq.=14.2606
+$# Processing result sub-case: Mode 19: Freq.=15.3693
+$# Processing result sub-case: Mode 20: Freq.=16.3706
+$# Processing result sub-case: Mode 21: Freq.=17.2082
+$# Processing result sub-case: Mode 22: Freq.=17.9136
+$# Processing result sub-case: Mode 23: Freq.=19.1151
+$# Processing result sub-case: Mode 24: Freq.=19.8292
+$# Processing result sub-case: Mode 25: Freq.=20.0348
+$# Processing result sub-case: Mode 26: Freq.=22.0059
+$# Processing result sub-case: Mode 27: Freq.=22.5972
+$# Processing result sub-case: Mode 28: Freq.=23.0278
+$# Processing result sub-case: Mode 29: Freq.=24.4069
+$# Processing result sub-case: Mode 30: Freq.=26.6374
+$# Processing result sub-case: Mode 31: Freq.=26.6967
+$# Processing result sub-case: Mode 32: Freq.=27.6356
+$# Processing result sub-case: Mode 33: Freq.=31.2214
+$# Processing result sub-case: Mode 34: Freq.=33.9547
+$# Processing result sub-case: Mode 35: Freq.=34.0595
+$# Processing result sub-case: Mode 36: Freq.=39.7173
+$# Processing result sub-case: Mode 37: Freq.=42.2225
+$# Processing result sub-case: Mode 38: Freq.=45.9699
+$# Processing result sub-case: Mode 39: Freq.=48.7213
+$# Processing result sub-case: Mode 40: Freq.=51.0858
+$# Processing result sub-case: Mode 41: Freq.=54.719
+$# Processing result sub-case: Mode 42: Freq.=55.0074
+$# Processing result sub-case: Mode 43: Freq.=60.4589
+$# Processing result sub-case: Mode 44: Freq.=63.1722
+$# Processing result sub-case: Mode 45: Freq.=70.0476
+$# Processing result sub-case: Mode 46: Freq.=72.4685
+$# Processing result sub-case: Mode 47: Freq.=74.578
+$# Processing result sub-case: Mode 48: Freq.=78.9055
+$# Processing result sub-case: Mode 49: Freq.=79.4089
+$# Processing result sub-case: Mode 50: Freq.=83.4928
+$# Processing result sub-case: Mode 51: Freq.=87.9013
+$# Processing result sub-case: Mode 52: Freq.=94.4706
+$# Processing result sub-case: Mode 53: Freq.=96.7424
+$# Processing result sub-case: Mode 54: Freq.=105.154
+$# Processing result sub-case: Mode 55: Freq.=106.118
+$# Processing result sub-case: Mode 56: Freq.=107.315
+$# Processing result sub-case: Mode 57: Freq.=120.544
+$# Processing result sub-case: Mode 58: Freq.=121.291
+$# Processing result sub-case: Mode 59: Freq.=124.855
+$# Processing result sub-case: Mode 60: Freq.=130.67
+$# Processing result sub-case: Mode 61: Freq.=135.389
+$# Processing result sub-case: Mode 62: Freq.=140.046
+$# Processing result sub-case: Mode 63: Freq.=150.345
+$# Processing result sub-case: Mode 64: Freq.=154.268
+$# Processing result sub-case: Mode 65: Freq.=155.069
+$# Processing result sub-case: Mode 66: Freq.=163.93
+$# Processing result sub-case: Mode 67: Freq.=166.863
+$# Processing result sub-case: Mode 68: Freq.=170.627
+$# Processing result sub-case: Mode 69: Freq.=176.931
+$# Processing result sub-case: Mode 70: Freq.=195.645
+$# Total execution time in real seconds:        0.000
+$# Total execution time in CPU  seconds:        0.062
+$# *** End:   Attach Result File ***
+ga_view_center_set( 0.074243, -0.014685 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.140236, -0.027739 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.074243, -0.014685 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.000000, 0.000000 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.084440, 0.011014 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.179437, 0.023405 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.286305, 0.037344 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.407842, 0.051719 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.347727, 0.043878 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.294292, 0.036909 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.246794, 0.030713 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.204574, 0.025207 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.167045, 0.020311 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.133686, 0.015960 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.104033, 0.012093 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.077675, 0.008655 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.020167, 0.001153 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.010504, -0.002847 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.024136, -0.004625 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.032565, -0.006732 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.037950, -0.008840 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.041905, -0.010713 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.048232, -0.013710 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.052761, -0.016108 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.034408, -0.013148 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.018095, -0.010516 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.017497, -0.004776 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.028043, -0.003075 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.033486, -0.002349 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.038324, -0.001704 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.048880, -0.000296 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.051904, 0.000121 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.058576, 0.000399 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.066083, 0.000711 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.074528, 0.001063 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.084028, 0.001459 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.094717, 0.001904 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.106741, 0.002405 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.094717, 0.001904 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_aa_set( 166.990738, -63.884529, 161.915573 )
+ga_view_aa_set( 22.050493, -14.863454, -32.073036 )
+$# Warning reported from application Results
+$#     No result selected
+$# Warning reported from application Results
+$#     No result selected
+res_data_load_dbresult( 0, "Nodal", "Scalar", "SC1:",  @
+"A1:Mode 1: Freq.=0.562673", "Eigenvectors", "Rotational", "(NON-LAYERED)",  @
+"MAG", "Default", "DeriveAverage", "All", "ShapeFunc" )
+res_data_title( 0, "Nodal", "Scalar", 1, [ @
+"$POFF@@@$PT: @@@$LCN, @@@$SCN, @@@$PRN, @@@$SRN, @@@$DRVL, @@@$LN "] )
+res_display_fringe_create( "", "FreeFaces", 0, [""], 13, [ @
+"Range:Fri_default_Fringe", "RangeOverwrite:ON", "FringeStyle:Discrete/Smooth" @
+, "Shade:None", "ElemEdge:FreeEdge,Blue,Solid,1", "Shrink:0",  @
+"TitleDisplay:ON", "MinMaxDisplay:ON", "ValueDisplay:OFF", "Filter:None",  @
+"ScaleFactor:1.", "LabelStyle:Exponential, 12, White, 3",  @
+"RelativeToGeom:ORIG"], TRUE )
+res_display_fringe_post( "", 0, "Nodal", TRUE, TRUE )
+$# Error reported in application Results by application Graphics Manager
+$#     No nodes were found in the model.
+$? NO 15200001 
+res_data_load_dbresult( 0, "Nodal", "Scalar", "SC1:",  @
+"A1:Mode 1: Freq.=0.562673", "Eigenvectors", "Rotational", "(NON-LAYERED)",  @
+"MAG", "Default", "DeriveAverage", "All", "ShapeFunc" )
+res_data_title( 0, "Nodal", "Scalar", 1, [ @
+"$POFF@@@$PT: @@@$LCN, @@@$SCN, @@@$PRN, @@@$SRN, @@@$DRVL, @@@$LN "] )
+res_display_fringe_create( "", "FreeFaces", 0, [""], 13, [ @
+"Range:Fri_default_Fringe", "RangeOverwrite:ON", "FringeStyle:Discrete/Smooth" @
+, "Shade:None", "ElemEdge:FreeEdge,Blue,Solid,1", "Shrink:0",  @
+"TitleDisplay:ON", "MinMaxDisplay:ON", "ValueDisplay:OFF", "Filter:None",  @
+"ScaleFactor:1.", "LabelStyle:Exponential, 12, White, 3",  @
+"RelativeToGeom:ORIG"], TRUE )
+res_display_fringe_post( "", 0, "Nodal", TRUE, TRUE )
+$# Error reported in application Results by application Graphics Manager
+$#     No nodes were found in the model.
+$? NO 15200001 

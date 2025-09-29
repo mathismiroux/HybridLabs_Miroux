@@ -1,0 +1,54 @@
+$# Session file patran.ses.02 started recording at 29-Sep-25 09:53:16
+$# Build: 30.2.000613-77f54e2e Wed Dec 04 20:14:22 CUT 2024
+$# Recorded by: Patran 2024.2
+uil_file_open.go( "C:\Users\mathismiroux\OneDrive - Delft University of Te" // @
+"chnology\Documents\PhD_code\Structural_code\test.db" )
+$# Acknowledgement requested from application Database
+$#     There is a problem attempting to open the database you have specified.
+$#  Database Name: C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db
+$#  Product Version: 2024.2  30.2.000613-77f54e2e
+$#  Database Engine Version: pdb.1.0.C15
+$#  Schema Version: PATRAN_3_35
+$#  Last Used On Platform: Windows 64-bit
+$#  
+$#  Acknowledge this message for possible further information about why this 
+$# database cannot be opened.
+$? NO 13100029 
+$# Error reported in application APP by application Database
+$#     Could not open database file. May lack necessary file permissions or 
+$# may be locked by another process. Cannot continue.
+$? NO 13000239 
+$# FLEXlm initialization complete.  Acquiring license(s)...
+$# License File: 
+$# 27001@patran-1.lic.tudelft.nl;27001@patran-2.lic.tudelft.nl;27001@patran-3.
+$# lic.tudelft.nl
+$# Patran 2024.2 has obtained 13 concurrent license(s) from FLEXlm per a 
+$# request to execute on Windows node 5CG4463P42(00249b7f7fe2) (Windows 6.2 (
+$# Build 9200: Service Pack 0)) at 29-Sep-25 09:53:52.
+$# Begin Reading RMB Menu definitions
+$# Done Reading RMB Menu definitions
+$# Loading dynamic library C:\Program 
+$# Files\MSC.Software\Patran_x64\20242\loads_browser.dll
+$# MSC.SMDL shared library 'Loads Browser', Version 2024, Revision 3, Patch 0,
+$#  has been loaded for: MSC.Patran.
+uil_file_open.go( "C:\Users\mathismiroux\OneDrive - Delft University of Te" // @
+"chnology\Documents\PhD_code\Structural_code\test.db" )
+$# Acknowledgement requested from application Database
+$#     There is a problem attempting to open the database you have specified.
+$#  Database Name: C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db
+$#  Product Version: 2024.2  30.2.000613-77f54e2e
+$#  Database Engine Version: pdb.1.0.C15
+$#  Schema Version: PATRAN_3_35
+$#  Last Used On Platform: Windows 64-bit
+$#  
+$#  Acknowledge this message for possible further information about why this 
+$# database cannot be opened.
+$? NO 13100029 
+$# Error reported in application APP by application Database
+$#     Could not open database file. May lack necessary file permissions or 
+$# may be locked by another process. Cannot continue.
+$? NO 13000239 
+uil_file_close.goquit(  )
+$# Session file patran.ses.02 stopped recording at 29-Sep-25 09:54:14
