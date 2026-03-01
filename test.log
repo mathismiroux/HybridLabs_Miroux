@@ -1,0 +1,130 @@
+MSC Nastran V2024.2 (Intel Windows 10 Enterprise 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[3])
+Nastran BUFFSIZE=65537 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[6])
+JID='C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code\test.bdf'
+OUT='./test'
+MEM=8008MB      $ 
+PMEM=0+
+MACH='Intel'
+OPER='Windows 10 Enterprise'
+OSV='6.2 9200'
+MODEL='Xeon/2621 (5CG4463P42)'
+NPROC='12'
+CONFIG=6
+NPROC=12
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/tpl' $(program default)
+SDIR='c:/scratch/test.T22204_0'
+DBS='c:/scratch/test.T22204_0'
+SCR='yes'
+SMEM=100
+BPOOL=2002MB
+DMPMEM=100
+NEWDEL='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/sss'
+DEL='MSCDEF'
+SPOTWELD=''
+EMENGPU=''
+UDR=''
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27001@patran-1.lic.tudelft.nl;27001@patran-2.lic.tudelft.nl;27001@patran-3.lic.tudelft.nl'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=c:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\actran\win64\Actran_2024.2\bin;c:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\MSC.Software\Patran_x64\20242\bin\exe;C:\Program Files\MSC.Software\Patran_x64\20242\Perl_msc\bin;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files\SCA\IFPStar;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files\SCA\AEMDB;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\MSC.Software\Patran_x64\20242\bin\exe;C:\Program Files\MSC.Software\Patran_x64\20242\Perl_msc\bin;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files\SCA\IFPStar;C:\Program Files\MSC.Software\Patran_x64\20242\scasystem_files\SCA\AEMDB;C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\Python312\Scripts\;C:\Program Files\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Program Files\MATLAB\R2022b\bin;C:\Program Files\PowerShell\7\;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\mathismiroux\AppData\Local\Programs\Git\cmd;; 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res 
+Cmd Line:    c:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\win64i8\nastran.exe test.bdf bat=no 
+Current Dir: C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code 
+Time Cmd:    c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    16016 MB
+ Physical memory available:           3435 MB
+ Paging file size:                   40592 MB
+ Paging file size available:         21871 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213496 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         5CG4463P42.home
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Enterprise 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/2626
+ Clock freq.:      2626 MHz
+ Number of CPUs:   12
+ Number of CPUs:   0 ( limited by PBS )
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  16016 MB
+ Virtual memory:   40592 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Wed Nov 12 12:08:01 WEST 2025 
+ 12:08:09  Beginning Analysis
+SCA Kernel 30.0.943723 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_core.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_intel_thread.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_rt.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\MSCblas.dll" has been loaded.
+ 12:08:37  Feature NASTRAN not recognized; attempting temporary MD licensing switch.
+
+ 12:09:31  MSC Authorization Information - System Attributes (1004, 0)
+ 12:09:31  -----------------------------------------------------------
+  Date:          Wed Nov 12 12:09:22 2025
+  MSC Id:        c4474e16e1f4 (ethernet) (Intel)
+  Hostname:      5CG4463P42 (user mathismiroux, display 5CG4463P42)
+  License files: 27001@patran-1.lic.tudelft.nl
+                 27001@patran-2.lic.tudelft.nl
+                 27001@patran-3.lic.tudelft.nl
+  CEID:          4e16e1f4-G18A13FE
+  User:          mathismiroux
+  Display:       5CG4463P42
+  LAPI Version:  LAPI 22.4.0 (CL df5c63aa) (FLEXlm 11.16.3.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        4e16e1f4-GFA7A2EE        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 12:10:16  MSC Authorization Information - Unable to Locate Product License (1025, 0)
+ 12:10:16  --------------------------------------------------------------------------
+ 12:10:16  Unable to locate a license entry for MSC Nastran (3000)
+ 12:10:16  The license server may be unavailable.
+ 12:10:16  Verify that your license server is at FLEXlm version 11.16.3.0 or above
+
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+         USER FATAL MESSAGE     3060.2          1 
+ ================================================== 
+ 12:10:16  NSEXIT: EXIT(20)
+ 12:10:16  Analysis complete  -20
+20
+Real:      129.729 seconds ( 0:02:09.729)
+User:        0.375 seconds ( 0:00:00.375)
+Sys:         1.390 seconds ( 0:00:01.390)
+MSC Nastran finished Wed Nov 12 12:10:17 WEST 2025 

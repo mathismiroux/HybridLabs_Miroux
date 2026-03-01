@@ -1,6 +1,6 @@
 $# Creating journal file C:\Users\mathismiroux\OneDrive - Delft University of 
 $# Technology\Documents\PhD_code\Structural_code\test_blade.db.jou at 
-$# 19-Sep-25 16:47:00
+$# 04-Feb-26 13:28:46
 uil_file_rebuild.start("C:\Program Files\MSC.Software\Patran_x64\20242/tem" // @
 "plate.db","C:\Users\mathismiroux\OneDrive - Delft University of Technolog" // @
 "y\Documents\PhD_code\Structural_code\test_blade.db")
@@ -11,12 +11,91 @@ $# The current working directory has been changed to the database location
 $# shown.                                                                     
 $#                                                                            
 $#                                   
-ui_exec_function( "mesh_seed_display_mgr", "init" )
-mesh_seed_display_mgr.erase(  )
-insight.initialize(  )
-$# Error reported from application INSIGHT
-$#     The current database has no finite element entities.  The Insight 
-$# application cannot be initialized.
-$? NO 27001005 
+ga_view_center_set( 0.006713, 0.001389 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.012680, 0.002623 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.017984, 0.003721 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.022699, 0.004696 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.026890, 0.005563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.030615, 0.006334 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.033926, 0.007019 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.030615, 0.006334 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.026890, 0.005563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.022699, 0.004696 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.017984, 0.003721 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.012680, 0.002623 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.006713, 0.001389 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.000000, -0.000000 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.007552, -0.001563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.016048, -0.003320 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.025606, -0.005298 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.091236, 0.000635 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.165069, 0.007309 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.091236, 0.000635 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.025606, -0.005298 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.032731, -0.010572 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+gu_fit_view(  )
+ga_viewport_unpost( "default_viewport" )
+$# File display controlled by settings.pcl file entry: pref_env_set_integer(
+$# ""max_num_recent_files"",#)                                                
+$#                                                                            
+$#                                  
 $# Flushing the User Data Manager
-$# Journal file stopped recording at 20-Sep-25 16:51:20
+$# Journal file stopped recording at 04-Feb-26 13:29:11
+$# Appending to existing journal file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db.jou at 
+$# 22-Feb-26 19:30:50
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 22-Feb-26 19:31:02
+$# Appending to existing journal file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db.jou at 
+$# 22-Feb-26 19:31:26
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+uil_file_new.go( "C:\Program Files\MSC.Software\Patran_x64\20242/template.db", @
+ "C:\Users\mathismiroux\OneDrive - Delft University of Technology\Document" // @
+"s\PhD_code\Blade_optimisation_code\test_blade_22_2.db" )
+$# Question from application FILE
+$#     A database is already open.
+$# Do you want to create a new database C:\Users\mathismiroux\OneDrive - 
+$# Delft University of 
+$# Technology\Documents\PhD_code\Blade_optimisation_code\test_blade_22_2.db 
+$# anyway ?
+$? YES 36000037 
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 22-Feb-26 19:32:25

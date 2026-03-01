@@ -1,0 +1,24 @@
+$ MSC.Nastran input file created on November  12, 2025 at 12:07:49 by
+$ Patran 2024.2
+$ Direct Text Input for Nastran System Cell Section
+$ Direct Text Input for File Management Section
+$ Direct Text Input for Executive Control
+$ Linear Static Analysis, Database
+SOL 101
+CEND
+$ Direct Text Input for Global Case Control Data
+TITLE = MSC.Nastran job created on 11-Nov-25 at 18:37:22
+ECHO = NONE
+SUBCASE 1
+$ Subcase name : Default
+   SUBTITLE=Default
+   DISPLACEMENT(SORT1,REAL)=ALL
+   SPCFORCES(SORT1,REAL)=ALL
+   STRESS(SORT1,REAL,VONMISES,BILIN)=ALL
+BEGIN BULK
+$ Direct Text Input for Bulk Data
+HDF5OUT PRCISION 32     CMPRMTHD LZ4     LEVEL   5
+PARAM   PRTMAXIM YES
+$ Loads for Load Case : Default
+$ Referenced Coordinate Frames
+ENDDATA f6df68d6

@@ -1,0 +1,165 @@
+MSC Nastran V2024.2 (Intel Windows 10 Enterprise 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[3])
+Nastran BUFFSIZE=65537 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[6])
+JID='c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol103_conm1.dat'
+OUT='./beamdyn_sol103_conm1'
+MEM=8008MB      $ 
+PMEM=0+
+MACH='Intel'
+OPER='Windows 10 Enterprise'
+OSV='6.2 9200'
+MODEL='Xeon/2400 (5CG4463P42)'
+NPROC='12'
+CONFIG=6
+NPROC=12
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/tpl' $(program default)
+SDIR='c:/scratch/beamdyn_sol103_conm1.T35908_10'
+DBS='c:/scratch/beamdyn_sol103_conm1.T35908_10'
+SCR='yes'
+SMEM=100
+BPOOL=2002.0MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/sss'
+DEL='MSCDEF'
+SPOTWELD=''
+EMENGPU=''
+UDR=''
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27001@nastran-1.lic.tudelft.nl;27001@nastran-2.lic.tudelft.nl;27001@nastran-3.lic.tudelft.nl'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\actran\win64\Actran_2024.2\bin;C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Program Files\Python312\Scripts\;C:\Program Files\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\PowerShell\7\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\mathismiroux\AppData\Local\Programs\Git\cmd 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res 
+Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\win64i8\nastran.exe JID=C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code\beamdyn_SOL103_conm1.dat 
+Current Dir: C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code 
+Time Cmd:    c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    16016 MB
+ Physical memory available:           2154 MB
+ Paging file size:                   31888 MB
+ Paging file size available:          6382 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213496 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         5CG4463P42.byod.tudelft.net
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Enterprise 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/2950
+ Clock freq.:      4209 MHz
+ Number of CPUs:   12
+ Number of CPUs:   0 ( limited by PBS )
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  16016 MB
+ Virtual memory:   31888 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Mon Sep 29 17:02:11 WEDT 2025 
+ 17:02:20  Beginning Analysis
+SCA Kernel 30.0.943723 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_core.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_intel_thread.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_rt.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\MSCblas.dll" has been loaded.
+
+ 17:02:21  MSC Authorization Information - System Attributes (1004, 0)
+ 17:02:21  -----------------------------------------------------------
+  Date:          Mon Sep 29 17:02:21 2025
+  MSC Id:        00249b7f7fe2 (ethernet) (Intel)
+  Hostname:      5CG4463P42 (user mathismiroux, display 5CG4463P42)
+  License files: 27001@nastran-1.lic.tudelft.nl
+                 27001@nastran-2.lic.tudelft.nl
+                 27001@nastran-3.lic.tudelft.nl
+  CEID:          3D141A7E-C39ADD63
+  User:          mathismiroux
+  Display:       5CG4463P42
+  LAPI Version:  LAPI 22.4.0 (CL df5c63aa) (FLEXlm 11.16.3.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        3D141A7E-C39ADD63        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 17:02:21  MSC Authorization Information - Checkout Successful (1016, 0)
+ 17:02:21  -------------------------------------------------------------
+ 17:02:21  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host nastran-1.lic.tudelft.nl
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.hexagon.com.
+
+ 17:02:21  271 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol103_conm1.dat"
+
+Processing of bulk data entries is complete.
+
+HDF5-DIAG: Error detected in HDF5 (1.14.2) thread 0:
+  #000: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5F.c line 660 in H5Fcreate(): unable to synchronously create file
+    major: File accessibility
+    minor: Unable to create file
+  #001: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5F.c line 614 in H5F__create_api_common(): unable to create file
+    major: File accessibility
+    minor: Unable to open file
+  #002: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5VLcallback.c line 3605 in H5VL_file_create(): file create failed
+    major: Virtual Object Layer
+    minor: Unable to create file
+  #003: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5VLcallback.c line 3571 in H5VL__file_create(): file create failed
+    major: Virtual Object Layer
+    minor: Unable to create file
+  #004: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5VLnative_file.c line 94 in H5VL__native_file_create(): unable to create file
+    major: File accessibility
+    minor: Unable to open file
+  #005: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5Fint.c line 1911 in H5F_open(): unable to lock the file
+    major: File accessibility
+    minor: Unable to lock file
+  #006: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5FD.c line 2412 in H5FD_lock(): driver lock request failed
+    major: Virtual File Layer
+    minor: Unable to lock file
+  #007: C:\apexcomps\Thirdparty\MAIN\hdf5\1.14.2-Copy\src\hdf5-1.14.2\src\H5FDsec2.c line 941 in H5FD__sec2_lock(): unable to lock file, errno = 0, error message = 'No error', Win32 GetLastError() = 33
+    major: Virtual File Layer
+    minor: Unable to lock file
+ 17:02:22  Finite element model generation started.
+ 17:02:22  Finite element model generated 156 degrees of freedom.
+ 17:02:22  Finite element model generation successfully completed.
+ 17:02:22  Application of Loads and Boundary Conditions to the finite element model started.
+ 17:02:22  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 17:02:22  Solution of the system equations for normal modes started.
+ 17:02:22  Solution of the system equations for normal modes successfully completed.
+ 17:02:22  Normal modes analysis completed.
+ 17:02:22  10 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/beamdyn_sol103_conm1.dat"
+ 17:02:22  NSEXIT: EXIT(0)
+ 17:02:22  Analysis complete  0
+Real:        2.764 seconds ( 0:00:02.764)
+User:        0.843 seconds ( 0:00:00.843)
+Sys:         0.812 seconds ( 0:00:00.812)
+MSC Nastran finished Mon Sep 29 17:02:23 WEDT 2025 

@@ -1,11 +1,9 @@
-analysis_mode = "SOL103"  # Change to "SOL103" for modal analysis
 from pathlib import Path
 import math
 
+analysis_mode = "SOL103"  # Change to "SOL103" for modal analysis
 beam_input = Path("IEA-15-240-RWT_BeamDyn_blade.dat")
 out_dat = Path(f"beamdyn_{analysis_mode}_conm1.dat")
-
-
 
 def floats_in_line(s):
     toks = s.replace(',', ' ').split()
@@ -87,25 +85,38 @@ elements = []
 for idx in range(len(nodes)-1):
     elements.append({'eid': idx+1, 'n1': nodes[idx]['id'], 'n2': nodes[idx+1]['id']})
 
-# # Interpolate additional stations
-# def interpolate_station(s1, s2, eta):
-#     # Linear interpolation for eta, C, M
-#     frac = (eta - s1['eta']) / (s2['eta'] - s1['eta'])
-#     C = [(1-frac)*c1 + frac*c2 for c1, c2 in zip(s1['C'], s2['C'])]
-#     M = [(1-frac)*m1 + frac*m2 for m1, m2 in zip(s1['M'], s2['M'])]
-#     return {'eta': eta, 'C': C, 'M': M}
 
-# # Number of additional stations between each pair
-# n_interp = 2  # Change this for finer mesh
-# refined_stations = []
-# for i in range(len(stations)-1):
-#     s1 = stations[i]
-#     s2 = stations[i+1]
-#     refined_stations.append(s1)
-#     for k in range(1, n_interp+1):
-#         eta_new = s1['eta'] + (s2['eta'] - s1['eta']) * k/(n_interp+1)
-#         refined_stations.append(interpolate_station(s1, s2, eta_new))
-# refined_stations.append(stations[-1])
+# Interpolate additional stations for finer mesh
+def interpolate_station(s1, s2, eta):
+    # Linear interpolation for eta, C, M
+    frac = (eta - s1['eta']) / (s2['eta'] - s1['eta'])
+    C = [(1-frac)*c1 + frac*c2 for c1, c2 in zip(s1['C'], s2['C'])]
+    M = [(1-frac)*m1 + frac*m2 for m1, m2 in zip(s1['M'], s2['M'])]
+    return {'eta': eta, 'C': C, 'M': M}
+
+# Number of additional stations between each pair
+n_interp = 4  # Change this for finer mesh
+refined_stations = []
+for i in range(len(stations)-1):
+    s1 = stations[i]
+    s2 = stations[i+1]
+    refined_stations.append(s1)
+    for k in range(1, n_interp+1):
+        eta_new = s1['eta'] + (s2['eta'] - s1['eta']) * k/(n_interp+1)
+        refined_stations.append(interpolate_station(s1, s2, eta_new))
+refined_stations.append(stations[-1])
+
+# Use refined_stations for mesh generation
+stations = refined_stations
+
+# Build nodes
+nodes = []
+for idx, s in enumerate(stations):
+    nodes.append({'id': idx+1, 'x': s['eta'] * blade_length, 'station': s})
+
+elements = []
+for idx in range(len(nodes)-1):
+    elements.append({'eid': idx+1, 'n1': nodes[idx]['id'], 'n2': nodes[idx+1]['id']})
 
 def extract_section_props(station):
     C = station['C']
@@ -116,10 +127,10 @@ def extract_section_props(station):
     GJ = C[5*6+5]
     # Coupled terms
     edge_shear_torsional = C[1*6+5]
-    flap_shear_torsional = C[0*6+5]
-    axial_edge_bending = C[4*6+3]
-    axial_flap_bending = C[4*6+2]
-    flap_edge_shear = C[0*6+1]
+    flap_shear_torsional = C[2*6+5]
+    axial_edge_bending = C[0*6+3]
+    axial_flap_bending = C[0*6+4]
+    flap_edge_shear = C[2*6+1]
     flap_edge_bending = C[4*6+3]
     m = M[0] if len(M)>0 else 0.0
     Xcm = Ycm = 0.0
@@ -313,9 +324,9 @@ lines.append("ENDDATA")
 with open(out_dat, "w") as f:
     f.write("\n".join(lines))
 
-# # Calculate and print blade mass
-# blade_mass = sum([prop['avgM'][0] for prop in elem_props if len(prop['avgM']) > 0])
-# print(f"Total blade mass: {blade_mass:.3f} kg")
+# Calculate and print blade mass
+blade_mass = sum([prop['avgM'][0] for prop in elem_props if len(prop['avgM']) > 0])
+print(f"Total blade mass: {blade_mass:.3f} kg")
 
 if analysis_mode == "SOL101":
     print(f"Wrote SOL101 static deck with CONM1 to: {out_dat}")

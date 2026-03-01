@@ -1,0 +1,421 @@
+$# Session file patran.ses.03 started recording at 04-Feb-26 13:27:11
+$# Build: 30.2.000613-77f54e2e Wed Dec 04 20:14:22 CUT 2024
+$# Recorded by: Patran 2024.2
+uil_file_open.go( "C:\Users\mathismiroux\OneDrive - Delft University of Te" // @
+"chnology\Documents\PhD_code\Structural_code\test.db" )
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# Appending to existing journal file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of Technology\Documents\PhD_code\Structural_code\test.db.jou at 
+$# 04-Feb-26 13:27:12
+$# FLEXlm initialization complete.  Acquiring license(s)...
+$# License File: 
+$# 27001@patran-1.lic.tudelft.nl;27001@patran-2.lic.tudelft.nl;27001@patran-3.
+$# lic.tudelft.nl
+$# Patran 2024.2 has obtained 13 concurrent license(s) from FLEXlm per a 
+$# request to execute on Windows node 5CG4463P42(c4474e16e1f3) (Windows 6.2 (
+$# Build 9200: Service Pack 0)) at 04-Feb-26 13:27:12.
+$# Begin Reading RMB Menu definitions
+$# Done Reading RMB Menu definitions
+$# Loading dynamic library C:\Program 
+$# Files\MSC.Software\Patran_x64\20242\loads_browser.dll
+$# MSC.SMDL shared library 'Loads Browser', Version 2024, Revision 3, Patch 0,
+$#  has been loaded for: MSC.Patran.
+uil_file_new.go( "C:\Program Files\MSC.Software\Patran_x64\20242/template.db", @
+ "C:\Users\mathismiroux\OneDrive - Delft University of Technology\Document" // @
+"s\PhD_code\Structural_code\test.db" )
+$# Question from application FILE
+$#     A database is already open.
+$# Do you want to create a new database C:\Users\mathismiroux\OneDrive - 
+$# Delft University of Technology\Documents\PhD_code\Structural_code\test.db 
+$# anyway ?
+$? YES 36000037 
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 04-Feb-26 13:27:36
+$# Question from application FILE
+$#     Database C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db already exists.
+$# Do you wish to delete the existing database and create a new one ?
+$? YES 36000002 
+$# Copying C:\Program Files\MSC.Software\Patran_x64\20242/template.db to 
+$# C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db
+$# Template copy complete.
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# The available hardware graphics driver initialized for use has been set to 
+$# the OpenGL graphics driver.
+$# Current graphics driver type in use: HardwareDriver
+$# Creating journal file C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db.jou at 04-Feb-26 
+$# 13:27:39
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+ga_view_center_set( -0.007407, -0.023611 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.015227, -0.045010 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.022177, -0.064032 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.028354, -0.080940 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.033846, -0.095969 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.038727, -0.109328 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.043066, -0.121204 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.046923, -0.131759 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.050352, -0.141142 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.053399, -0.149482 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.056108, -0.156896 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.053399, -0.149482 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.050352, -0.141142 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.046923, -0.131759 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.039209, -0.110648 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.034388, -0.097454 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.028965, -0.082610 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.030963, -0.088890 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.032739, -0.094472 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.034318, -0.099434 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.033641, -0.094698 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.032880, -0.089369 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.031167, -0.077380 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.030097, -0.069887 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_aa_set( 20.619173, 35.909523, 27.776651 )
+ga_view_center_set( -0.033710, -0.075507 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.037774, -0.081829 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.042347, -0.088942 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.047491, -0.096944 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.053277, -0.105946 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.059788, -0.116073 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.067112, -0.127466 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.075352, -0.140284 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.093891, -0.169123 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.105478, -0.187147 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.119962, -0.207425 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.141145, -0.231866 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.188806, -0.286860 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.248384, -0.355602 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.285620, -0.398566 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.218596, -0.321231 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.188807, -0.286860 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.141145, -0.231866 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.103016, -0.187872 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.086070, -0.168318 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.071007, -0.150938 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.046906, -0.123129 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.036194, -0.110769 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.019055, -0.090994 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.005344, -0.075173 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( 0.000749, -0.068142 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( 0.006166, -0.061892 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( 0.004083, -0.069809 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( 0.001739, -0.078715 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.000897, -0.088734 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.008017, -0.110092 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.013207, -0.123440 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.019048, -0.138457 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.032188, -0.172245 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.056826, -0.235598 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.068117, -0.264635 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.093524, -0.290041 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.150693, -0.347207 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.222150, -0.418665 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.266812, -0.463326 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.324231, -0.513570 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.518027, -0.650843 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.760272, -0.822432 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -0.911674, -0.929676 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1.082004, -1.050326 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1.305560, -1.154120 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1.808570, -1.387656 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -2.437324, -1.679579 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -2.830284, -1.862027 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -3.272384, -2.067288 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -4.764457, -2.760030 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -5.448310, -3.077534 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -6.217659, -3.434731 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -7.237724, -3.774758 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -8.385292, -4.157280 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -12.375740, -5.330933 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -14.204659, -5.868858 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -20.498392, -6.474021 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -28.365520, -7.079184 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -38.199509, -7.835637 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -44.463852, -8.308414 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -52.575062, -8.175447 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -79.950493, -7.726654 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -105.044739, -7.315275 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -120.728455, -7.058132 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -135.480042, -7.925869 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -152.075989, -8.902126 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -208.086731, -12.196865 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -234.262024, -13.706875 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -264.274719, -15.405727 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -300.587708, -16.679897 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -341.440247, -18.113247 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -387.398743, -18.113243 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -490.806458, -18.113239 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -556.568665, -18.113235 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -630.553040, -18.113232 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -713.785461, -18.113472 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -630.553040, -18.113224 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -963.478821, -18.113220 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1088.328491, -18.113216 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1228.779663, -18.113213 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -1702.812866, -18.113697 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_center_set( -2137.340332, -18.113693 )
+ga_view_aa_set( 20.619177, 35.909527, 27.776649 )
+ga_view_aa_set( 32.087070, -47.171787, 55.985840 )
+ga_view_center_set( -2366.779785, -13.431076 )
+ga_view_aa_set( 32.087070, -47.171787, 55.985840 )
+ga_view_center_set( -2624.896973, -8.163475 )
+ga_view_aa_set( 32.087070, -47.171787, 55.985840 )
+gu_fit_view(  )
+gu_fit_view(  )
+ga_viewport_unpost( "default_viewport" )
+uil_file_new.go( "C:\Program Files\MSC.Software\Patran_x64\20242/template.db", @
+ "C:\Users\mathismiroux\OneDrive - Delft University of Technology\Document" // @
+"s\PhD_code\Structural_code\test_blade.db" )
+$# Question from application FILE
+$#     A database is already open.
+$# Do you want to create a new database C:\Users\mathismiroux\OneDrive - 
+$# Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db anyway ?
+$? YES 36000037 
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 04-Feb-26 13:28:44
+$# Question from application FILE
+$#     Database C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db already 
+$# exists.
+$# Do you wish to delete the existing database and create a new one ?
+$? YES 36000002 
+$# Copying C:\Program Files\MSC.Software\Patran_x64\20242/template.db to 
+$# C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db
+$# Template copy complete.
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# The available hardware graphics driver initialized for use has been set to 
+$# the OpenGL graphics driver.
+$# Current graphics driver type in use: HardwareDriver
+$# Creating journal file C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test_blade.db.jou at 
+$# 04-Feb-26 13:28:46
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+ga_view_center_set( 0.006713, 0.001389 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.012680, 0.002623 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.017984, 0.003721 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.022699, 0.004696 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.026890, 0.005563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.030615, 0.006334 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.033926, 0.007019 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.030615, 0.006334 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.026890, 0.005563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.022699, 0.004696 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.017984, 0.003721 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.012680, 0.002623 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.006713, 0.001389 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.000000, -0.000000 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.007552, -0.001563 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.016048, -0.003320 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.025606, -0.005298 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.091236, 0.000635 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.165069, 0.007309 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.091236, 0.000635 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( -0.025606, -0.005298 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+ga_view_center_set( 0.032731, -0.010572 )
+ga_view_aa_set( 0.000000, 0.000000, 0.000000 )
+gu_fit_view(  )
+ga_viewport_unpost( "default_viewport" )
+$# File display controlled by settings.pcl file entry: pref_env_set_integer(
+$# ""max_num_recent_files"",#)                                                
+$#                                                                            
+$#                                  
+uil_file_close.go(  )
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 04-Feb-26 13:29:11
+uil_file_open.go( "C:\Users\mathismiroux\OneDrive - Delft University of Te" // @
+"chnology\Documents\PhD_code\Structural_code\test.db" )
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# The available hardware graphics driver initialized for use has been set to 
+$# the OpenGL graphics driver.
+$# Current graphics driver type in use: HardwareDriver
+$# Appending to existing journal file C:\Users\mathismiroux\OneDrive - Delft 
+$# University of Technology\Documents\PhD_code\Structural_code\test.db.jou at 
+$# 04-Feb-26 13:29:12
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+uil_file_new.go( "C:\Program Files\MSC.Software\Patran_x64\20242/template.db", @
+ "C:\Users\mathismiroux\OneDrive - Delft University of Technology\Document" // @
+"s\PhD_code\Structural_code\test.db" )
+$# Question from application FILE
+$#     A database is already open.
+$# Do you want to create a new database C:\Users\mathismiroux\OneDrive - 
+$# Delft University of Technology\Documents\PhD_code\Structural_code\test.db 
+$# anyway ?
+$? YES 36000037 
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 04-Feb-26 13:29:36
+$# Question from application FILE
+$#     Database C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db already exists.
+$# Do you wish to delete the existing database and create a new one ?
+$? YES 36000002 
+$# Copying C:\Program Files\MSC.Software\Patran_x64\20242/template.db to 
+$# C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db
+$# Template copy complete.
+$# Database version 3.35 created by Patran 2024.2 successfully opened.
+$# The available hardware graphics driver initialized for use has been set to 
+$# the OpenGL graphics driver.
+$# Current graphics driver type in use: HardwareDriver
+$# Creating journal file C:\Users\mathismiroux\OneDrive - Delft University of 
+$# Technology\Documents\PhD_code\Structural_code\test.db.jou at 04-Feb-26 
+$# 13:29:41
+$# Synchronizing the User Data Manager
+set_current_dir( "C:\Users\mathismiroux\OneDrive - Delft University of Tec" // @
+"hnology\Documents\PhD_code\Structural_code" )
+$# The current working directory has been changed to the database location 
+$# shown.                                                                     
+$#                                                                            
+$#                                   
+uil_file_close.goquit(  )
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 04-Feb-26 13:29:56
+$# Session file patran.ses.03 stopped recording at 04-Feb-26 13:29:56

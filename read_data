@@ -1,0 +1,375 @@
+#%%
+import re
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# -----------------------------
+# 1. Load and preprocess F06 file
+# -----------------------------
+import re
+import os
+
+import re
+import os
+
+def read_f06(filepath):
+    """
+    Reads an F06 file, removes page headers/footers, unwanted lines, 
+    repeated 3-line blocks starting with '0', and writes cleaned text to a new file.
+    """
+    with open(filepath, 'r', errors='ignore') as f:
+        lines = f.readlines()
+
+    # Find the line where the summary starts
+    i = 0
+    while i < len(lines) and 'E L E M E N T   P R O P E R T Y   S U M M A R Y' not in lines[i]:
+        i += 1
+
+    print('found summary at line', i)
+    lines = lines[i:]  # Start processing from the summary section
+
+    cleaned_lines = []
+    previous_block = None
+    idx = 0
+    while idx < len(lines):
+        # Remove form feed characters (page breaks)
+        line = lines[idx].replace('\x0c', '')
+        stripped = line.rstrip('\n')
+
+        # 🛑 If 'END-OF-DATA' is found, stop processing completely
+        if 'END-OF-DATA' in stripped:
+            print(f"Found END-OF-DATA at line {i + idx}. Truncating here.")
+            break
+
+        # # Remove all whitespace (spaces, tabs, etc.) and convert to uppercase
+        # normalized = ''.join(stripped.split()).upper()
+
+        # # Check if line starts with 'ELEMENTTYPE='
+        # if normalized.startswith('ELEMENTTYPE='):
+        #     idx += 1
+        #     print(f"Skipping ELEMENT TYPE line at {i + idx}")
+        #     continue
+
+        # Skip empty or whitespace-only lines
+        if not stripped.strip():
+            idx += 1
+            continue
+        
+
+        # Skip lines starting with '*'
+        if stripped.lstrip().startswith('*'):
+            idx += 1
+            continue
+        
+
+        # Skip page numbers
+        if re.match(r'^\s*PAGE\s+\d+', stripped, re.IGNORECASE):
+            idx += 1
+            continue
+
+        # Skip headers/footers or other unwanted keywords
+        if ('MSC Nastran' in stripped or
+            'PAGE' in stripped or
+            'OCTOBER' in stripped or
+            'NASTRAN' in stripped):
+            idx += 1
+            continue
+
+        # 🧠 Detect and skip repeated 3-line blocks starting with '0'
+        if stripped.lstrip().startswith('0'):
+            # Get this 3-line block (or fewer if at file end)
+            current_block = [lines[idx + j].replace('\x0c', '').rstrip('\n') 
+                             for j in range(5) if idx + j < len(lines)]
+
+            if current_block == previous_block:
+                # Skip the repeated block
+                idx += len(current_block)
+                continue
+            else:
+                # New block: memorize it
+                previous_block = current_block
+                cleaned_lines.extend(current_block)
+                idx += len(current_block)
+                continue
+
+        # If nothing skipped, keep the line
+        cleaned_lines.append(stripped)
+        idx += 1
+
+    cleaned_text = '\n'.join(cleaned_lines)
+
+    # Build output file path
+    base, ext = os.path.splitext(filepath)
+    output_path = f"{base}_cleaned{ext}"
+
+    # Write cleaned content to the new file
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(cleaned_text)
+
+    print(f"✅ Cleaned file saved as: {output_path}")
+    return cleaned_text
+
+
+
+# -----------------------------
+# 2. Extract element property summaries
+# -----------------------------
+def extract_element_summary(f06_text, element_type):
+    """
+    Extracts element property summary tables for a given element type (BEAM or CONM1).
+    Handles multi-page tables and split lines.
+    """
+    # Find the block for the element type
+    pattern = rf"ELEMENT TYPE = {element_type}[\s\S]+?(?=(?:ELEMENT TYPE|TOTAL MASS|$))"
+    match = re.search(pattern, f06_text, re.IGNORECASE)
+    if not match:
+        return pd.DataFrame()
+
+    data_block = match.group(0)
+
+    # Split into lines and find header line
+    lines = [l.rstrip() for l in data_block.splitlines() if l.strip()]
+    header_idx = None
+    for i, l in enumerate(lines):
+        if 'ELEM ID' in l:
+            header_idx = i
+            break
+    if header_idx is None:
+        return pd.DataFrame()
+
+    # Use any whitespace for splitting
+    headers = re.split(r'\s+', lines[header_idx].strip())
+    data_lines = lines[header_idx+1:]
+
+    # Collect rows, skipping subtotal and separator lines
+    rows = []
+    for l in data_lines:
+        if l.strip().startswith('SUBTOTAL') or l.strip().startswith('='):
+            continue
+        row = re.split(r'\s+', l.strip())
+        if len(row) == len(headers):
+            rows.append(row)
+
+    if not rows:
+        return pd.DataFrame()
+
+    df = pd.DataFrame(rows, columns=headers)
+    return df
+    
+# -----------------------------
+# 3. Extract eigenvectors and frequencies
+# -----------------------------
+def extract_modes(f06_text):
+    """
+    Extracts mode shapes (T1,T2,T3,R1,R2,R3), eigenvalues, and frequencies.
+    """
+    mode_pattern = r"R E A L   E I G E N V E C T O R\s+NO\.\s+(\d+).*?FREQUENCY\s*=\s*([\d\.E\+\-]+).*?(?=(?:R E A L   E I G E NVEC|$))"
+    matches = re.findall(mode_pattern, f06_text, re.DOTALL)
+    
+    mode_data = []
+    for mode_no, freq, *rest in re.findall(r"R E A L   E I G E N V E C T O R\s+NO\.\s+(\d+).*?EIGENVALUE\s*=\s*([\d\.E\+\-]+).*?FREQUENCY\s*=\s*([\d\.E\+\-]+)", f06_text, re.DOTALL):
+        block_pattern = rf"R E A L   E I G E N V E C T O R\s+NO\.\s+{mode_no}.*?(?=(?:R E A L   E I G E NVEC|$))"
+        block_match = re.search(block_pattern, f06_text, re.DOTALL)
+        if not block_match:
+            continue
+        block = block_match.group(0)
+
+        # Extract modeshape table lines
+        lines = [l.strip() for l in block.splitlines() if re.match(r'^\d+', l.strip())]
+        cols = ['GRID', 'T1', 'T2', 'T3', 'R1', 'R2', 'R3']
+        rows = []
+        for l in lines:
+            parts = re.split(r'\s+', l)
+            if len(parts) >= 7:
+                rows.append(parts[:7])
+        df = pd.DataFrame(rows, columns=cols).astype(float)
+        df['Mode'] = int(mode_no)
+        df['Eigenvalue'] = float(freq)
+        df['Frequency (Hz)'] = float(freq)
+        mode_data.append(df)
+
+    return mode_data
+
+
+# -----------------------------
+# 4. Plotting utilities
+# -----------------------------
+def plot_modeshape(mode_df, mode_number):
+    freq = mode_df['Frequency (Hz)'].iloc[0]
+    plt.figure(figsize=(8, 5))
+    plt.plot(mode_df['GRID'], mode_df['T1'], label='T1')
+    plt.plot(mode_df['GRID'], mode_df['T2'], label='T2')
+    plt.plot(mode_df['GRID'], mode_df['T3'], label='T3')
+    plt.title(f"Mode {mode_number} — Frequency = {freq:.2f} Hz")
+    plt.xlabel("GRID ID")
+    plt.ylabel("Displacement")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+def plot_distribution(df, column, title):
+    plt.figure(figsize=(8, 4))
+    plt.plot(df.index, df[column])
+    plt.title(title)
+    plt.xlabel("Element")
+    plt.ylabel(column)
+    plt.grid(True)
+    plt.show()
+
+from io import StringIO
+
+
+
+def parse_element_summary(text):
+    element_dfs = {}
+
+    # Split the text into element types
+    sections = re.split(r'ELEMENT TYPE\s*=\s*(\w+)', text, flags=re.IGNORECASE)
+    for i in range(1, len(sections)-1, 2):
+        element_type = sections[i].strip()
+        section_text = sections[i+1]
+
+        if element_type.upper() == "CONM1":
+            # Split section into lines
+            lines = section_text.strip().splitlines()
+            filtered_lines = []
+
+            for line in lines:
+                # Stop if we hit totals/subtotals (-----)
+                if re.search(r'-{3,}', line):
+                    break
+                # Skip lines that contain only a single zero
+                if re.match(r'^\s*0\s*$', line):
+                    continue
+                # Keep only numeric rows (ignore headers and blank lines)
+                if re.match(r'\s*\d+', line):
+                    filtered_lines.append(line.strip())
+
+            # Split each line by whitespace
+            data = [re.split(r'\s+', l) for l in filtered_lines]
+
+            # Define expected columns
+            columns = ["ELEM ID", "PROP ID", "MATL ID", "STRUCT.MASS", "NON-STR.MASS", "TOTAL MASS", "TM*WTMASS"]
+
+            if data:
+                df_block = pd.DataFrame(data, columns=columns)
+                for col in columns:
+                    df_block[col] = pd.to_numeric(df_block[col], errors='coerce')
+
+                # ✅ Accumulate rather than overwrite
+                if "CONM1" in element_dfs:
+                    element_dfs["CONM1"] = pd.concat([element_dfs["CONM1"], df_block], ignore_index=True)
+                else:
+                    element_dfs["CONM1"] = df_block
+
+        elif element_type.upper() == "BEAM":
+            # --- Locate the header line
+            header_match = re.search(r'ELEM ID.*', section_text)
+            if not header_match:
+                continue
+            start_idx = section_text.find(header_match.group())
+            block_text = section_text[start_idx:]
+            header_line = header_match.group().strip()
+
+            # --- Remove any lines containing '-----'
+            filtered_lines = []
+            for line in block_text.splitlines():
+                if re.search(r'-{3,}', line):   # 3 or more dashes
+                    break  # stop reading at the first totals/subtotals line
+                                # skip lines with only "0"
+                if re.match(r'^\s*0\s*$', line):
+                    break
+                filtered_lines.append(line)
+            block_text = "\n".join(filtered_lines)
+
+            # --- Extract column names dynamically
+            columns = ["ELEM ID", "PROP ID", "MATL ID", "LENGTH", "AREA", "VOLUME", "STRUCT.MASS", "NON-STR.MASS", "TOTAL MASS", "TM*WTMASS"]
+
+            # --- Parse the filtered text
+            df = pd.read_fwf(
+                StringIO(block_text),
+                names=columns,
+                widths=None,
+                skiprows=1,
+                skip_blank_lines=True
+            )
+            element_dfs[element_type] = df
+
+    return element_dfs
+
+
+def parse_eigenvectors(text):
+    # Regex to capture eigenvalue, cycles, and mode
+    header_pattern = re.compile(
+        r'\s*EIGENVALUE\s*=\s*([-\d.E+]+)\s*\n\s*CYCLES\s*=\s*([-\d.E+]+).*?(\d+)',
+        flags=re.IGNORECASE | re.DOTALL
+    )
+
+    # Split the text at each header
+    sections = re.split(header_pattern, text)
+
+    # Dictionary to store dataframes keyed by mode number
+    eigenvector_dict = {}
+
+    # Iterate in steps of 4 starting from index 1
+    for i in range(1, len(sections), 4):
+        eigval = float(sections[i])
+        cycles = float(sections[i+1])
+        mode_no = int(sections[i+2])
+        table_text = sections[i+3]
+
+        print(f"Parsing Eigenvector Mode No: {mode_no}, Eigenvalue: {eigval}, Cycles: {cycles}")
+
+        # Collect table lines
+        table_lines = []
+        for line in table_text.splitlines():
+            if re.match(r'^\s*$', line):
+                continue
+            if line.strip().startswith("SUBCASE"):
+                break
+            table_lines.append(line)
+
+        if table_lines:
+            table_data = "\n".join(table_lines)
+            columns = ["POINT ID", "TYPE", "T1", "T2", "T3", "R1", "R2", "R3"]
+            df_eig = pd.read_fwf(StringIO(table_data), names=columns, skiprows=1, skip_blank_lines=True)
+            df_eig["EIGENVALUE"] = eigval
+            df_eig["CYCLES"] = cycles
+            df_eig["MODE_NO"] = mode_no
+
+            # Store dataframe in dictionary keyed by mode number
+            eigenvector_dict[mode_no] = df_eig
+
+    return eigenvector_dict if eigenvector_dict else None
+# -----------------------------
+# 5. Example usage
+# -----------------------------
+if __name__ == "__main__":
+    filepath = "beamdyn_sol103_conm1.f06"
+    f06_text = read_f06(filepath)
+
+    with open("beamdyn_sol103_conm1_cleaned.f06", "r") as f:
+        text = f.read()
+
+    element_dfs  = parse_element_summary(text)
+    eigenvectors_df = parse_eigenvectors(text)  # new robust parser
+
+    # # Example: Access the combined dataframe for CONM1
+
+    # print(dfs['CONM1'].head())
+
+    # # Example: Access the combined dataframe for BEAM
+    # print(dfs['BEAM'].head())
+    # beam_summary = extract_element_summary(f06_text, "BEAM")
+    # conm1_summary = extract_element_summary(f06_text, "CONM1")
+    # mode_data = extract_modes(f06_text)
+
+    # print("BEAM Summary:\n", beam_summary.head())
+    # print("\nCONM1 Summary:\n", conm1_summary.head())
+    # print(f"\nExtracted {len(mode_data)} modes.")
+
+    # # Example plot: first mode
+    # if mode_data:
+    #     plot_modeshape(mode_data[0], 1)

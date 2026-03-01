@@ -260,3 +260,7 @@ res_display_fringe_post( "", 0, "Nodal", TRUE, TRUE )
 $# Error reported in application Results by application Graphics Manager
 $#     No nodes were found in the model.
 $? NO 15200001 
+uil_file_close.goquit(  )
+$# Flushing the User Data Manager
+$# Journal file stopped recording at 29-Sep-25 17:02:47
+$# Session file patran.ses.01 stopped recording at 29-Sep-25 17:02:47

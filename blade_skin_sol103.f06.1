@@ -1,0 +1,589 @@
+1
+ 
+ 
+ 
+ 
+                      Warning: This computer program is protected by copyright law and international treaties.       
+                  Unauthorized use, reproduction or distribution of this computer program, or any portion of it, may 
+                                          result in severe civil and criminal penalties.                             
+                         Copyright (C) 2024 Hexagon AB and/or its subsidiaries. All rights reserved.                 
+ 
+ 
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * *                                 * *
+                                              * *           Hexagon AB            * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *      M S C   N a s t r a n      * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *     Version 2024.2-af13cbfd     * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *                                 * *
+                                              * *          NOV 21, 2024           * *
+                                              * *                                 * *
+                                              * *              Intel              * *
+                                              * *  MODEL Xeon/4900 (5CG4463P42)   * *
+                                              * * Windows 10 Enterprise 6.2 9200  * *
+                                              * *        Compiled for 8664        * *
+                                              * *                                 * *
+                                              * * * * * * * * * * * * * * * * * * * *
+                                              * * * * * * * * * * * * * * * * * * * *
+1News file
+  
+               Welcome to MSC Nastran 2024.2
+  
+   MSC Nastran brings powerful new features and enhancements for engineering
+   solutions in several releases through the year. Key enhancements in
+   Version 2024.2 are summarized below. Addtional details can be found in
+   the MSC Nastran Version 2024.2 Release Guide.
+  
+     MSC Nastran 2024.2 Features and Enhancements
+  
+     High Performance Computing (HPC) for NVH
+     - Improved performance for ACMS, especially for large solid models
+     - Improved performance for FASTFR, particularly when structural
+       damping is present
+     - General performance improvement for high frequency acoustics
+     - Improved diagnostics for linear solution available in LOG file
+       Information includes solver selection and memory use
+  
+     Topology Optimization
+     - SOL 200 NEO Topology Optimization for generative design with support for
+       manufacturing constraints. Optimized CAD geometry and mesh output for
+       every design cycle.
+  
+     High Performance SOL 400 (NLPERF)
+     - Support Lagrange Multiplier for MPC and Rigid Elements
+     - Controls distributed surface load computation for shell elements with
+       offsets and the use of an additional enhancement for computing the
+       average nodal normal vector
+     - GPFORCE and ESE can be requested in ANALYSIS=NLSTAT
+     - OUTCTRL={STD,SOLUTION,INTERM} keyword in NLOPRM case control statement is
+       available
+  
+     Linear
+     - Global-Local analysis in SOL 101 and 103. Creates a local model based on
+       a user-provided definition (CARVE) and replaces the rest of the model
+       with an external superelement. Allows for detailed local studies without
+       having to solve the entire model every time.
+     - Multiple Output requests of the same result item in linear solutions
+       (SOL 101, 103, 108, 109, 111, 112) through the use of repeated output
+       request subcase, REPCASE.
+  
+     NVH (Vibroacoustics)
+     Automated skinning of solid elements free surfaces
+     - Identify residual structure solid elements' exposed surfaces, and create
+       required triangular or quadilateral shell elements on top of it
+     - Stress and strain data recovery available for skinned shell elements
+     - Supported in Linear solution sequences
+     Acoustic Fluid Grid Participation Factors from fluid skin grids in touch
+       with either structure wetted surface or trim components
+1    Mass matrix support in Cohesive elements
+     - supports mass matrix in cohesive elements for glue line modeling.
+     Improved solution time and reduced disk space for Nastran-PEM models
+  
+     Aeroelasticity
+     - Flutter Perturbation Step available in SOL 400 Nonlinear
+  
+     HDF5 hybrid precision output file
+     - Allows writing of 32-bit real and 64-bit integer data to H5 file
+     - Combines small size of 32-bit and high value domain ID of 64-bit
+  
+      Inertia Relief with External Superelements
+     - For external superelements, inertia relief is now supported for the
+       following three options: EXTSEOUT MATDB(MATRIXDB), EXTSEOUT DMIGDB, and
+       EXTSEOUT DMIGOP2 for INREL = -1 and INREL = -2.
+     - For the above three external superelement options, checks are now
+       performed internally to insure that the inertia relief specifications
+       between external superelement and the assembly run are consistent.
+     - When verifying results, the user is reminded that with inertia relief,
+       the displacements are relative displacements and may not in any way match
+       the results of say a model containing all the external superelements
+       processed as standard part superelements. However, element results
+       such as force or stress should match closely between the two types of runs
+       if consistently modeled.
+  
+  
+     Documentation
+     - The complete documentation set is provided in a separate installer and
+       when installed is available at: MSC_DOC_DIR/doc/pdf_nastran directory,
+       where MSC_DOC_DIR is the directory where documentation was installed.
+       This help set includes cross references between documents, and links to
+       how-to videos, and example files
+  
+     Individual MSC Nastran documents are available for download from the
+       Simcompanion Website at:
+       http://simcompanion.hexagon.com/
+  
+     The documentation set includes the following:
+  
+         1.  MSC Nastran 2024.2 Installation and Operations Guide
+         2.  MSC Nastran 2024.2 Quick Reference Guide
+         3.  MSC Nastran 2024.2 Release Guide
+         4.  MSC Nastran 2024.2 Linear Statics Analysis User's Guide
+         5.  MSC Nastran 2024.2 Dynamic Analysis User's Guide
+         6.  MSC Nastran 2024.2 Superelements User's Guide
+         7.  MSC Nastran 2024.2 Rotordynamics User's Guide
+         8.  MSC Nastran 2024.2 Demonstration Problems Manual
+         9.  MSC Nastran 2024.2 Nastran Embedded Fatigue User's Guide
+        10.  MSC Nastran 2024.2 Design Sensitivity and Optimization
+        11.  MSC Nastran 2024.2 Nonlinear User's Guide SOL 400
+1       12.  MSC Nastran 2024.2 DMAP Programmer's Guide
+        13.  MSC Nastran 2024.2 High Performance Computing User's Guide
+        14.  MSC Nastran 2024.2 New Verification Manual
+        15.  MSC Nastran 2024.2 DEMATD Guide
+        16.  MSC Nastran 2024.2 Explicit Nonlinear (SOL 700) User's Guide
+        17.  MSC Nastran 2024.2 ACMS User's Guide
+  
+   Please refer to  MSC_DOC_DIR/doc/pdf_nastran/nastran_library.pdf
+   for the complete document set:
+  
+  
+   Additional information about the release can be found at the MSC Nastran
+   Product Support page: http://simcompanion.hexagon.com
+  
+   The support page provides links to these valuable information:
+      * A searchable Knowledge Base containing examples and answers to thousands
+        of frequently asked questions written by MSC Software subject-matter
+        experts.
+      * Peer-to-peer Discussion Forums enabling you to post questions for your
+        MSC Software products and receive answers from other users worldwide.
+      * A list of known issues with the product and any workarounds.
+      * Instructions on how to contact technical support
+      * A mechanism for sending us product feedback or enhancement requests.
+      * Hardware and software requirements.
+      * Examples and Tutorials
+      * and much more.
+  
+   For information on training, please visit our Training web site
+  
+      https://hexagon.com/support-success/manufacturing-intelligence/
+      design-engineering-support/training-materials
+  
+1                                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     1
+                                                                                                                                    
+0        N A S T R A N    F I L E    A N D    S Y S T E M    P A R A M E T E R    E C H O                                           
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     $ SYSFIELD=SCR*(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.SO
+     $ SYSFIELD=DBALL(RAW=YES,BUFFIO=YES,WNUM=16,WSIZE=16MB) $(C:/PROGRAM FILES/MSC.S
+     NASTRAN BUFFSIZE=65537 $(C:/PROGRAM FILES/MSC.SOFTWARE/MSC_NASTRAN/2024.2/CONF/N
+     $ MSC.NASTRAN INPUT FILE CREATED ON NOVEMBER  12, 2025 AT 15:58:32 BY           
+     $ PATRAN 2024.2                                                                 
+     $ DIRECT TEXT INPUT FOR NASTRAN SYSTEM CELL SECTION                             
+     $                                                                               
+1                                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     2
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    E C H O                                                             
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     SOL 103                                                                                 
+     CEND                                                                                    
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L    E C H O                                                        
+                 COMMAND                                                                                                            
+                 COUNT                                                                                                              
+                  1      TITLE = BLADE SOL103                                                                    
+                  2      ECHO = NONE                                                                             
+                  3      $ USING NASTRAN DEFAULT VALUES FOR RESVEC                                               
+                  4      SUBCASE 1                                                                               
+                  5         TITLE=BLADE SOL103                                                                   
+                  6         METHOD = 1                                                                           
+                  7         SPC = 2                                                                              
+                  8      BEGIN BULK                                                                              
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     4
+                                                                                                                                    
+0                                                                                                                                   
+                                        M O D E L   S U M M A R Y          BULK = 0
+                                   ENTRY NAME        NUMBER OF ENTRIES
+                                   ----------        -----------------
+                                       CQUAD4                    15680
+                                        EIGRL                        1
+                                         GRID                    16000
+                                      HDF5OUT                        1
+                                         MAT1                        4
+                                        PARAM                        1
+                                       PSHELL                       24
+                                         SPC1                        1
+                                       SPCADD                        1
+
+ ^^^     
+ ^^^ >>> IFP OPERATIONS COMPLETE <<< 
+ ^^^     
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 PVT, TRAILER[101, 5, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 CASECC, TRAILER[102, 1, 0, 1000, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM1Q, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 EPT, TRAILER[101, 0, 512, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 MPT, TRAILER[102, 32768, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM2, TRAILER[103, 0, 0, 0, 8192, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM4S, TRAILER[105, 0, 0, 0, 96, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (DATA BLOCK GEOM4S IS NOT SUPPORTED)
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM1, TRAILER[101, 0, 0, 8, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 DYNAMIC, TRAILER[102, 256, 0, 0, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 EDT, TRAILER[103, 0, 0, 524288, 0, 0, 0])
+ *** USER INFORMATION MESSAGE 3 (crdb::nastran::Processor::writeInput)
+ *** USER INFORMATION MESSAGE  (WRITE DATA BLOCK I4 GEOM4, TRAILER[102, 0, 0, 0, 96, 0, 0])
+ *** USER INFORMATION MESSAGE 7555 (GMTSTS)
+     FINITE ELEMENT GEOMETRY CHECK RESULTS EXCEED TOLERANCE LEVELS FOR THE FOLLOWING ELEMENTS.  METRIC VALUES THAT EXCEED
+     TEST TOLERANCE LIMITS ARE IDENTIFIED BY ONE OF THE FOLLOWING FLAGS PLACED TO THE RIGHT OF THE METRIC VALUE.
+        "++++" FOR TEST RESULTS EXCEEDING TOLERANCES.  INFORMATIONAL ONLY.  PROBLEM SOLUTION CONTINUES.  (DEFAULT FLAG)
+        "IGNR" FOR TEST RESULTS EXCEEDING TOLERANCES.  INFORMATIONAL ONLY.  PROBLEM SOLUTION CONTINUES.
+        "WARN" FOR TEST RESULTS EXCEEDING TOLERANCES.  INFORMATIONAL ONLY.  PROBLEM SOLUTION CONTINUES.
+        "FAIL" FOR TEST RESULTS EXCEEDING TOLERANCES.  SEVERE ERROR.        PROBLEM SOLUTION TERMINATES.
+     USER ACTION: USE THE GEOMCHECK (EXECUTIVE CONTROL STATEMENT) KEYWORD=VALUE TO CHANGE TOLERANCE VALUES IF DESIRED.
+     A MAXIMUM OF        100 SKEW ANGLE (SA)       TOLERANCE LIMIT VIOLATIONS WILL BE IDENTIFIED BY THE FLAG "++++"
+                             PLACED AFTER THE VALUE METRIC FOR THE TEST.
+     A MAXIMUM OF        100 MIN INT. ANGLE (IA)   TOLERANCE LIMIT VIOLATIONS WILL BE IDENTIFIED BY THE FLAG "++++"
+                             PLACED AFTER THE VALUE METRIC FOR THE TEST.
+     A MAXIMUM OF        100 MAX INT. ANGLE (IA)   TOLERANCE LIMIT VIOLATIONS WILL BE IDENTIFIED BY THE FLAG "++++"
+                             PLACED AFTER THE VALUE METRIC FOR THE TEST.
+     A MAXIMUM OF        100 WARPING FACTOR (WF)   TOLERANCE LIMIT VIOLATIONS WILL BE IDENTIFIED BY THE FLAG "++++"
+                             PLACED AFTER THE VALUE METRIC FOR THE TEST.
+     A MAXIMUM OF        100 TAPER RATIO (TR)      TOLERANCE LIMIT VIOLATIONS WILL BE IDENTIFIED BY THE FLAG "++++"
+                             PLACED AFTER THE VALUE METRIC FOR THE TEST.
+     USER INFORMATION: THE MAXIMUM MESSAGE COUNT FOR ANY ONE ELEMENT ERROR TEST COULD BE EXCEEDED BY THE 
+     CUMULATIVE EFFECT OF ALL THE MESSAGES GENERATED FOR ALL OF THE DIFFERENT TESTS PERFORMED.
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     5
+                                                                                                                                    
+0                                                                                                                                   
+     TOLERANCE LIMITS ARE:  SA =  30.00, IA(MIN) =  30.00, IA(MAX) = 150.00, WF =   0.05, TR =   0.50 (FLAG = LIMIT VIOLATED)
+ ELEMENT TYPE    ID          SKEW ANGLE      MIN INT. ANGLE    MAX INT. ANGLE    WARPING FACTOR      TAPER RATIO  
+    QUAD4        3841        66.07             65.78            114.31              0.00              0.59 ++++
+    QUAD4        3842        66.67             66.50            113.97              0.00              0.54 ++++
+    QUAD4        3843        67.62             67.07            112.33              0.00              0.57 ++++
+    QUAD4        3844        68.24             68.04            112.50              0.00              0.58 ++++
+    QUAD4        3845        68.57             68.30            111.88              0.00              0.58 ++++
+    QUAD4        3846        69.67             69.29            110.33              0.00              0.53 ++++
+    QUAD4        3847        69.79             69.52            110.66              0.00              0.58 ++++
+    QUAD4        3848        70.42             70.15            110.03              0.00              0.58 ++++
+    QUAD4        3849        70.70             70.42            109.69              0.00              0.54 ++++
+    QUAD4        3850        71.67             71.38            108.80              0.00              0.58 ++++
+    QUAD4        3851        71.98             71.59            108.15              0.00              0.59 ++++
+    QUAD4        3852        72.35             72.00            107.78              0.00              0.54 ++++
+    QUAD4        3853        73.00             72.57            108.11              0.00              0.60 ++++
+    QUAD4        3854        73.72             73.29            106.19              0.00              0.57 ++++
+    QUAD4        3855        74.02             73.74            106.91              0.00              0.56 ++++
+    QUAD4        3856        75.03             74.59            104.89              0.00              0.57 ++++
+    QUAD4        3857        75.09             74.87            105.61              0.00              0.55 ++++
+    QUAD4        3858        76.05             75.52            103.79              0.00              0.58 ++++
+    QUAD4        3859        76.20             75.90            104.26              0.00              0.55 ++++
+    QUAD4        3860        77.15             76.87            103.47              0.00              0.59 ++++
+    QUAD4        3861        77.33             76.96            102.90              0.00              0.55 ++++
+    QUAD4        3862        78.27             77.93            102.11              0.00              0.59 ++++
+    QUAD4        3863        78.69             78.33            101.54              0.00              0.55 ++++
+    QUAD4        3864        79.40             79.00            100.74              0.00              0.59 ++++
+    QUAD4        3865        79.63             79.42            101.13              0.00              0.55 ++++
+    QUAD4        3866        80.56             80.09             99.36              0.00              0.59 ++++
+    QUAD4        3867        81.01             80.80             99.75              0.00              0.55 ++++
+    QUAD4        3868        81.50             81.20             99.07              0.00              0.59 ++++
+    QUAD4        3869        81.98             81.64             98.36              0.00              0.55 ++++
+    QUAD4        3870        82.47             82.06             97.68              0.00              0.59 ++++
+    QUAD4        3871        83.20             82.78             96.96              0.00              0.56 ++++
+    QUAD4        3872        83.70             83.49             97.12              0.00              0.55 ++++
+    QUAD4        3873        83.99             83.68             96.54              0.00              0.59 ++++
+    QUAD4        3874        84.54             84.16             95.71              0.00              0.55 ++++
+    QUAD4        3875        85.00             84.58             95.12              0.00              0.58 ++++
+    QUAD4        3876        85.21             84.88             95.28              0.00              0.59 ++++
+    QUAD4        3877        85.76             85.35             94.36              0.00              0.54 ++++
+    QUAD4        3878        85.72             85.36             94.61              0.00              0.57 ++++
+    QUAD4        3879        85.74             85.44             94.88              0.00              0.59 ++++
+    QUAD4        3880        85.14             84.80             95.17              0.00              0.54 ++++
+    QUAD4        3881        83.68             83.38             96.56              0.00              0.56 ++++
+    QUAD4        3882        88.72             88.26             91.23              0.00              0.58 ++++
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     6
+                                                                                                                                    
+0                                                                                                                                   
+     TOLERANCE LIMITS ARE:  SA =  30.00, IA(MIN) =  30.00, IA(MAX) = 150.00, WF =   0.05, TR =   0.50 (FLAG = LIMIT VIOLATED)
+ ELEMENT TYPE    ID          SKEW ANGLE      MIN INT. ANGLE    MAX INT. ANGLE    WARPING FACTOR      TAPER RATIO  
+    QUAD4        3883        89.75             89.28             90.52              0.00              0.58 ++++
+    QUAD4        3884        88.72             88.39             91.72              0.00              0.55 ++++
+    QUAD4        3885        87.87             87.47             92.37              0.00              0.59 ++++
+    QUAD4        3886        86.99             86.76             93.78              0.00              0.55 ++++
+    QUAD4        3887        86.29             85.88             93.85              0.00              0.55 ++++
+    QUAD4        3888        85.44             85.15             95.21              0.00              0.59 ++++
+    QUAD4        3889        84.86             84.45             95.28              0.00              0.55 ++++
+    QUAD4        3890        83.87             83.55             96.63              0.00              0.59 ++++
+    QUAD4        3891        83.16             82.86             97.32              0.00              0.55 ++++
+    QUAD4        3892        82.72             82.27             97.36              0.00              0.60 ++++
+    QUAD4        3893        81.72             81.42             98.76              0.00              0.55 ++++
+    QUAD4        3894        81.02             80.70             99.47              0.00              0.59 ++++
+    QUAD4        3895        80.19             79.85            100.15              0.00              0.55 ++++
+    QUAD4        3896        79.64             79.34            100.83              0.00              0.55 ++++
+    QUAD4        3897        79.10             78.64            100.80              0.00              0.59 ++++
+    QUAD4        3898        78.11             77.76            102.24              0.00              0.56 ++++
+    QUAD4        3899        77.55             77.24            102.93              0.00              0.59 ++++
+    QUAD4        3900        76.73             76.40            103.60              0.00              0.55 ++++
+    QUAD4        3901        76.19             75.88            104.29              0.00              0.59 ++++
+    QUAD4        3902        75.38             75.05            104.95              0.00              0.55 ++++
+    QUAD4        3903        74.71             74.37            105.63              0.00              0.59 ++++
+    QUAD4        3904        74.03             73.69            106.31              0.00              0.56 ++++
+    QUAD4        3905        73.50             73.22            106.95              0.00              0.55 ++++
+    QUAD4        3906        72.72             72.38            107.62              0.00              0.59 ++++
+    QUAD4        3907        72.06             71.75            108.25              0.00              0.55 ++++
+    QUAD4        3908        71.42             71.09            108.91              0.00              0.59 ++++
+    QUAD4        3909        70.91             70.64            109.54              0.00              0.55 ++++
+    QUAD4        3910        70.12             69.79            110.21              0.00              0.60 ++++
+    QUAD4        3911        69.48             69.17            110.83              0.00              0.55 ++++
+    QUAD4        3912        69.00             68.73            111.44              0.00              0.55 ++++
+    QUAD4        3913        68.24             67.93            112.07              0.00              0.59 ++++
+    QUAD4        3914        67.91             67.50            111.97              0.00              0.55 ++++
+    QUAD4        3915        67.15             66.88            113.29              0.00              0.59 ++++
+    QUAD4        3916        66.69             66.48            113.88              0.00              0.55 ++++
+    QUAD4        3917        66.23             65.83            113.72              0.00              0.60 ++++
+    QUAD4        3918        65.46             65.26            115.10              0.00              0.55 ++++
+    QUAD4        3919        65.23             64.88            114.90              0.00              0.59 ++++
+    QUAD4        3920        64.62             64.31            115.58              0.00              0.55 ++++
+    QUAD4        7761        66.07             65.78            114.31              0.00              0.59 ++++
+    QUAD4        7762        66.67             66.50            113.97              0.00              0.54 ++++
+    QUAD4        7763        67.62             67.07            112.33              0.00              0.57 ++++
+    QUAD4        7764        68.24             68.04            112.50              0.00              0.58 ++++
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     7
+                                                                                                                                    
+0                                                                                                                                   
+     TOLERANCE LIMITS ARE:  SA =  30.00, IA(MIN) =  30.00, IA(MAX) = 150.00, WF =   0.05, TR =   0.50 (FLAG = LIMIT VIOLATED)
+ ELEMENT TYPE    ID          SKEW ANGLE      MIN INT. ANGLE    MAX INT. ANGLE    WARPING FACTOR      TAPER RATIO  
+    QUAD4        7765        68.57             68.30            111.88              0.00              0.58 ++++
+    QUAD4        7766        69.67             69.29            110.33              0.00              0.53 ++++
+    QUAD4        7767        69.79             69.52            110.66              0.00              0.58 ++++
+    QUAD4        7768        70.42             70.15            110.03              0.00              0.58 ++++
+    QUAD4        7769        70.70             70.42            109.69              0.00              0.54 ++++
+    QUAD4        7770        71.67             71.38            108.80              0.00              0.58 ++++
+    QUAD4        7771        71.98             71.59            108.15              0.00              0.59 ++++
+    QUAD4        7772        72.35             72.00            107.78              0.00              0.54 ++++
+    QUAD4        7773        73.00             72.57            108.11              0.00              0.60 ++++
+    QUAD4        7774        73.72             73.29            106.19              0.00              0.57 ++++
+    QUAD4        7775        74.02             73.74            106.91              0.00              0.56 ++++
+    QUAD4        7776        75.03             74.59            104.89              0.00              0.57 ++++
+    QUAD4        7777        75.09             74.87            105.61              0.00              0.55 ++++
+    QUAD4        7778        76.05             75.52            103.79              0.00              0.58 ++++
+    QUAD4        7779        76.20             75.90            104.26              0.00              0.55 ++++
+    QUAD4        7780        77.15             76.87            103.47              0.00              0.59 ++++
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     8
+                                                                                                                                    
+0                                                                                                                                   
+
+ ====================================================================================================================================
+    Solution Summary: Model Element Geometry Check Summary Information:
+
+                            E L E M E N T   G E O M E T R Y   T E S T   R E S U L T S   S U M M A R Y
+                                        TOTAL NUMBER OF TIMES TOLERANCES WERE EXCEEDED
+  ELEMENT        SKEW       ASPECT/     MINIMUM      MAXIMUM    SURFACE/FACE    OFFSET     EDGE POINT   EDGE POINT    JACOBIAN  
+    TYPE       ANGLE      TAPER RATIO INTER. ANGLE INTER. ANGLE  WARP FACTOR    RATIO     LENGTH RATIO ANGLE LIMIT  DETERMINANT 
+   QUAD4           0          320            0            0            0          N/A          N/A          N/A          N/A        
+
+         N/A IN THE ABOVE TABLE INDICATES TESTS THAT ARE NOT APPLICABLE TO THE ELEMENT TYPE AND WERE NOT PERFORMED.
+         FOR ALL ELEMENTS WHERE GEOMETRY TEST RESULTS HAVE EXCEEDED TOLERANCES,
+
+         QUAD4    ELEMENT ID     3910 PRODUCED LARGEST  TAPER RATIO      OF       0.60 (TOLERANCE =        0.50).
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE     9
+                                                                                                                                    
+0                                                                                                                                   
+ *** USER INFORMATION MESSAGE 7310 (VECPRN)
+     ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM WILL BE USED AS REFERENCE LOCATION.
+     RESULTANTS ABOUT ORIGIN OF SUPERELEMENT OR MODULE BASIC COORDINATE SYSTEM IN SUPERELEMENT OR MODULE
+     BASIC SYSTEM COORDINATES.
+0                                                  OLOAD    RESULTANT       
+  SUBCASE/    LOAD
+  DAREA ID    TYPE       T1            T2            T3            R1            R2            R3
+0        1     FX    0.000000E+00     ----          ----          ----       0.000000E+00  0.000000E+00                             
+               FY       ----       0.000000E+00     ----       0.000000E+00     ----       0.000000E+00                             
+               FZ       ----          ----       0.000000E+00  0.000000E+00  0.000000E+00     ----                                  
+               MX       ----          ----          ----       0.000000E+00     ----          ----                                  
+               MY       ----          ----          ----          ----       0.000000E+00     ----                                  
+               MZ       ----          ----          ----          ----          ----       0.000000E+00                             
+             TOTALS  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+ *** USER INFORMATION MESSAGE 4158 (DFMSA)
+ ---- STATISTICS FOR SPARSE DECOMPOSITION OF DATA BLOCK SCRATCH  FOLLOW
+        NUMBER OF NEGATIVE TERMS ON FACTOR DIAGONAL =  17885
+        MAXIMUM RATIO OF MATRIX DIAGONAL TO FACTOR DIAGONAL =  2.2E+10 AT ROW NUMBER      47529
+ *** USER WARNING MESSAGE 4698 (DCMPD)
+     STATISTICS FOR DECOMPOSITION OF MATRIX SCRATCH.
+     THE FOLLOWING DEGREES OF FREEDOM HAVE FACTOR DIAGONAL RATIOS GREATER THAN
+     1.000000E+07 OR HAVE NEGATIVE TERMS ON THE FACTOR DIAGONAL.
+     USER INFORMATION:
+     THIS MESSAGE MAY BE IGNORED IF NO GRID POINT IDS OR HIGH RATIO MESSAGES APPEAR IN THE TABLE ON THE NEXT PAGE.
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE    10
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                                                                                                   
+         GRID POINT ID       DEGREE OF FREEDOM   MATRIX/FACTOR DIAGONAL RATIO        MATRIX DIAGONAL                                
+                                                                                                                                    
+           13006                    T1                  -6.19093E+07                   1.00000E+00
+           14687                    T3                  -1.94559E+07                   1.00000E+00
+           14693                    T3                   1.25286E+07                   1.00000E+00
+           14964                    T3                   2.05725E+07                   1.00000E+00
+           15123                    T3                  -3.46776E+08                   1.00000E+00
+           15204                    T3                   6.23079E+07                   1.00000E+00
+           15205                    T3                   4.28222E+07                   1.00000E+00
+           15206                    T3                   1.02093E+07                   1.00000E+00
+           15277                    T3                   3.19023E+07                   1.00000E+00
+           15723                    T3                   1.14249E+07                   1.00000E+00
+           15807                    T3                   8.16020E+08                   1.00000E+00
+           15887                    T1                  -1.19199E+07                   1.00000E+00
+           15893                    T3                   1.32834E+07                   1.00000E+00
+           15894                    T3                   1.23473E+08                   1.00000E+00
+           15912                    T3                  -5.15349E+08                   1.00000E+00
+           15921                    T3                   7.19805E+07                   1.00000E+00
+           15922                    T3                  -2.59835E+08                   1.00000E+00
+           15923                    T3                  -1.14163E+10                   1.00000E+00
+           15924                    T3                   1.63504E+10                   1.00000E+00
+           15925                    T3                  -9.14733E+07                   1.00000E+00
+           15926                    T3                  -1.83606E+09                   1.00000E+00
+           15927                    T3                   1.87507E+09                   1.00000E+00
+           15928                    T3                  -3.21287E+08                   1.00000E+00
+           15929                    T1                  -1.50917E+07                   1.00000E+00
+           15929                    T2                   1.28149E+07                   1.00000E+00
+           15929                    T3                  -3.80174E+09                   1.00000E+00
+           15930                    T3                   1.92382E+09                   1.00000E+00
+           15931                    T3                   4.21827E+07                   1.00000E+00
+           15932                    T3                  -2.18427E+10                   1.00000E+00
+           15933                    T3                   9.00250E+07                   1.00000E+00
+           15934                    T3                  -4.55518E+09                   1.00000E+00
+           15935                    T3                   6.16048E+07                   1.00000E+00
+           15936                    T3                  -3.95485E+09                   1.00000E+00
+           15938                    T3                   4.13102E+08                   1.00000E+00
+           15940                    T3                  -2.77418E+09                   1.00000E+00
+           15941                    T3                   2.17310E+07                   1.00000E+00
+           15942                    T3                  -4.97291E+09                   1.00000E+00
+           15943                    T3                   2.00184E+07                   1.00000E+00
+           15944                    T3                  -5.87316E+09                   1.00000E+00
+           15945                    T3                   3.27626E+07                   1.00000E+00
+           15946                    T3                  -2.34924E+09                   1.00000E+00
+           15947                    T3                   2.49453E+08                   1.00000E+00
+           15950                    T3                  -8.12717E+08                   1.00000E+00
+           15951                    T3                   5.25117E+08                   1.00000E+00
+           15952                    T3                   5.90019E+07                   1.00000E+00
+           15953                    T3                   4.80053E+07                   1.00000E+00
+           15954                    T3                   5.67197E+07                   1.00000E+00
+           15955                    T3                   2.59915E+07                   1.00000E+00
+           15956                    T3                   1.38278E+07                   1.00000E+00
+           15959                    T3                   8.43990E+08                   1.00000E+00
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE    11
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0                                                                                                                                   
+         GRID POINT ID       DEGREE OF FREEDOM   MATRIX/FACTOR DIAGONAL RATIO        MATRIX DIAGONAL                                
+                                                                                                                                    
+           15967                    T3                  -6.96628E+08                   1.00000E+00
+           15968                    T3                   4.51535E+08                   1.00000E+00
+           15969                    T3                   1.48461E+07                   1.00000E+00
+           15970                    T3                  -8.35215E+08                   1.00000E+00
+           15972                    T3                   3.45888E+07                   1.00000E+00
+           15974                    T3                  -3.37661E+08                   1.00000E+00
+           15975                    T3                   2.87423E+08                   1.00000E+00
+           15976                    T3                  -4.99680E+08                   1.00000E+00
+           15977                    T3                   2.37222E+08                   1.00000E+00
+           15978                    T3                  -6.90530E+08                   1.00000E+00
+           15979                    T3                   5.62650E+07                   1.00000E+00
+           15980                    T3                  -1.03700E+09                   1.00000E+00
+           15981                    T3                  -2.62982E+08                   1.00000E+00
+           15982                    T3                  -6.16381E+07                   1.00000E+00
+           15983                    T3                   2.94614E+07                   1.00000E+00
+           15986                    T3                  -9.23295E+08                   1.00000E+00
+           15991                    T3                  -6.28224E+07                   1.00000E+00
+           15992                    T3                  -5.43464E+08                   1.00000E+00
+           15993                    T3                   7.90754E+07                   1.00000E+00
+           15994                    T3                  -9.44579E+08                   1.00000E+00
+           15995                    T3                   5.05794E+07                   1.00000E+00
+           15996                    T3                  -7.95069E+08                   1.00000E+00
+           15997                    T3                  -8.01511E+08                   1.00000E+00
+           15998                    T3                   4.22012E+08                   1.00000E+00
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 3.947842D+03, CYCLES = 1.000000D+01 THE STURM COUNT = 17885
+  
+ *** USER INFORMATION MESSAGE 4158 (DFMSA)
+ ---- STATISTICS FOR SPARSE DECOMPOSITION OF DATA BLOCK SCRATCH  FOLLOW
+        NUMBER OF NEGATIVE TERMS ON FACTOR DIAGONAL =  17888
+        MAXIMUM RATIO OF MATRIX DIAGONAL TO FACTOR DIAGONAL =  2.2E+10 AT ROW NUMBER      47529
+ *** USER INFORMATION MESSAGE 5010 (LNCILS)
+     STURM SEQUENCE DATA FOR EIGENVALUE EXTRACTION.
+     TRIAL EIGENVALUE = 3.949108D+03, CYCLES = 1.000160D+01 THE STURM COUNT = 17888
+
+ TABLE OF SHIFTS:  (LNNRIGL)
+ SHIFT #        SHIFT VALUE         FREQUENCY, CYCLES     # EIGENVALUES BELOW    # NEW EIGENVALUES FOUND
+     1.        3.9478418E+03          1.0000000E+01             17885                        2
+     2.        3.9491080E+03          1.0001604E+01             17888                        1
+
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE    12
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+0
+
+
+                          E I G E N V A L U E  A N A L Y S I S   S U M M A R Y   (READ MODULE) 
+
+
+
+                                     BLOCK SIZE USED ......................     2
+
+                                     NUMBER OF DECOMPOSITIONS .............     2
+
+                                     NUMBER OF ROOTS FOUND ................     1
+
+                                     NUMBER OF SOLVES REQUIRED ............    12
+
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE    13
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ 
+                                              R E A L   E I G E N V A L U E S
+   MODE    EXTRACTION      EIGENVALUE            RADIANS             CYCLES            GENERALIZED         GENERALIZED
+    NO.       ORDER                                                                       MASS              STIFFNESS
+        1         1        3.949096E+03        6.284183E+01        1.000159E+01        1.000000E+00        3.949096E+03
+1    BLADE SOL103                                                          NOVEMBER  12, 2025  MSC Nastran 11/21/24   PAGE    14
+                                                                                                                                    
+0                                                                                                            SUBCASE 1              
+ * * * *  D B D I C T   P R I N T  * * * *      SUBDMAP = PRTSUM  ,  DMAP STATEMENT NO.     75
+
+
+
+0                                   * * * *  A N A L Y S I S  S U M M A R Y  T A B L E  * * * *
+0 SEID  PEID PROJ VERS APRCH      SEMG SEMR SEKR SELG SELR MODES DYNRED SOLLIN SOLNL LOOPID DESIGN CYCLE SENSITIVITY
+ -------------------------------------------------------------------------------------------------------------------
+     0     0    1    1 '        '    T    T    T    T    T     T      F      T     F     -1            0           F
+0SEID = SUPERELEMENT ID.
+ PEID = PRIMARY SUPERELEMENT ID OF IMAGE SUPERELEMENT.
+ PROJ = PROJECT ID NUMBER.
+ VERS = VERSION ID.
+ APRCH = BLANK FOR STRUCTURAL ANALYSIS.  HEAT FOR HEAT TRANSFER ANALYSIS.
+ SEMG = STIFFNESS AND MASS MATRIX GENERATION STEP.
+ SEMR = MASS MATRIX REDUCTION STEP (INCLUDES EIGENVALUE SOLUTION FOR MODES).
+ SEKR = STIFFNESS MATRIX REDUCTION STEP.
+ SELG = LOAD MATRIX GENERATION STEP.
+ SELR = LOAD MATRIX REDUCTION STEP. 
+ MODES = T (TRUE) IF NORMAL MODES OR BUCKLING MODES CALCULATED.
+ DYNRED = T (TRUE) MEANS GENERALIZED DYNAMIC AND/OR COMPONENT MODE REDUCTION PERFORMED.
+ SOLLIN = T (TRUE) IF LINEAR SOLUTION EXISTS IN DATABASE.
+ LOOPID = THE LAST LOOPID VALUE USED IN THE NONLINEAR ANALYSIS.  USEFUL FOR RESTARTS.
+ SOLNL = T (TRUE) IF NONLINEAR SOLUTION EXISTS IN DATABASE.
+ DESIGN CYCLE = THE LAST DESIGN CYCLE (ONLY VALID IN OPTIMIZATION).
+ SENSITIVITY = SENSITIVITY MATRIX GENERATION FLAG.
+ 
+ No PARAM values were set in the Control File.
+ 
+1                                        * * * END OF JOB * * *
+ 
+ 
+ No Symbolic Replacement variables or values were specified.
+

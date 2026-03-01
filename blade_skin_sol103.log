@@ -1,0 +1,144 @@
+MSC Nastran V2024.2 (Intel Windows 10 Enterprise 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[3])
+Nastran BUFFSIZE=65537 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[6])
+JID='c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/blade_skin_sol103.bdf'
+OUT='./blade_skin_sol103'
+MEM=8008MB      $ 
+PMEM=0+
+MACH='Intel'
+OPER='Windows 10 Enterprise'
+OSV='6.2 9200'
+MODEL='Xeon/3282 (5CG4463P42)'
+NPROC='12'
+CONFIG=6
+NPROC=12
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/2024.2/conf/nast20242.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/tpl' $(program default)
+SDIR='c:/scratch/blade_skin_sol103.T16896_19'
+DBS='c:/scratch/blade_skin_sol103.T16896_19'
+SCR='yes'
+SMEM=100
+BPOOL=2002.0MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/sss'
+DEL='MSCDEF'
+SPOTWELD=''
+EMENGPU=''
+UDR=''
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27001@nastran-1.lic.tudelft.nl;27001@nastran-2.lic.tudelft.nl;27001@nastran-3.lic.tudelft.nl'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/2024.2/msc20242/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\actran\win64\Actran_2024.2\bin;C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\nvidia;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\intel\bin64;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\lib;c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8;C:\Program Files\Python313\Scripts\;C:\Program Files\Python313\;C:\Program Files\MSC.Software\Patran_x64\20242\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\MATLAB\R2024b\runtime\win64;C:\Program Files\MATLAB\R2024b\bin;C:\Program Files\MATLAB\R2022b\bin;C:\Program Files\PowerShell\7\;C:\Users\mathismiroux\AppData\Local\Microsoft\WindowsApps;C:\Users\mathismiroux\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\mathismiroux\AppData\Local\Programs\Git\cmd;C:\Users\mathismiroux\AppData\Local\Programs\MiKTeX\miktex\bin\x64\ 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\2024.2\msc20242\res 
+Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\2024.2\msc20242\win64i8\nastran.exe JID=C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code\blade_skin_sol103.bdf 
+Current Dir: C:\Users\mathismiroux\OneDrive - Delft University of Technology\Documents\PhD_code\Structural_code 
+Time Cmd:    c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    16016 MB
+ Physical memory available:           4339 MB
+ Paging file size:                   32032 MB
+ Paging file size available:         14549 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213496 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         5CG4463P42.wl.tudelft.net
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Enterprise 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/5088
+ Clock freq.:      5088 MHz
+ Number of CPUs:   12
+ Number of CPUs:   0 ( limited by PBS )
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  16016 MB
+ Virtual memory:   32032 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/2024.2/msc20242/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Wed Feb  4 11:30:20 WEST 2026 
+ 11:30:27  Beginning Analysis
+SCA Kernel 30.0.943723 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_core.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_intel_thread.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\mkl_rt.2.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\2024.2\msc20242\win64i8\MSCblas.dll" has been loaded.
+
+ 11:30:27  MSC Authorization Information - System Attributes (1004, 0)
+ 11:30:27  -----------------------------------------------------------
+  Date:          Wed Feb  4 11:30:27 2026
+  MSC Id:        c4474e16e1f4 (ethernet) (Intel)
+  Hostname:      5CG4463P42 (user mathismiroux, display 5CG4463P42)
+  License files: 27001@nastran-1.lic.tudelft.nl
+                 27001@nastran-2.lic.tudelft.nl
+                 27001@nastran-3.lic.tudelft.nl
+  CEID:          3D141A7E-C32FD2AA
+  User:          mathismiroux
+  Display:       5CG4463P42
+  LAPI Version:  LAPI 22.4.0 (CL df5c63aa) (FLEXlm 11.16.3.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        3D141A7E-C32FD2AA        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 11:30:28  MSC Authorization Information - Checkout Successful (1016, 0)
+ 11:30:28  -------------------------------------------------------------
+ 11:30:28  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host nastran-1.lic.tudelft.nl
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.hexagon.com.
+
+ 11:30:29  35790 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/blade_skin_sol103.bdf"
+
+Processing of bulk data entries is complete.
+
+ 11:30:30  Finite element model generation started.
+ 11:30:31  Finite element model generated 96000 degrees of freedom.
+ 11:30:31  Finite element model generation successfully completed.
+ 11:30:31  Application of Loads and Boundary Conditions to the finite element model started.
+ 11:30:31  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 11:30:31  Solution of the system equations for normal modes started.
+ 11:30:34  Solution of the system equations for normal modes successfully completed.
+ 11:30:34  Normal modes analysis completed.
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+       USER WARNING MESSAGE     4698.0          1 
+ ================================================== 
+ 11:30:34  14 records read from JID file "c:/users/mathismiroux/onedrive - delft university of technology/documents/phd_code/structural_code/blade_skin_sol103.bdf"
+ 11:30:34  NSEXIT: EXIT(0)
+ 11:30:34  Analysis complete  0
+Real:       10.185 seconds ( 0:00:10.185)
+User:        4.250 seconds ( 0:00:04.250)
+Sys:         3.546 seconds ( 0:00:03.546)
+MSC Nastran finished Wed Feb  4 11:30:36 WEST 2026 
